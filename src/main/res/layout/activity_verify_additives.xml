@@ -1,0 +1,82 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/additives_explained"
+            android:text="@string/additives_explained"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/additives_verification_header"
+            android:text="@string/additives_verification_header"
+            android:layout_marginTop="6dp"
+            android:layout_below="@+id/additives_explained"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/contains_unspecified_aromas"
+            android:text="@string/contains_unspecified_aromas"
+            android:layout_below="@+id/additives_verification_header"
+            android:layout_marginTop="6dp"
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/contains_unspecified_oils"
+            android:text="@string/contains_unspecified_oils"
+            android:layout_below="@+id/contains_unspecified_aromas"
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/contains_maybe_animal_derived_e_numbers"
+            android:text="@string/contains_maybe_animal_derived_e_numbers"
+            android:layout_below="@+id/contains_unspecified_oils"
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/contains_maybe_animal_derived_additives"
+            android:text="@string/contains_maybe_animal_derived_additives"
+            android:layout_below="@+id/contains_maybe_animal_derived_e_numbers"
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/additives_verification_user_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_maybe_animal_derived_additives"
+            android:hint="@string/additives_verification_user_detail_hint"
+            android:inputType="textCapSentences|textMultiLine"
+            android:ems="10"
+            android:gravity="left|top"
+            />
+
+        <Button
+            android:id="@+id/submitConfirmedAdditives"
+            android:text="@string/IAmCertain"
+            android:layout_below="@+id/additives_verification_user_detail"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</ScrollView>

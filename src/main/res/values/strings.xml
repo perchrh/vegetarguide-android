@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Vegetarguide</string>
+    <string name="scanning_instructions">Skann en vare eller skriv inn strekkoden selv.</string>
+    <string name="title_activity_product_details">Varedetaljer</string>
+    <string name="statustype_vegan">Vegansk</string>
+    <string name="statustype_vegetarian">Vegetarisk</string>
+    <string name="statustype_animal_derived">Animalske ingredienser</string>
+    <string name="statustype_animal_tested">Testet på dyr</string>
+    <string name="resulttype_unknown_product">Ukjent produkt</string>
+    <string name="resulttype_unknown_status">Ukjent status, mangler informasjon om produktet</string>
+    <string name="resulttype_known">Fant produktet!</string>
+    <string name="label_unknown_product">Ukjent produkt</string>
+    <string name="label_new_search">Nytt søk</string>
+    <string name="scanning_headline">Er varen dyrevennlig?</string>
+    <string name="scan_product_code">Skann vare</string>
+    <string name="input_product_code">Skriv inn kode</string>
+    <string name="scan_error">Kunne ikke lese koden! Hold kameraet helt i ro og pass på å ha godt lys!</string>
+    <string name="title_user_input_barcode">Strekkode (tall)</string>
+    <string name="label_unknown_title">Ukjent tittel</string>
+    <string name="label_unknown_subtitle">Ukjent beskrivelse</string>
+    <string name="label_modify_product">Endre</string>
+    <string name="label_add_product">Legg inn produktet</string>
+    <string name="label_add_status">Legg til info</string>
+    <string name="title_activity_modify_product">Oppdater produkt</string>
+    <string name="success_product_submitted">Takk for bidraget ditt! Redaksjonen vår vil gå over det du har sendt inn og
+        legge det inn i systemet!</string>
+    <string name="error_generic_maybe_network">En teknisk feil oppstod, prøv igjen senere. Pass på at du er koblet til
+        Internett.</string>
+    <string name="error_generic_not_network">En teknisk feil oppstod, prøv igjen senere.</string>
+    <string name="error_title">Varen kan ikke registreres</string>
+    <string name="error_restricted_distribution">Denne strekkoden brukes på forskjellige produkter i forskjellige butikker, derfor
+        kan den ikke legges inn.</string>
+    <string name="error_paper_product">Bøker, trykksaker og andre papirer skal ikke legges inn.</string>
+    <string name="error_invalid_product_code">Strekkoden er ikke gyldig.</string>
+    <string name="error_unknown_lookup_error">En ukjent feil oppstod for denne strekkkoden.</string>
+    <string name="no_network_connection">Du må være koblet til Internett for å søke etter varer</string>
+    <string name="enquire_vegan_status">Vennligst legg til info om disse ingrediensene:\u0020</string>
+    <string name="product_gtin_label">Strekkode</string>
+    <string name="product_name_label">Navn</string>
+    <string name="product_name_hint">Produktets navn</string>
+    <string name="product_variant_label">Variant</string>
+    <string name="product_variant_hint">Antall, vekt/volum, undertittel etc.</string>
+    <string name="product_status_label">Innhold</string>
+    <string name="product_modification_submit_label">Send til redaksjonen</string>
+    <string name="product_other_animal_derived_label">Annet animalsk</string>
+    <string name="product_other_animal_derived_hint">Hva gjør at produktet ikke er vegansk?</string>
+    <string name="product_brand_label">Merke</string>
+    <string name="product_brand_hint">Merkenavn eller produsent</string>
+    <string name="product_contains_bodyparts">Biter av dyrekropper</string>
+    <string name="product_contains_honey">Honning</string>
+    <string name="product_contains_eggs">Egg</string>
+    <string name="product_contains_animal_milk">Dyremelk</string>
+    <string name="product_contains_animal_additives">Animalske tilsetningsstoffer</string>
+    <string name="product_is_animal_tested">Testet på dyr</string>
+    <string name="product_contains_other_animal_derived">Annet animalsk</string>
+
+    <string name="title_activity_verify_additives">Bekreft tilsetningsstoffer</string>
+    <string name="additives_explained">Noen tilsetningsstoffer kan komme fra både animalske og vegetabilske kilder. Produsenten må da kontaktes for å finne ut hva kilden er, om dette ikke er oppgitt.</string>
+    <string name="additives_verification_header">Produsenten bekrefter at disse tilsetningsstoffene er 100% vegetabilske, eller produktet har ingen av disse tilsetningsstoffene:</string>
+    <string name="contains_unspecified_aromas">Uspesifisert aroma</string>
+    <string name="contains_unspecified_oils">Uspesifiserte oljer</string>
+    <string name="contains_maybe_animal_derived_e_numbers">Tvetydige E-stoffer</string>
+    <string name="contains_maybe_animal_derived_additives">Andre tvetydige tilsetningsstoffer</string>
+    <string name="IAmCertain">Jeg er sikker</string>
+    <string name="error_additives_not_verified">Tilsetningsstoffene kan være animalske!</string>
+    <string name="error_additives_are_verified">Tilsetningsstoffene er vegetabilske!</string>
+    <string name="additives_verification_user_detail_hint">Bekreftelse på at alle tvetydige eller uspesifiserte ingredienser er vegetabilske</string>
+    <string name="commentary_label">Kommentar</string>
+    <string name="user_commentary_hint">Valgfri kommentar</string>
+    <string name="user_commentary_hint_with_animal_additives">Hvorfor er tilsetningsstoffene ikke 100% vegetabilske?</string>
+
+</resources>

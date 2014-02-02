@@ -1,0 +1,224 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".ModifyProduct"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_alignParentTop="true"
+            android:id="@+id/gtin_row">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_gtin_label"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gtin_value"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/gtin_row"
+            android:id="@+id/name_row">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_name_label"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:hint="@string/product_name_hint"
+                android:id="@+id/title_edit"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/name_row"
+            android:layout_marginTop="10dp"
+            android:id="@+id/subtitle_row">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_variant_label"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:hint="@string/product_variant_hint"
+                android:id="@+id/subtitle_edit"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/subtitle_row"
+            android:layout_marginTop="10dp"
+            android:id="@+id/brand_row">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_brand_label"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:hint="@string/product_brand_hint"
+                android:id="@+id/brand_edit"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/brand_row"
+            android:layout_marginTop="10dp"
+            android:id="@+id/status_row"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_status_label"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/product_contains_bodyparts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_contains_bodyparts" />
+
+            <CheckBox
+                android:id="@+id/product_contains_animal_milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_contains_animal_milk" />
+
+            <CheckBox
+                android:id="@+id/product_contains_eggs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_contains_eggs" />
+
+            <CheckBox
+                android:id="@+id/product_contains_honey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_contains_honey" />
+
+            <CheckBox
+                android:id="@+id/product_contains_animal_additives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_contains_animal_additives" />
+
+            <CheckBox
+                android:id="@+id/product_is_animal_tested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_is_animal_tested" />
+
+            <CheckBox
+                android:id="@+id/product_contains_other_animal_derived"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_contains_other_animal_derived"
+                android:checked="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/status_row"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/other_animal_derived_row">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_other_animal_derived_label"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/product_other_animal_derived_hint"
+                android:inputType="textCapSentences|textMultiLine"
+                android:ems="10"
+                android:gravity="left|top"
+                android:id="@+id/product_other_animal_derived_edit" />
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_commentary_hint"
+            android:id="@+id/commentary_edit"
+            android:layout_below="@+id/other_animal_derived_row"
+            android:inputType="textCapSentences|textMultiLine"
+            android:ems="10"
+            android:gravity="left|top"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_below="@+id/commentary_edit"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/product_modification_submit_label" />
+
+    </RelativeLayout>
+
+</ScrollView>
