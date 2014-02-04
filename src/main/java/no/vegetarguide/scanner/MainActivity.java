@@ -39,6 +39,8 @@ import static no.vegetarguide.scanner.SuperScan.START_SCANNING;
 
 public class MainActivity extends Activity {
 
+    private View progressBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +63,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        progressBar = findViewById(R.id.progressbar);
+
         View inputNumber = findViewById(R.id.input_code);
         inputNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO make this a separate activity
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 builder.setTitle(R.string.title_user_input_barcode);
@@ -150,7 +155,7 @@ public class MainActivity extends Activity {
     }
 
     private Request performRequest(String productCode, String formatName) {
-        setProgressBarIndeterminateVisibility(true);
+        showProgressBar();
 
         ProductLookupRequestHandler requestHandler = new ProductLookupRequestHandler(productCode, formatName);
         //TODO do this in an intentservice
@@ -159,13 +164,22 @@ public class MainActivity extends Activity {
                 createLookupErrorListener());
     }
 
+    private void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+    }
+
     private Response.Listener<ProductLookupResponse> createLookupResponseListener() {
         return new Response.Listener<ProductLookupResponse>() {
             @Override
             public void onResponse(ProductLookupResponse response) {
                 Intent intent = new Intent(MainActivity.this, ProductDetailsActivity.class);
                 intent.putExtra(ProductLookupResponse.class.getSimpleName(), response);
-                setProgressBarIndeterminateVisibility(false);
+
+                hideProgressBar();
 
                 if (response.hasError()) {
                     showErrorMessage(response.getError());
@@ -199,12 +213,13 @@ public class MainActivity extends Activity {
                     errorMessageResource = R.string.server_error;
                 }
 
+                hideProgressBar();
+
                 DialogFragment newFragment = AlertDialogFragment.newInstance(
                         errorTitleResource, errorMessageResource);
                 newFragment.show(getFragmentManager(), "lookupIOErrorDialog");
 
                 Log.e("superscan", "Error during product lookup request", cause);
-                setProgressBarIndeterminateVisibility(false);
             }
         };
     }
