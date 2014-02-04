@@ -2,6 +2,8 @@ package no.vegetarguide.scanner;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,28 +13,35 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.apache.commons.lang3.StringUtils;
+
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
-import org.apache.commons.lang3.StringUtils;
 
-import static no.vegetarguide.scanner.SuperScan.*;
+import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_SUCCESS;
+import static no.vegetarguide.scanner.SuperScan.PRODUCT_DETAILS_REQUEST_CODE;
+import static no.vegetarguide.scanner.SuperScan.START_SCANNING;
 
 public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_main);
         initViews();
     }
@@ -45,7 +54,9 @@ public class MainActivity extends Activity {
                 if (isNetworkAvailable()) {
                     startScan();
                 } else {
-                    Toast.makeText(MainActivity.this, R.string.no_network_connection, Toast.LENGTH_LONG).show();
+                    DialogFragment newFragment = AlertDialogFragment.newInstance(
+                            R.string.network_error_title, R.string.no_network_connection);
+                    newFragment.show(getFragmentManager(), "networkError");
                 }
             }
         });
@@ -65,7 +76,7 @@ public class MainActivity extends Activity {
                 builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         String value = input.getText().toString();
-                        performRequest(StringUtils.strip(value), "manual");
+                        performRequest(StringUtils.strip(value), "manual input");
                         dialog.dismiss();
                     }
                 });
@@ -164,15 +175,9 @@ public class MainActivity extends Activity {
             }
 
             private void showErrorMessage(LookupErrorType error) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle(R.string.error_title).setMessage(error.getDescriptionResource());
-                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                DialogFragment newFragment = AlertDialogFragment.newInstance(
+                        R.string.lookup_error_title, error.getDescriptionResource());
+                newFragment.show(getFragmentManager(), "lookupErrorDialog");
             }
         };
     }
@@ -181,8 +186,24 @@ public class MainActivity extends Activity {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, R.string.error_generic_maybe_network, Toast.LENGTH_LONG).show();
-                Log.e("superscan", "Error during product lookup request", error);
+                Throwable cause = error.getCause();
+
+                int errorTitleResource = R.string.network_error_title;
+                int errorMessageResource = R.string.error_generic_maybe_network;
+                if (error instanceof NoConnectionError ||
+                        error instanceof TimeoutError
+                        || error instanceof NetworkError) {
+                    errorMessageResource = R.string.network_route_error;
+                } else if (error instanceof ServerError) {
+                    errorTitleResource = R.string.server_error_title;
+                    errorMessageResource = R.string.server_error;
+                }
+
+                DialogFragment newFragment = AlertDialogFragment.newInstance(
+                        errorTitleResource, errorMessageResource);
+                newFragment.show(getFragmentManager(), "lookupIOErrorDialog");
+
+                Log.e("superscan", "Error during product lookup request", cause);
                 setProgressBarIndeterminateVisibility(false);
             }
         };
@@ -197,6 +218,39 @@ public class MainActivity extends Activity {
             return true;
         }
         return false;
+    }
+
+    public static class AlertDialogFragment extends DialogFragment {
+
+        public static AlertDialogFragment newInstance(int title, int message) {
+            AlertDialogFragment frag = new AlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("title", title);
+            args.putInt("message", message);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        public AlertDialogFragment() {
+            super();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int title = getArguments().getInt("title");
+            int message = getArguments().getInt("message");
+
+            return new AlertDialog.Builder(getActivity())
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    dialog.dismiss();
+                                }
+                            }
+                    ).create();
+        }
     }
 
 }

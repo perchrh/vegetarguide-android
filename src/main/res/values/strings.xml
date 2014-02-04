@@ -26,10 +26,11 @@
     <string name="title_activity_modify_product">Oppdater produkt</string>
     <string name="success_product_submitted">Takk for bidraget ditt! Redaksjonen vår vil gå over det du har sendt inn og
         legge det inn i systemet!</string>
-    <string name="error_generic_maybe_network">En teknisk feil oppstod, prøv igjen senere. Pass på at du er koblet til
-        Internett.</string>
+    <string name="error_generic_maybe_network">En teknisk feil oppstod, prøv igjen senere.</string>
     <string name="error_generic_not_network">En teknisk feil oppstod, prøv igjen senere.</string>
-    <string name="error_title">Varen kan ikke registreres</string>
+    <string name="lookup_error_title">Varen kan ikke registreres</string>
+    <string name="network_error_title">Nettverksfeil</string>
+    <string name="network_route_error">Kunne ikke nå frem til produktdatabasen. Pass på at du er koblet til Internett og har godt signal.</string>
     <string name="error_restricted_distribution">Denne strekkoden brukes på forskjellige produkter i forskjellige butikker, derfor
         kan den ikke legges inn.</string>
     <string name="error_paper_product">Bøker, trykksaker og andre papirer skal ikke legges inn.</string>
@@ -70,5 +71,7 @@
     <string name="commentary_label">Kommentar</string>
     <string name="user_commentary_hint">Valgfri kommentar</string>
     <string name="user_commentary_hint_with_animal_additives">Hvorfor er tilsetningsstoffene ikke 100% vegetabilske?</string>
+    <string name="server_error_title">Tjenerfeil</string>
+    <string name="server_error">Feil i andre enden! Produktdatabasen vår virker ikke akkurat nå. Prøv igjen senere! Ta kontakt om problemet ikke går bort!!</string>
 
 </resources>
