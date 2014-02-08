@@ -2,7 +2,6 @@ package no.vegetarguide.scanner;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -138,7 +137,9 @@ public class MainActivity extends Activity {
                 if (scanResult != null) {
                     performRequest(scanResult.getContents(), scanResult.getFormatName());
                 } else {
-                    Toast.makeText(this, R.string.scan_error, Toast.LENGTH_LONG).show();
+                    DialogFragment newFragment = AlertDialogFragment.newInstance(
+                            R.string.scan_error_title, R.string.scan_error);
+                    newFragment.show(getFragmentManager(), "scanError");
                 }
                 break;
             case PRODUCT_DETAILS_REQUEST_CODE:
@@ -204,8 +205,8 @@ public class MainActivity extends Activity {
 
                 int errorTitleResource = R.string.network_error_title;
                 int errorMessageResource = R.string.error_generic_maybe_network;
-                if (error instanceof NoConnectionError ||
-                        error instanceof TimeoutError
+                if (error instanceof NoConnectionError
+                        || error instanceof TimeoutError
                         || error instanceof NetworkError) {
                     errorMessageResource = R.string.network_route_error;
                 } else if (error instanceof ServerError) {
@@ -233,39 +234,6 @@ public class MainActivity extends Activity {
             return true;
         }
         return false;
-    }
-
-    public static class AlertDialogFragment extends DialogFragment {
-
-        public static AlertDialogFragment newInstance(int title, int message) {
-            AlertDialogFragment frag = new AlertDialogFragment();
-            Bundle args = new Bundle();
-            args.putInt("title", title);
-            args.putInt("message", message);
-            frag.setArguments(args);
-            return frag;
-        }
-
-        public AlertDialogFragment() {
-            super();
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            int title = getArguments().getInt("title");
-            int message = getArguments().getInt("message");
-
-            return new AlertDialog.Builder(getActivity())
-                    .setTitle(title)
-                    .setMessage(message)
-                    .setPositiveButton(android.R.string.ok,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    dialog.dismiss();
-                                }
-                            }
-                    ).create();
-        }
     }
 
 }

@@ -2,12 +2,12 @@ package no.vegetarguide.scanner.integration;
 
 import com.google.gson.annotations.Expose;
 
+import java.net.URL;
+
 import no.vegetarguide.scanner.model.AdditivesDetails;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
 
-import java.net.URL;
-
-import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.lang3.StringUtils.trimToNull;
 
 public class ModifyProductRequest {
 

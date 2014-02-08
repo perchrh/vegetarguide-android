@@ -8,16 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.android.volley.toolbox.NetworkImageView;
-import no.vegetarguide.scanner.integration.VolleySingleton;
-import no.vegetarguide.scanner.model.ProductLookupResponse;
-import no.vegetarguide.scanner.model.ResultType;
-import no.vegetarguide.scanner.model.StatusType;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import no.vegetarguide.scanner.integration.VolleySingleton;
+import no.vegetarguide.scanner.model.ProductLookupResponse;
+import no.vegetarguide.scanner.model.ResultType;
+import no.vegetarguide.scanner.model.StatusType;
 
 import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_REQUEST_CODE;
 import static no.vegetarguide.scanner.SuperScan.START_SCANNING;

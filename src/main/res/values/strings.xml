@@ -17,6 +17,7 @@
     <string name="scan_product_code">Skann vare</string>
     <string name="input_product_code">Skriv inn kode</string>
     <string name="scan_error">Kunne ikke lese koden! Hold kameraet helt i ro og pass på å ha godt lys!</string>
+    <string name="scan_error_title">Scannerfeil</string>
     <string name="title_user_input_barcode">Strekkode (tall)</string>
     <string name="label_unknown_title">Ukjent tittel</string>
     <string name="label_unknown_subtitle">Ukjent beskrivelse</string>
@@ -26,6 +27,8 @@
     <string name="title_activity_modify_product">Oppdater produkt</string>
     <string name="success_product_submitted">Takk for bidraget ditt! Redaksjonen vår vil gå over det du har sendt inn og
         legge det inn i systemet!</string>
+    <string name="error_product_not_submitted_title">Ikke oppdatert</string>
+    <string name="error_product_not_submitted_format">Produktet ble ikke oppdatert. En feil oppstod (%s).</string>
     <string name="error_generic_maybe_network">En teknisk feil oppstod, prøv igjen senere.</string>
     <string name="error_generic_not_network">En teknisk feil oppstod, prøv igjen senere.</string>
     <string name="lookup_error_title">Varen kan ikke registreres</string>

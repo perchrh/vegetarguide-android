@@ -1,6 +1,7 @@
 package no.vegetarguide.scanner.integration;
 
 import android.net.Uri;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;

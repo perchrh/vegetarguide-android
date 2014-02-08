@@ -7,9 +7,17 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
@@ -45,6 +53,7 @@ public class ModifyProductActivity extends Activity {
     private boolean additivesAreVerified = false;
     private AdditivesDetails additivesDetails;
     private EditText user_commentary;
+    private View progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +75,11 @@ public class ModifyProductActivity extends Activity {
         initEditTexts();
         initCheckBoxes();
         initSubmitButton();
+        initProgressBar();
+    }
+
+    private void initProgressBar() {
+        progressBar = findViewById(R.id.progressbar);
     }
 
     private void initReadOnlyFields() {
@@ -84,10 +98,32 @@ public class ModifyProductActivity extends Activity {
                     startActivityForResult(verificationActivity, REQUEST_CODE_VERIFY_ADDITIVES);
                 } else if (additivesAreVerified || contains_animal_additives.isChecked()) {
                     performRequest();
+                } else if (noChangeToAnimalAdditives()) {
+                    performRequest();
+                } else {
+                    //TODO cleanup, log errors server side
+                    String errorMessage = "Programmeringsfeil. Appen vet ikke hva den skal gjøre. Rapporter denne feilen!";
+                    AlertDialogFragment dialogFragment =
+                            AlertDialogFragment.newInstance(R.string.error_product_not_submitted_format, errorMessage);
+                    dialogFragment.show(getFragmentManager(), "programmingError");
                 }
             }
 
         });
+    }
+
+    private boolean noChangeToAnimalAdditives() {
+        Boolean originalValue = productDetails.getContains_animal_additives();
+        Boolean currentValue = contains_animal_additives.isChecked();
+        return currentValue.equals(originalValue);
+    }
+
+    private void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 
     private boolean userSpecifiedNoAnimalAdditives() {
@@ -102,6 +138,8 @@ public class ModifyProductActivity extends Activity {
     }
 
     private void performRequest() {
+        showProgressBar();
+
         ModifyProductRequest requestObject = new ModifyProductRequest(
                 title.getText().toString(),
                 subtitle.getText().toString(),
@@ -133,9 +171,16 @@ public class ModifyProductActivity extends Activity {
                     Intent result = new Intent();
                     result.putExtra(MODIFY_PRODUCT_SUCCESS, true);
                     setResult(Activity.RESULT_OK, result);
+                    hideProgressBar();
+
                     ModifyProductActivity.this.finish();
                 } else {
-                    Toast.makeText(ModifyProductActivity.this, "Error: " + response.getMessage(), Toast.LENGTH_LONG).show();
+                    hideProgressBar();
+
+                    String errorMessage = String.format(getString(R.string.error_product_not_submitted_format), response.getMessage());
+                    AlertDialogFragment dialogFragment =
+                            AlertDialogFragment.newInstance(R.string.error_product_not_submitted_format, errorMessage);
+                    dialogFragment.show(getFragmentManager(), "errorResponse");
                 }
             }
 
@@ -146,9 +191,25 @@ public class ModifyProductActivity extends Activity {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("superscan", "Error during modify product request", error);
-                Toast.makeText(ModifyProductActivity.this, R.string.error_generic_maybe_network, Toast.LENGTH_LONG).show();
-                setProgressBarIndeterminateVisibility(false);
+                Throwable cause = error.getCause();
+
+                int errorTitleResource = R.string.network_error_title;
+                int errorMessageResource = R.string.error_generic_maybe_network;
+                if (error instanceof NoConnectionError
+                        || error instanceof TimeoutError
+                        || error instanceof NetworkError) {
+                    errorMessageResource = R.string.network_route_error;
+                } else if (error instanceof ServerError) {
+                    errorTitleResource = R.string.server_error_title;
+                    errorMessageResource = R.string.server_error;
+                }
+
+                hideProgressBar();
+
+                AlertDialogFragment dialog = AlertDialogFragment.newInstance(errorTitleResource, errorMessageResource);
+                dialog.show(getFragmentManager(), "modifyIOErrorDialog");
+
+                Log.e("superscan", "Error during product modify request", cause);
             }
         };
     }
