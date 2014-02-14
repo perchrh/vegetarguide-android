@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="no.vegetarguide.scanner" >
+    package="no.vegetarguide.scanner">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +11,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".SplashScreenActivity"
@@ -35,8 +35,7 @@
             android:label="@string/title_activity_modify_product" />
         <activity
             android:name=".VerifyAdditivesActivity"
-            android:label="@string/title_activity_verify_additives" >
-        </activity>
+            android:label="@string/title_activity_verify_additives"/>
     </application>
 
 </manifest>
