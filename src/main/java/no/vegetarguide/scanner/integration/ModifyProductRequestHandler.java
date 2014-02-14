@@ -2,6 +2,7 @@ package no.vegetarguide.scanner.integration;
 
 import android.net.Uri;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,7 +30,7 @@ public class ModifyProductRequestHandler {
     public Request execute(RequestQueue queue,
                            Response.Listener<ModifyProductResponse> listener,
                            Response.ErrorListener errorListener) {
-        GsonObjectRequest<ModifyProductRequest, ModifyProductResponse> productLookup =
+        GsonObjectRequest<ModifyProductRequest, ModifyProductResponse> modifyRequest =
                 new GsonObjectRequest<>(Request.Method.POST,
                         getEndpoint(),
                         product,
@@ -38,7 +39,9 @@ public class ModifyProductRequestHandler {
                         listener,
                         errorListener);
 
-        return queue.add(productLookup);
+        modifyRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 1, 1.0f));
+
+        return queue.add(modifyRequest);
     }
 
 }

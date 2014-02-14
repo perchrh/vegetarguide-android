@@ -33,7 +33,7 @@
     <string name="error_generic_not_network">En teknisk feil oppstod, prøv igjen senere.</string>
     <string name="lookup_error_title">Varen kan ikke registreres</string>
     <string name="network_error_title">Nettverksfeil</string>
-    <string name="network_route_error">Kunne ikke nå frem til produktdatabasen. Pass på at du er koblet til Internett og har godt signal.</string>
+    <string name="network_route_error">Kunne ikke nå frem til produktdatabasen. Pass på at du er koblet til Internett og har godt signal, ellers vent et minutt og prøv igjen!</string>
     <string name="error_restricted_distribution">Denne strekkoden brukes på forskjellige produkter i forskjellige butikker, derfor
         kan den ikke legges inn.</string>
     <string name="error_paper_product">Bøker, trykksaker og andre papirer skal ikke legges inn.</string>

@@ -2,6 +2,7 @@ package no.vegetarguide.scanner.integration;
 
 import android.net.Uri;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,6 +39,8 @@ public class ProductLookupRequestHandler {
                 ProductLookupResponse.class,
                 listener,
                 errorListener);
+
+        productLookup.setRetryPolicy(new DefaultRetryPolicy(5 * 1000, 3, 1.2f));
 
         return queue.add(productLookup);
     }

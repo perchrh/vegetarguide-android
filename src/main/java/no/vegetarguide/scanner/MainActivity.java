@@ -204,8 +204,6 @@ public class MainActivity extends Activity {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Throwable cause = error.getCause();
-
                 int errorTitleResource = R.string.network_error_title;
                 int errorMessageResource = R.string.error_generic_maybe_network;
                 if (error instanceof NoConnectionError
@@ -224,7 +222,7 @@ public class MainActivity extends Activity {
                 if (dialog != null)
                 dialog.show(getFragmentManager(), "lookupIOErrorDialog");
 
-                Log.e("superscan", "Error during product lookup request", cause);
+                Log.e("superscan", "Error during product lookup request", error);
             }
         };
     }
