@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_image"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             style="?android:attr/buttonBarStyle"
             android:id="@+id/button_row">
@@ -109,7 +109,6 @@
                 android:layout_marginRight="50dp"
                 android:background="@drawable/rounded_corners_green_bg"
                 android:padding="10dp"
-                android:layout_marginLeft="10dp"
                 android:text="@string/label_new_search" />
 
             <Button
@@ -120,8 +119,7 @@
                 android:text="@string/label_modify_product"
                 android:background="@drawable/rounded_corners_green_bg"
                 android:padding="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                />
 
         </LinearLayout>
 
