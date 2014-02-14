@@ -30,7 +30,7 @@ public class ModifyProductRequestHandler {
                            Response.Listener<ModifyProductResponse> listener,
                            Response.ErrorListener errorListener) {
         GsonObjectRequest<ModifyProductRequest, ModifyProductResponse> productLookup =
-                new GsonObjectRequest<ModifyProductRequest, ModifyProductResponse>(Request.Method.POST,
+                new GsonObjectRequest<>(Request.Method.POST,
                         getEndpoint(),
                         product,
                         ModifyProductRequest.class,

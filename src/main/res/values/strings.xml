@@ -71,10 +71,10 @@
     <string name="error_additives_not_verified">Tilsetningsstoffene kan være animalske!</string>
     <string name="error_additives_are_verified">Tilsetningsstoffene er vegetabilske!</string>
     <string name="additives_verification_user_detail_hint">Bekreftelse på at alle tvetydige eller uspesifiserte ingredienser er vegetabilske</string>
-    <string name="commentary_label">Kommentar</string>
     <string name="user_commentary_hint">Valgfri kommentar</string>
     <string name="user_commentary_hint_with_animal_additives">Hvorfor er tilsetningsstoffene ikke 100% vegetabilske?</string>
     <string name="server_error_title">Tjenerfeil</string>
     <string name="server_error">Feil i andre enden! Produktdatabasen vår virker ikke akkurat nå. Prøv igjen senere! Ta kontakt om problemet ikke går bort!!</string>
+    <string name="please_wait">Vennligst vent…</string>
 
 </resources>

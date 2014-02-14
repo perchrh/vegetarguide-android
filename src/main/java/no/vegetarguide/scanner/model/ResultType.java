@@ -7,7 +7,7 @@ public enum ResultType {
     UNKNOWN_STATUS(R.string.resulttype_unknown_status),
     KNOWN_STATUS(R.string.resulttype_known);
 
-    private int descriptionResource;
+    private final int descriptionResource;
 
     private ResultType(int stringResource) {
         this.descriptionResource = stringResource;

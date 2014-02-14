@@ -7,8 +7,8 @@ public enum StatusType {
     VEGAN(R.color.holo_green_light, R.string.statustype_vegan),
     VEGETARIAN(R.color.holo_orange_light, R.string.statustype_vegetarian);
 
-    private int colorResource;
-    private int descriptionResource;
+    private final int colorResource;
+    private final int descriptionResource;
 
     private StatusType(int colorResource, int stringResource) {
         this.colorResource = colorResource;

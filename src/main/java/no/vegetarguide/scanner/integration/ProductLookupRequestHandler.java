@@ -33,7 +33,7 @@ public class ProductLookupRequestHandler {
     public Request execute(RequestQueue queue,
                            Response.Listener<ProductLookupResponse> listener,
                            Response.ErrorListener errorListener) {
-        GsonRequest<ProductLookupResponse> productLookup = new GsonRequest<ProductLookupResponse>(Request.Method.GET,
+        GsonRequest<ProductLookupResponse> productLookup = new GsonRequest<>(Request.Method.GET,
                 getEndpoint(),
                 ProductLookupResponse.class,
                 listener,

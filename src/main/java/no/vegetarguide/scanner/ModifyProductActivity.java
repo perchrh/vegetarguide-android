@@ -103,9 +103,10 @@ public class ModifyProductActivity extends Activity {
                 } else {
                     //TODO cleanup, log errors server side
                     String errorMessage = "Programmeringsfeil. Appen vet ikke hva den skal gjøre. Rapporter denne feilen!";
-                    AlertDialogFragment dialogFragment =
+                    AlertDialogFragment dialog =
                             AlertDialogFragment.newInstance(R.string.error_product_not_submitted_format, errorMessage);
-                    dialogFragment.show(getFragmentManager(), "programmingError");
+                    if (dialog != null)
+                        dialog.show(getFragmentManager(), "programmingError");
                 }
             }
 
@@ -178,9 +179,10 @@ public class ModifyProductActivity extends Activity {
                     hideProgressBar();
 
                     String errorMessage = String.format(getString(R.string.error_product_not_submitted_format), response.getMessage());
-                    AlertDialogFragment dialogFragment =
+                    AlertDialogFragment dialog =
                             AlertDialogFragment.newInstance(R.string.error_product_not_submitted_format, errorMessage);
-                    dialogFragment.show(getFragmentManager(), "errorResponse");
+                    if (dialog != null)
+                        dialog.show(getFragmentManager(), "errorResponse");
                 }
             }
 
@@ -207,7 +209,8 @@ public class ModifyProductActivity extends Activity {
                 hideProgressBar();
 
                 AlertDialogFragment dialog = AlertDialogFragment.newInstance(errorTitleResource, errorMessageResource);
-                dialog.show(getFragmentManager(), "modifyIOErrorDialog");
+                if (dialog != null)
+                    dialog.show(getFragmentManager(), "modifyIOErrorDialog");
 
                 Log.e("superscan", "Error during product modify request", cause);
             }

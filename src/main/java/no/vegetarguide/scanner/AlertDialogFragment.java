@@ -36,7 +36,7 @@ public class AlertDialogFragment extends DialogFragment {
     }
 
     /**
-     * @param savedInstanceState
+     * @param savedInstanceState -
      * @return null if activity is missing
      */
     @Override

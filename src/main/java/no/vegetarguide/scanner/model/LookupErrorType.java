@@ -8,7 +8,7 @@ public enum LookupErrorType {
     INVALID_PRODUCT_CODE(R.string.error_invalid_product_code),
     UNKNOWN_ERROR(R.string.error_unknown_lookup_error);
 
-    private int descriptionResource;
+    private final int descriptionResource;
 
     private LookupErrorType(int stringResource) {
         this.descriptionResource = stringResource;

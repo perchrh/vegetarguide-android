@@ -55,9 +55,10 @@ public class MainActivity extends Activity {
                 if (isNetworkAvailable()) {
                     startScan();
                 } else {
-                    DialogFragment newFragment = AlertDialogFragment.newInstance(
+                    DialogFragment dialog = AlertDialogFragment.newInstance(
                             R.string.network_error_title, R.string.no_network_connection);
-                    newFragment.show(getFragmentManager(), "networkError");
+                    if (dialog != null)
+                    dialog.show(getFragmentManager(), "networkError");
                 }
             }
         });
@@ -137,9 +138,10 @@ public class MainActivity extends Activity {
                 if (scanResult != null) {
                     performRequest(scanResult.getContents(), scanResult.getFormatName());
                 } else {
-                    DialogFragment newFragment = AlertDialogFragment.newInstance(
+                    DialogFragment dialog = AlertDialogFragment.newInstance(
                             R.string.scan_error_title, R.string.scan_error);
-                    newFragment.show(getFragmentManager(), "scanError");
+                    if (dialog != null)
+                    dialog.show(getFragmentManager(), "scanError");
                 }
                 break;
             case PRODUCT_DETAILS_REQUEST_CODE:
@@ -190,9 +192,10 @@ public class MainActivity extends Activity {
             }
 
             private void showErrorMessage(LookupErrorType error) {
-                DialogFragment newFragment = AlertDialogFragment.newInstance(
+                DialogFragment dialog = AlertDialogFragment.newInstance(
                         R.string.lookup_error_title, error.getDescriptionResource());
-                newFragment.show(getFragmentManager(), "lookupErrorDialog");
+                if (dialog != null)
+                dialog.show(getFragmentManager(), "lookupErrorDialog");
             }
         };
     }
@@ -216,9 +219,10 @@ public class MainActivity extends Activity {
 
                 hideProgressBar();
 
-                DialogFragment newFragment = AlertDialogFragment.newInstance(
+                DialogFragment dialog = AlertDialogFragment.newInstance(
                         errorTitleResource, errorMessageResource);
-                newFragment.show(getFragmentManager(), "lookupIOErrorDialog");
+                if (dialog != null)
+                dialog.show(getFragmentManager(), "lookupIOErrorDialog");
 
                 Log.e("superscan", "Error during product lookup request", cause);
             }
