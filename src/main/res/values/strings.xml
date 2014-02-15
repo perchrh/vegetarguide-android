@@ -31,13 +31,13 @@
     <string name="error_product_not_submitted_format">Produktet ble ikke oppdatert. En feil oppstod (%s).</string>
     <string name="error_generic_maybe_network">En teknisk feil oppstod, prøv igjen senere.</string>
     <string name="error_generic_not_network">En teknisk feil oppstod, prøv igjen senere.</string>
-    <string name="lookup_error_title">Varen kan ikke registreres</string>
+    <string name="lookup_error_title">Feil i koden</string>
     <string name="network_error_title">Nettverksfeil</string>
     <string name="network_route_error">Kunne ikke nå frem til produktdatabasen. Pass på at du er koblet til Internett og har godt signal, ellers vent et minutt og prøv igjen!</string>
     <string name="error_restricted_distribution">Denne strekkoden brukes på forskjellige produkter i forskjellige butikker, derfor
         kan den ikke legges inn.</string>
     <string name="error_paper_product">Bøker, trykksaker og andre papirer skal ikke legges inn.</string>
-    <string name="error_invalid_product_code">Strekkoden er ikke gyldig.</string>
+    <string name="error_invalid_product_code">Strekkoden er ikke gyldig eller ble lest inn feil.</string>
     <string name="error_unknown_lookup_error">En ukjent feil oppstod for denne strekkkoden.</string>
     <string name="no_network_connection">Du må være koblet til Internett for å søke etter varer</string>
     <string name="enquire_vegan_status">Vennligst legg til info om disse ingrediensene:\u0020</string>

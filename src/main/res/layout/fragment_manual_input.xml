@@ -26,8 +26,7 @@
         android:id="@+id/manual_input_gtin_label"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/manual_gtin_input_instructions"
-        android:labelFor="@+id/input_gtin_edittext"
-        />
+        android:labelFor="@+id/manual_input_gtin_edittext" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -35,7 +34,7 @@
         android:inputType="number"
         android:maxLength="14"
         android:ems="10"
-        android:id="@+id/input_gtin_edittext"
+        android:id="@+id/manual_input_gtin_edittext"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/manual_input_gtin_label"
         android:singleLine="true"
@@ -46,12 +45,11 @@
         android:layout_height="wrap_content"
         android:text="@string/manual_gtin_search"
         android:id="@+id/manual_gtin_search"
-        android:layout_below="@+id/input_gtin_edittext"
+        android:layout_below="@+id/manual_input_gtin_edittext"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_corners_green_bg"
         android:textSize="20sp" />
-
 
 
 </RelativeLayout>
