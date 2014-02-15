@@ -9,11 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.apache.commons.lang3.StringUtils;
 
 public class ManualInputActivity extends Activity {
 
-    private static final int GTIN_AVAILABLE_RETURN_CODE = 1005;
+    public static final int GTIN_AVAILABLE_RETURN_CODE = 1005;
     public static final String GTIN_EXTRA = "gtin";
     public static final int REQUEST_MANUAL_INPUT = 1001;
 
