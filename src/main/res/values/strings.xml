@@ -77,4 +77,9 @@
     <string name="server_error">Feil i andre enden! Produktdatabasen vår virker ikke akkurat nå. Prøv igjen senere! Ta kontakt om problemet ikke går bort!!</string>
     <string name="please_wait">Vennligst vent…</string>
 
+    <string name="title_activity_manual_input">Skriv inn strekkode</string>
+    <string name="manual_gtin_input_instructions">Skriv inn strekkode. Strekkoden består av bare tall og 8 siffer eller mer.</string>
+    <string name="manual_gtin_search">Søk</string>
+    <string name="manual_input_gtin_label">Strekkode</string>
+
 </resources>

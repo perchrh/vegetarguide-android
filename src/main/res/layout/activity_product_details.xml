@@ -110,7 +110,8 @@
                 android:layout_marginRight="50dp"
                 android:background="@drawable/rounded_corners_green_bg"
                 android:padding="10dp"
-                android:text="@string/label_new_search" />
+                android:text="@string/label_new_search"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/modify_button"
@@ -120,7 +121,7 @@
                 android:text="@string/label_modify_product"
                 android:background="@drawable/rounded_corners_green_bg"
                 android:padding="10dp"
-                />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

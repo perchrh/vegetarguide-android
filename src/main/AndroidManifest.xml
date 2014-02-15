@@ -36,6 +36,13 @@
         <activity
             android:name=".VerifyAdditivesActivity"
             android:label="@string/title_activity_verify_additives"/>
+        <activity android:name=".ManualInputActivity"
+            android:label="@string/title_activity_manual_input"
+            android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

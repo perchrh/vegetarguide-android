@@ -213,7 +213,8 @@
                 android:inputType="textCapSentences|textMultiLine"
                 android:ems="10"
                 android:gravity="left|top"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:lines="2" />
 
             <Button
                 android:id="@+id/submit_button"
@@ -226,7 +227,8 @@
                 android:padding="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/product_modification_submit_label" />
+                android:text="@string/product_modification_submit_label"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
