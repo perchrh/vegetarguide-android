@@ -50,7 +50,7 @@ public class ManualInputActivity extends Activity {
                     if (activity != null && !activity.isFinishing()) {
                         String gtin = inputField.getText().toString();
                         Intent returnValue = new Intent();
-                        returnValue.putExtra(GTIN_EXTRA, StringUtils.stripToNull(gtin));
+                        returnValue.putExtra(GTIN_EXTRA, gtin);
 
                         activity.setResult(GTIN_AVAILABLE_RETURN_CODE, returnValue);
                         activity.finish();
