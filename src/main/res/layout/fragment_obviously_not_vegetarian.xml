@@ -1,0 +1,79 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="no.vegetarguide.scanner.wizard.ObviouslyNotVegetarian.ObviouslyNotVegetarianFragment">
+
+        <TextView
+            android:id="@+id/obviously_not_vegetarian_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="44dp"
+            android:text="Inneholdet produktet biter av dyrekropper? Kryss av for det varen inneholder:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <CheckBox
+            android:layout_marginTop="10dp"
+            android:id="@+id/animal_bodies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/obviously_not_vegetarian_headline"
+            android:text="@string/animal_bodies_enumeration" />
+
+
+        <CheckBox
+            android:layout_marginTop="10dp"
+            android:id="@+id/red_listed_additives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/animal_bodies"
+            android:text="@string/red_listed_ingredients" />
+
+
+        <EditText
+            android:id="@+id/obviously_not_vegetarian_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/red_listed_additives"
+            android:hint="Hva inneholder varen av dyrekropper?" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/obviously_not_vegetarian_comment"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/obviously_not_vegetarian_headline"
+            android:layout_below="@+id/red_listed_additives"
+            android:paddingTop="10dp"
+            android:text="Videre" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/obviously_not_vegetarian_comment"
+            android:layout_toLeftOf="@+id/button"
+            android:paddingTop="10dp"
+            android:text="Avbryt" />
+
+    </RelativeLayout>
+
+</ScrollView>

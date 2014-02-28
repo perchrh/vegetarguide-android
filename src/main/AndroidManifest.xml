@@ -59,6 +59,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name="no.vegetarguide.scanner.wizard.ObviouslyNotVegetarian"
+            android:label="@string/title_activity_manual_input"
+            android:parentActivityName=".ProductDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductDetailsActivity" />
+        </activity>
 
     </application>
 
