@@ -32,6 +32,6 @@
         <item>E1518</item>
     </string-array>
 
-    <string name="animal_bodies_enumeration">En eller flere typer dyrekjøtt, inklusive fisk, fugl, skalldyr og skjell.</string>
+    <string name="animal_bodies_enumeration">En eller flere typer dyrekjøtt, inklusive fisk, fugl, skalldyr, skjell og insekter.</string>
     <string name="red_listed_ingredients">Karmin (E120), østerssaus, rogn, gelatin, aspik, pepsin, løpe eller rennin fra kalv eller kalsium mesoinositol hexafosfat.</string>
 </resources>
