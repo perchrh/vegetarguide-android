@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 
 import no.vegetarguide.scanner.MainActivity;
 import no.vegetarguide.scanner.R;
-import no.vegetarguide.scanner.model.ProductLookupResponse;
+import no.vegetarguide.scanner.model.Product;
+
+import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
 public class UncertainIngredients extends Activity {
 
@@ -21,24 +23,23 @@ public class UncertainIngredients extends Activity {
         setContentView(R.layout.activity_uncertain_ingredients);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(ProductLookupResponse.class.getSimpleName());
-        ProductLookupResponse productDetails = (ProductLookupResponse) obj;
+        Parcelable obj = b.getParcelable(Product.class.getSimpleName());
+        Product product = (Product) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, UncertainIngredientsFragment.newInstance(productDetails))
+                    .add(R.id.container, UncertainIngredientsFragment.newInstance(product))
                     .commit();
         }
 
     }
 
     public static class UncertainIngredientsFragment extends Fragment {
-        private static final String PRODUCT_DETAILS_KEY = "product_details";
 
-        public static UncertainIngredientsFragment newInstance(ProductLookupResponse productDetails) {
+        public static UncertainIngredientsFragment newInstance(Product product) {
             UncertainIngredientsFragment frag = new UncertainIngredientsFragment();
             Bundle args = new Bundle();
-            args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
+            args.putParcelable(PRODUCT_DETAILS_KEY, product);
             frag.setArguments(args);
             return frag;
         }
@@ -50,9 +51,9 @@ public class UncertainIngredients extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_uncertain_ingredients, container, false);
-            final Parcelable productDetails = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
+            final Parcelable product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
-            createNextButton(rootView, productDetails);
+            createNextButton(rootView, (Product) product);
             createCancelButton(rootView);
 
             return rootView;
@@ -69,7 +70,7 @@ public class UncertainIngredients extends Activity {
             });
         }
 
-        private void createNextButton(View rootView, final Parcelable productDetails) {
+        private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.uncertain_ingredients_next_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override

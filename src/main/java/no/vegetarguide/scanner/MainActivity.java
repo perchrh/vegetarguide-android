@@ -27,12 +27,13 @@ import no.vegetarguide.scanner.about.AboutActivity;
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
+import no.vegetarguide.scanner.model.Product;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
 import no.vegetarguide.scanner.wizard.ObviouslyNotVegetarian;
 
-import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_SUCCESS;
-import static no.vegetarguide.scanner.SuperScan.PRODUCT_DETAILS_REQUEST_CODE;
-import static no.vegetarguide.scanner.SuperScan.START_SCANNING;
+import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
+import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_REQUEST_CODE;
+import static no.vegetarguide.scanner.Application.START_SCANNING;
 
 public class MainActivity extends Activity {
 
@@ -79,11 +80,34 @@ public class MainActivity extends Activity {
             }
         });
 
-        View launchPrototype = findViewById(R.id.test_new);
-        launchPrototype.setOnClickListener(new View.OnClickListener() {
+        View launchNewAdd = findViewById(R.id.test_new_add);
+        launchNewAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), ObviouslyNotVegetarian.class));
+                Intent launchNext = new Intent(getBaseContext(), ObviouslyNotVegetarian.class);
+                launchNext.putExtra(Application.PRODUCT_DETAILS_KEY, new Product());
+                startActivity(launchNext);
+            }
+        });
+
+        View launchNewModify = findViewById(R.id.test_new_modify);
+        launchNewModify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), ObviouslyNotVegetarian.class);
+
+                Product product = new Product();
+                product.setTitle("Fake title");
+                product.setBrand("Fake brand");
+                product.setSubtitle("Fake subtitle");
+
+                product.setContainsBodyParts(true);
+                product.setContainsRedListedAdditives(null);
+                product.setContainsMajorUnspecifiedAdditives(null);
+
+                // TODO populate model fully
+                intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
+                startActivity(intent);
             }
         });
 
@@ -91,7 +115,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -114,7 +137,6 @@ public class MainActivity extends Activity {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.initiateScan(IntentIntegrator.PRODUCT_CODE_TYPES);
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
