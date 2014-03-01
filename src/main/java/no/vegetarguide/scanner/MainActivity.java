@@ -23,10 +23,12 @@ import com.android.volley.VolleyError;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import no.vegetarguide.scanner.about.AboutActivity;
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
+import no.vegetarguide.scanner.wizard.ObviouslyNotVegetarian;
 
 import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_SUCCESS;
 import static no.vegetarguide.scanner.SuperScan.PRODUCT_DETAILS_REQUEST_CODE;
@@ -77,6 +79,14 @@ public class MainActivity extends Activity {
             }
         });
 
+        View launchPrototype = findViewById(R.id.test_new);
+        launchPrototype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), ObviouslyNotVegetarian.class));
+            }
+        });
+
     }
 
     @Override
@@ -94,6 +104,7 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_about) {
+            startActivity(new Intent(this, AboutActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

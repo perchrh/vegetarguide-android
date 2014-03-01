@@ -78,6 +78,21 @@
                 android:layout_marginRight="10dp"
                 android:textSize="36sp" />
 
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test nytt!"
+                android:id="@+id/test_new"
+                android:layout_below="@+id/input_code"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/rounded_corners_green_bg"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="36sp" />
+
         </RelativeLayout>
 
 

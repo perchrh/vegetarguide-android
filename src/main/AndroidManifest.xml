@@ -75,7 +75,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.ObviouslyNotVegetarian" />
         </activity>
-
         <activity
             android:name=".wizard.UncertainIngredients"
             android:label="Tvilstilfeller"
@@ -84,7 +83,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.MaybeVegan" />
         </activity>
-
+        <activity android:name=".about.AboutActivity"
+            android:label="Om appen"
+            android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
