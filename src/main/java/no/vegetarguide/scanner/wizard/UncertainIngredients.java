@@ -8,7 +8,9 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
+import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.MainActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.model.Product;
@@ -23,7 +25,7 @@ public class UncertainIngredients extends Activity {
         setContentView(R.layout.activity_uncertain_ingredients);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(Product.class.getSimpleName());
+        Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
         Product product = (Product) obj;
 
         if (savedInstanceState == null) {
@@ -35,6 +37,10 @@ public class UncertainIngredients extends Activity {
     }
 
     public static class UncertainIngredientsFragment extends Fragment {
+
+        private CheckBox animal_e_number;
+        private CheckBox manufacturer_confirms_vegan;
+        private CheckBox other_animal_derived_additives;
 
         public static UncertainIngredientsFragment newInstance(Product product) {
             UncertainIngredientsFragment frag = new UncertainIngredientsFragment();
@@ -51,10 +57,11 @@ public class UncertainIngredients extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_uncertain_ingredients, container, false);
-            final Parcelable product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
+            final Product product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
-            createNextButton(rootView, (Product) product);
+            createNextButton(rootView, product);
             createCancelButton(rootView);
+            createCheckBoxes(rootView, product);
 
             return rootView;
         }
@@ -70,6 +77,21 @@ public class UncertainIngredients extends Activity {
             });
         }
 
+        private void createCheckBoxes(View rootView, Product product) {
+            animal_e_number = (CheckBox) rootView.findViewById(R.id.animal_e_number);
+            if (product.isContainsPossibleAnimalEnumbers() != null) {
+                animal_e_number.setChecked(product.isContainsPossibleAnimalEnumbers());
+            }
+            other_animal_derived_additives = (CheckBox) rootView.findViewById(R.id.other_animal_derived_additives);
+            if (product.isContainsPossibleAnimalAdditives() != null) {
+                other_animal_derived_additives.setChecked(product.isContainsPossibleAnimalAdditives());
+            }
+            manufacturer_confirms_vegan = (CheckBox) rootView.findViewById(R.id.manufacturer_confirms_vegan);
+            if (product.isManufacturerConfirmsProductIsVegan() != null) {
+                manufacturer_confirms_vegan.setChecked(product.isManufacturerConfirmsProductIsVegan());
+            }
+        }
+
         private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.uncertain_ingredients_next_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
@@ -77,11 +99,19 @@ public class UncertainIngredients extends Activity {
                 public void onClick(View v) {
                     // send productDetails over network, wait for result
 
+                    mergeProductValues(product);
+
                     Intent gotoStart = new Intent(getActivity(), MainActivity.class);
                     gotoStart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(gotoStart);
                 }
             });
+        }
+
+        private void mergeProductValues(Product product) {
+            product.setContainsPossibleAnimalEnumbers(animal_e_number.isChecked());
+            product.setContainsPossibleAnimalAdditives(other_animal_derived_additives.isChecked());
+            product.setManufacturerConfirmsProductIsVegan(manufacturer_confirms_vegan.isChecked());
         }
     }
 }

@@ -27,7 +27,7 @@
 
         <CheckBox
             android:layout_marginTop="10dp"
-            android:id="@+id/animal_e_number"
+            android:id="@+id/contains_animal_milk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/maybe_vegan_headline"
@@ -36,23 +36,23 @@
 
 
         <CheckBox
-            android:id="@+id/other_animal_derived_additives"
+            android:id="@+id/contains_eggs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Egg eller ingredienser laget av egg?\n(Eggehvite/albumin, eggeprotein og lysosomer (E1105).)"
             android:checked="false"
-            android:layout_below="@+id/animal_e_number"
+            android:layout_below="@+id/contains_animal_milk"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
 
         <CheckBox
-            android:id="@+id/manufacturer_confirms_vegan"
+            android:id="@+id/contains_honey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Honning eller andre ingredienser som kommer fra insekter?\n(Dronning-gelé, bivoks (E901) og shellakk (E904).)"
             android:checked="false"
-            android:layout_below="@+id/other_animal_derived_additives"
+            android:layout_below="@+id/contains_eggs"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -61,7 +61,7 @@
             android:id="@+id/maybe_vegan_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/manufacturer_confirms_vegan"
+            android:layout_below="@+id/contains_honey"
             android:hint="Hva inneholder varen av ekskreter fra dyrekropper?" />
 
 

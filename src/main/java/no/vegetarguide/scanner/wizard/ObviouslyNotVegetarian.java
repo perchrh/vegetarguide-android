@@ -72,15 +72,15 @@ public class ObviouslyNotVegetarian extends Activity {
 
         private void createCheckBoxes(View rootView, Product product) {
             animal_bodies = (CheckBox) rootView.findViewById(R.id.animal_bodies);
-            if(product.isContainsBodyParts() != null){
+            if (product.isContainsBodyParts() != null) {
                 animal_bodies.setChecked(product.isContainsBodyParts());
             }
             red_listed_additives = (CheckBox) rootView.findViewById(R.id.red_listed_additives);
-            if(product.isContainsRedListedAdditives() != null){
+            if (product.isContainsRedListedAdditives() != null) {
                 red_listed_additives.setChecked(product.isContainsRedListedAdditives());
             }
             major_unspecified_additives = (CheckBox) rootView.findViewById(R.id.major_unspecified_additives);
-            if(product.isContainsMajorUnspecifiedAdditives() != null){
+            if (product.isContainsMajorUnspecifiedAdditives() != null) {
                 red_listed_additives.setChecked(product.isContainsMajorUnspecifiedAdditives());
             }
         }
@@ -103,17 +103,20 @@ public class ObviouslyNotVegetarian extends Activity {
                 public void onClick(View v) {
                     Intent launchNext = new Intent(getActivity(), MaybeVegan.class);
 
-                    // TODO støtte tri-state? yes, no, undecided?
-                    product.setContainsBodyParts(animal_bodies.isChecked());
-                    product.setContainsRedListedAdditives(red_listed_additives.isChecked());
-                    product.setContainsMajorUnspecifiedAdditives(major_unspecified_additives.isChecked());
+                    mergeProductValues();
 
-                    // TODO if product is non-vegetarian, goto different activity
+                    // TODO if product is non-vegan, goto different activity
 
                     launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
                     startActivity(launchNext);
                 }
             });
+        }
+
+        private void mergeProductValues() {
+            product.setContainsBodyParts(animal_bodies.isChecked());
+            product.setContainsRedListedAdditives(red_listed_additives.isChecked());
+            product.setContainsMajorUnspecifiedAdditives(major_unspecified_additives.isChecked());
         }
     }
 }
