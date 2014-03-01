@@ -79,7 +79,7 @@
             android:layout_toLeftOf="@+id/obviously_not_vegetarian_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
-            android:text="Tilbake" />
+            android:text="Avbryt" />
 
     </RelativeLayout>
 

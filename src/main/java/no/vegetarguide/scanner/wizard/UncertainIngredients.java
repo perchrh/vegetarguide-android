@@ -59,7 +59,7 @@ public class UncertainIngredients extends Activity {
         }
 
         private void createCancelButton(View rootView) {
-            View cancelButton = rootView.findViewById(R.id.maybe_vegan_cancel_button);
+            View cancelButton = rootView.findViewById(R.id.uncertain_ingredients_cancel_button);
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -70,14 +70,15 @@ public class UncertainIngredients extends Activity {
         }
 
         private void createNextButton(View rootView, final Parcelable productDetails) {
-            View nextButton = rootView.findViewById(R.id.maybe_vegan_next_button);
+            View nextButton = rootView.findViewById(R.id.uncertain_ingredients_next_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent launchNext = new Intent(getActivity(), MainActivity.class);
-                    // send over network, wait for result
-                    getActivity().finish();
-                    startActivity(launchNext);
+                    // send productDetails over network, wait for result
+
+                    Intent gotoStart = new Intent(getActivity(), MainActivity.class);
+                    gotoStart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(gotoStart);
                 }
             });
         }

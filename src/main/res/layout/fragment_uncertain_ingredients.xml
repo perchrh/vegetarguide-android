@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/maybe_vegan_headline"
+            android:id="@+id/uncertain_ingredients_headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -27,61 +27,58 @@
 
         <CheckBox
             android:layout_marginTop="10dp"
-            android:id="@+id/animal_milk"
+            android:id="@+id/animal_e_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/maybe_vegan_headline"
+            android:layout_below="@+id/uncertain_ingredients_headline"
             android:text="E-stoffer som kan ha animalsk opprinnelse  (LENKE)"
-            android:checked="false" />
+           />
 
 
         <CheckBox
-            android:id="@+id/animal_eggs"
+            android:id="@+id/other_animal_derived_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Andre tilsetningsstoffer som kan ha animalsk opprinnelse (LENKE)"
-            android:checked="false"
-            android:layout_below="@+id/animal_milk"
+            android:layout_below="@+id/animal_e_number"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-
         <CheckBox
-            android:id="@+id/insect_excretions"
+            android:id="@+id/manufacturer_confirms_vegan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Produsenten har bekreftet at produktet er vegansk"
-            android:checked="false"
-            android:layout_below="@+id/animal_eggs"
+            android:layout_below="@+id/other_animal_derived_additives"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
 
         <EditText
-            android:id="@+id/maybe_vegan_comment"
+            android:id="@+id/uncertain_ingredients_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/insect_excretions"
+            android:layout_below="@+id/manufacturer_confirms_vegan"
             android:minLines="2"
             android:hint="Lim inn dokumentasjon fra produsent her, eller gi et sammendrag" />
 
 
         <Button
-            android:id="@+id/maybe_vegan_next_button"
+            android:id="@+id/uncertain_ingredients_next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/maybe_vegan_comment"
+            android:layout_below="@+id/uncertain_ingredients_comment"
             android:layout_marginTop="10dp"
             android:text="Send inn" />
 
         <Button
-            android:id="@+id/maybe_vegan_cancel_button"
+            android:id="@+id/uncertain_ingredients_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/maybe_vegan_comment"
-            android:layout_toLeftOf="@+id/maybe_vegan_next_button"
+            android:layout_below="@+id/uncertain_ingredients_comment"
+            android:layout_toLeftOf="@+id/uncertain_ingredients_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:text="Tilbake" />
