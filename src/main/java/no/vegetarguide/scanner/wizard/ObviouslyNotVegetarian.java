@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+
+import org.apache.commons.lang3.StringUtils;
 
 import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
@@ -41,6 +45,7 @@ public class ObviouslyNotVegetarian extends Activity {
         private CheckBox animal_bodies;
         private CheckBox red_listed_additives;
         private CheckBox major_unspecified_additives;
+        private EditText comment;
 
         public ObviouslyNotVegetarianFragment() {
 
@@ -71,6 +76,9 @@ public class ObviouslyNotVegetarian extends Activity {
         }
 
         private void createCheckBoxes(View rootView, Product product) {
+            comment = (EditText) rootView.findViewById(R.id.obviously_not_vegetarian_comment);
+            // TODO set value of comment from Product
+
             animal_bodies = (CheckBox) rootView.findViewById(R.id.animal_bodies);
             if (product.getContainsBodyParts() != null) {
                 animal_bodies.setChecked(product.getContainsBodyParts());
@@ -83,6 +91,24 @@ public class ObviouslyNotVegetarian extends Activity {
             if (product.getContainsMajorUnspecifiedAdditives() != null) {
                 red_listed_additives.setChecked(product.getContainsMajorUnspecifiedAdditives());
             }
+
+
+            CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (animal_bodies.isChecked()
+                            || red_listed_additives.isChecked()
+                            || major_unspecified_additives.isChecked()
+                            || StringUtils.isNotEmpty(comment.getText())) {
+                        comment.setVisibility(View.VISIBLE);
+                    } else {
+                        comment.setVisibility(View.GONE);
+                    }
+                }
+            };
+            animal_bodies.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            red_listed_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            major_unspecified_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
         }
 
         private void createCancelButton(View rootView) {

@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+
+import org.apache.commons.lang3.StringUtils;
 
 import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.MainActivity;
@@ -41,6 +45,11 @@ public class UncertainIngredients extends Activity {
         private CheckBox animal_e_number;
         private CheckBox manufacturer_confirms_vegan;
         private CheckBox other_animal_derived_additives;
+        private EditText comment;
+
+        public UncertainIngredientsFragment() {
+
+        }
 
         public static UncertainIngredientsFragment newInstance(Product product) {
             UncertainIngredientsFragment frag = new UncertainIngredientsFragment();
@@ -48,10 +57,6 @@ public class UncertainIngredients extends Activity {
             args.putParcelable(PRODUCT_DETAILS_KEY, product);
             frag.setArguments(args);
             return frag;
-        }
-
-        public UncertainIngredientsFragment() {
-
         }
 
         @Override
@@ -78,6 +83,9 @@ public class UncertainIngredients extends Activity {
         }
 
         private void createCheckBoxes(View rootView, Product product) {
+            comment = (EditText) rootView.findViewById(R.id.uncertain_ingredients_comment);
+            // TODO set value of comment from Product
+
             animal_e_number = (CheckBox) rootView.findViewById(R.id.animal_e_number);
             if (product.getContainsPossibleAnimalEnumbers() != null) {
                 animal_e_number.setChecked(product.getContainsPossibleAnimalEnumbers());
@@ -90,6 +98,36 @@ public class UncertainIngredients extends Activity {
             if (product.getManufacturerConfirmsProductIsVegan() != null) {
                 manufacturer_confirms_vegan.setChecked(product.getManufacturerConfirmsProductIsVegan());
             }
+
+            CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (animal_e_number.isChecked()
+                            || other_animal_derived_additives.isChecked()
+                            || StringUtils.isNotEmpty(comment.getText())) {
+                        manufacturer_confirms_vegan.setVisibility(View.VISIBLE);
+                    } else {
+                        manufacturer_confirms_vegan.setVisibility(View.GONE);
+                    }
+
+                    if (!manufacturer_confirms_vegan.isChecked() && StringUtils.isEmpty(comment.getText())) {
+                        comment.setVisibility(View.GONE);
+                    }
+                }
+            };
+            animal_e_number.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            other_animal_derived_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            manufacturer_confirms_vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked || StringUtils.isNotEmpty(comment.getText())) {
+                        comment.setVisibility(View.VISIBLE);
+                    } else {
+                        comment.setVisibility(View.GONE);
+                    }
+
+                }
+            });
         }
 
         private void createNextButton(View rootView, final Product product) {

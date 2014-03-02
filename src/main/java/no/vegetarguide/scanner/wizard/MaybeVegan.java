@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+
+import org.apache.commons.lang3.StringUtils;
 
 import no.vegetarguide.scanner.AlertDialogFragment;
 import no.vegetarguide.scanner.Application;
@@ -50,6 +54,7 @@ public class MaybeVegan extends Activity {
         private CheckBox contains_eggs;
         private CheckBox contains_honey;
         private Product product;
+        private EditText comment;
 
         public MaybeVeganFragment() {
 
@@ -81,6 +86,9 @@ public class MaybeVegan extends Activity {
         }
 
         private void createCheckBoxes(View rootView) {
+            comment = (EditText) rootView.findViewById(R.id.maybe_vegan_comment);
+// TODO set value of comment from Product
+
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
             if (product.getContainsAnimalMilk() != null) {
                 contains_animal_milk.setChecked(product.getContainsAnimalMilk());
@@ -94,6 +102,22 @@ public class MaybeVegan extends Activity {
                 contains_honey.setChecked(product.getContainsInsectExcretions());
             }
 
+            CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (contains_animal_milk.isChecked()
+                            || contains_eggs.isChecked()
+                            || contains_honey.isChecked()
+                            || StringUtils.isNotEmpty(comment.getText())) {
+                        comment.setVisibility(View.VISIBLE);
+                    } else {
+                        comment.setVisibility(View.GONE);
+                    }
+                }
+            };
+            contains_animal_milk.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            contains_eggs.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            contains_honey.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
         }
 
         private void createCancelButton(View rootView) {

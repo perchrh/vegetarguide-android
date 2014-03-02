@@ -42,6 +42,7 @@
 
         <CheckBox
             android:id="@+id/manufacturer_confirms_vegan"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Produsenten har bekreftet at produktet er vegansk"
@@ -54,9 +55,10 @@
             android:id="@+id/uncertain_ingredients_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_below="@+id/manufacturer_confirms_vegan"
             android:minLines="2"
-            android:hint="Lim inn dokumentasjon fra produsent her, eller gi et sammendrag" />
+            android:hint="Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag" />
 
 
         <Button
@@ -77,7 +79,7 @@
             android:layout_toLeftOf="@+id/uncertain_ingredients_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
-            android:text="Tilbake" />
+            android:text="@string/action_previous" />
 
     </RelativeLayout>
 

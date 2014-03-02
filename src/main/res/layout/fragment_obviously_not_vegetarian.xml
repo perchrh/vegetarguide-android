@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Inneholdet produktet biter av dyrekropper? Kryss av for det varen inneholder:"
+            android:text="@string/maybe_vegetarian_headline"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -52,6 +52,7 @@
             android:id="@+id/obviously_not_vegetarian_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_below="@+id/major_unspecified_additives"
             android:hint="Hva inneholder varen av dyrekropper?" />
 
@@ -64,7 +65,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/obviously_not_vegetarian_comment"
             android:layout_marginTop="10dp"
-            android:text="Videre" />
+            android:text="@string/action_next" />
 
         <Button
             android:id="@+id/obviously_not_vegetarian_cancel_button"
@@ -74,7 +75,7 @@
             android:layout_toLeftOf="@+id/obviously_not_vegetarian_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
-            android:text="Tilbake" />
+            android:text="@string/action_previous" />
 
     </RelativeLayout>
 

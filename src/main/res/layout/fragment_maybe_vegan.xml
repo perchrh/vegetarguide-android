@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Inneholdet produktet andre ingredienser fra dyr? Kryss av for det varen inneholder:"
+            android:text="@string/maybe_vegan_headline"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dyremelk eller ingredienser laget av dyremelk?" />
+                android:text="@string/contains_animal_milk" />
 
 
             <ImageButton
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Egg eller ingredienser laget av egg?" />
+                android:text="@string/contains_egg_label" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Honning eller andre ingredienser som kommer fra insekter?" />
+                android:text="@string/contains_insect_excretions_label" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -100,7 +100,6 @@
         </LinearLayout>
 
 
-        <!-- TODO show this if any of the checkboxes are true -->
         <EditText
             android:id="@+id/maybe_vegan_comment"
             android:layout_width="wrap_content"
@@ -108,7 +107,7 @@
             android:layout_below="@+id/contains_honey_row"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-            android:hint="Hva inneholder varen av ekskreter fra dyrekropper?" />
+            android:hint="@string/maybe_vegan_comment_hint" />
 
 
         <Button
@@ -119,7 +118,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/maybe_vegan_comment"
             android:layout_marginTop="10dp"
-            android:text="Videre" />
+            android:text="@string/action_next" />
 
         <Button
             android:id="@+id/maybe_vegan_cancel_button"
@@ -129,7 +128,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/maybe_vegan_next_button"
-            android:text="Tilbake" />
+            android:text="@string/action_previous" />
 
     </RelativeLayout>
 
