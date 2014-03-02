@@ -42,16 +42,16 @@ public class ObviouslyNotVegetarian extends Activity {
         private CheckBox red_listed_additives;
         private CheckBox major_unspecified_additives;
 
+        public ObviouslyNotVegetarianFragment() {
+
+        }
+
         public static ObviouslyNotVegetarianFragment newInstance(Product productDetails) {
             ObviouslyNotVegetarianFragment frag = new ObviouslyNotVegetarianFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
             frag.setArguments(args);
             return frag;
-        }
-
-        public ObviouslyNotVegetarianFragment() {
-
         }
 
         @Override
@@ -101,11 +101,16 @@ public class ObviouslyNotVegetarian extends Activity {
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent launchNext = new Intent(getActivity(), MaybeVegan.class);
 
                     mergeProductValues();
 
-                    // TODO if product is non-vegan, goto different activity
+                    Intent launchNext;
+
+                    if (product.isMaybeLactoOvoVegetarian()) {
+                        launchNext = new Intent(getActivity(), MaybeVegan.class);
+                    } else {
+                        launchNext = new Intent(getActivity(), EnoughInformation.class);
+                    }
 
                     launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
                     startActivity(launchNext);

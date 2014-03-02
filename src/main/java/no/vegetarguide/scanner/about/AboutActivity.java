@@ -23,9 +23,6 @@ public class AboutActivity extends Activity {
     }
 
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class AboutFragment extends Fragment {
 
         public AboutFragment() {

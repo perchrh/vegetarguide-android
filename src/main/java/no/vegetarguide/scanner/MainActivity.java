@@ -30,7 +30,6 @@ import no.vegetarguide.scanner.model.LookupErrorType;
 import no.vegetarguide.scanner.model.Product;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
 import no.vegetarguide.scanner.wizard.MetaInformation;
-import no.vegetarguide.scanner.wizard.ObviouslyNotVegetarian;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_REQUEST_CODE;
@@ -108,7 +107,7 @@ public class MainActivity extends Activity {
                 product.setContainsMajorUnspecifiedAdditives(null);
 
                 product.setContainsAnimalMilk(true);
-                product.setContainsHoney(true);
+                product.setContainsInsectExcretions(true);
                 product.setContainsPossibleAnimalEnumbers(true);
 
                 product.setManufacturerConfirmsProductIsVegan(false);

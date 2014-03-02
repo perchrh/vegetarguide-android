@@ -51,16 +51,16 @@ public class MaybeVegan extends Activity {
         private CheckBox contains_honey;
         private Product product;
 
+        public MaybeVeganFragment() {
+
+        }
+
         public static MaybeVeganFragment newInstance(Product productDetails) {
             MaybeVeganFragment frag = new MaybeVeganFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
             frag.setArguments(args);
             return frag;
-        }
-
-        public MaybeVeganFragment() {
-
         }
 
         @Override
@@ -90,8 +90,8 @@ public class MaybeVegan extends Activity {
                 contains_eggs.setChecked(product.getContainsEggs());
             }
             contains_honey = (CheckBox) rootView.findViewById(R.id.contains_honey);
-            if (product.getContainsHoney() != null) {
-                contains_honey.setChecked(product.getContainsHoney());
+            if (product.getContainsInsectExcretions() != null) {
+                contains_honey.setChecked(product.getContainsInsectExcretions());
             }
 
         }
@@ -112,11 +112,15 @@ public class MaybeVegan extends Activity {
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent launchNext = new Intent(getActivity(), UncertainIngredients.class);
 
                     mergeProductValues(product);
 
-                    // TODO if product is non-vegetarian, goto different activity
+                    Intent launchNext;
+                    if (product.isMaybeVegan()) {
+                        launchNext = new Intent(getActivity(), UncertainIngredients.class);
+                    } else {
+                        launchNext = new Intent(getActivity(), EnoughInformation.class);
+                    }
 
                     launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
                     startActivity(launchNext);
@@ -128,7 +132,7 @@ public class MaybeVegan extends Activity {
             // TODO støtte tri-state? yes, no, undecided?
             product.setContainsAnimalMilk(contains_animal_milk.isChecked());
             product.setContainsEggs(contains_eggs.isChecked());
-            product.setContainsHoney(contains_honey.isChecked());
+            product.setContainsInsectExcretions(contains_honey.isChecked());
         }
 
     }

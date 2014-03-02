@@ -29,7 +29,7 @@ public class Product implements Parcelable {
     private Boolean containsBodyParts;
     private Boolean containsRedListedAdditives;
     private Boolean containsMajorUnspecifiedAdditives;
-    private Boolean containsHoney;
+    private Boolean containsInsectExcretions;
     private Boolean containsEggs;
     private Boolean containsAnimalMilk;
     private Boolean manufacturerConfirmsProductIsVegan;
@@ -37,6 +37,20 @@ public class Product implements Parcelable {
     private Boolean containsPossibleAnimalEnumbers;
 
     public Product() {
+    }
+
+    public boolean isMaybeVegan(){
+        return Boolean.FALSE.equals(this.containsAnimalMilk)
+                && Boolean.FALSE.equals(this.containsAnimalMilk)
+                && Boolean.FALSE.equals(this.containsBodyParts)
+                && Boolean.FALSE.equals(this.containsEggs)
+                && Boolean.FALSE.equals(this.containsInsectExcretions)
+                && Boolean.FALSE.equals(this.containsRedListedAdditives);
+    }
+
+    public boolean isMaybeLactoOvoVegetarian(){
+        return Boolean.FALSE.equals(this.containsBodyParts)
+                && Boolean.FALSE.equals(this.containsRedListedAdditives);
     }
 
     public Product(Parcel in) {
@@ -51,7 +65,7 @@ public class Product implements Parcelable {
         this.containsBodyParts = (Boolean) in.readSerializable();
         this.containsRedListedAdditives = (Boolean) in.readSerializable();
         this.containsMajorUnspecifiedAdditives = (Boolean) in.readSerializable();
-        this.containsHoney = (Boolean) in.readSerializable();
+        this.containsInsectExcretions = (Boolean) in.readSerializable();
         this.containsEggs = (Boolean) in.readSerializable();
         this.containsAnimalMilk = (Boolean) in.readSerializable();
         this.manufacturerConfirmsProductIsVegan = (Boolean) in.readSerializable();
@@ -147,12 +161,12 @@ public class Product implements Parcelable {
         this.containsMajorUnspecifiedAdditives = containsMajorUnspecifiedAdditives;
     }
 
-    public Boolean getContainsHoney() {
-        return containsHoney;
+    public Boolean getContainsInsectExcretions() {
+        return containsInsectExcretions;
     }
 
-    public void setContainsHoney(Boolean containsHoney) {
-        this.containsHoney = containsHoney;
+    public void setContainsInsectExcretions(Boolean containsInsectExcretions) {
+        this.containsInsectExcretions = containsInsectExcretions;
     }
 
     public Boolean getContainsEggs() {
@@ -213,7 +227,7 @@ public class Product implements Parcelable {
         dest.writeSerializable(this.containsBodyParts);
         dest.writeSerializable(this.containsRedListedAdditives);
         dest.writeSerializable(this.containsMajorUnspecifiedAdditives);
-        dest.writeSerializable(this.containsHoney);
+        dest.writeSerializable(this.containsInsectExcretions);
         dest.writeSerializable(this.containsEggs);
         dest.writeSerializable(this.containsAnimalMilk);
         dest.writeSerializable(this.manufacturerConfirmsProductIsVegan);
