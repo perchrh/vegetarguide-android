@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import no.vegetarguide.scanner.AlertDialogFragment;
 import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.model.Product;
@@ -34,6 +35,15 @@ public class MaybeVegan extends Activity {
         }
 
     }
+
+    public void showToolTip(View v) {
+        AlertDialogFragment tooltip = AlertDialogFragment.newInstance(
+                R.string.maybe_vegan_tooltip_headline, R.string.maybe_vegan_tooltip);
+        if (tooltip != null) {
+            tooltip.show(getFragmentManager(), "tooltip");
+        }
+    }
+
 
     public static class MaybeVeganFragment extends Fragment {
         private CheckBox contains_animal_milk;

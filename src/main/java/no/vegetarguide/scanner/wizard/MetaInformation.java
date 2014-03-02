@@ -8,7 +8,6 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -121,7 +120,6 @@ public class MetaInformation extends Activity {
 
             String trimmedBrand = trimToNull(brand_edit.getText().toString());
             product.setBrand(trimmedBrand == null ? product.getBrand() : trimmedBrand); // keep previous value if missing
-
         }
     }
 }

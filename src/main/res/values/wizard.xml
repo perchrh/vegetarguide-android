@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="maybe_vegan_tooltip">Dyremelk: Laktose, melkesukker, myse, kasein og ghee.\nEgg: Eggehvite/albumin, eggeprotein og lysosomer (E1105).\nFra insekter: Dronning-gelé, bivoks (E901) og shellakk (E904).</string>
+    <string name="maybe_vegan_tooltip_headline">Sjekkliste</string>
+
+</resources>

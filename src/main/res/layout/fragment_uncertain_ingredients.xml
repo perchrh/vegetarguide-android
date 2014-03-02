@@ -17,10 +17,7 @@
             android:id="@+id/uncertain_ingredients_headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
             android:text="Inneholdet produktet tilsetningsstoffer som kan komme fra dyr? Kryss av for det varen inneholder:"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -31,8 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/uncertain_ingredients_headline"
-            android:text="E-stoffer som kan ha animalsk opprinnelse  (LENKE)"
-           />
+            android:text="E-stoffer som kan ha animalsk opprinnelse  (LENKE)" />
 
 
         <CheckBox
