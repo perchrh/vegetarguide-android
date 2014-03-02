@@ -72,16 +72,16 @@ public class MaybeVegan extends Activity {
 
         private void createCheckBoxes(View rootView) {
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
-            if (product.isContainsAnimalMilk() != null) {
-                contains_animal_milk.setChecked(product.isContainsAnimalMilk());
+            if (product.getContainsAnimalMilk() != null) {
+                contains_animal_milk.setChecked(product.getContainsAnimalMilk());
             }
             contains_eggs = (CheckBox) rootView.findViewById(R.id.contains_eggs);
-            if (product.isContainsEggs() != null) {
-                contains_eggs.setChecked(product.isContainsEggs());
+            if (product.getContainsEggs() != null) {
+                contains_eggs.setChecked(product.getContainsEggs());
             }
             contains_honey = (CheckBox) rootView.findViewById(R.id.contains_honey);
-            if (product.isContainsHoney() != null) {
-                contains_honey.setChecked(product.isContainsHoney());
+            if (product.getContainsHoney() != null) {
+                contains_honey.setChecked(product.getContainsHoney());
             }
 
         }

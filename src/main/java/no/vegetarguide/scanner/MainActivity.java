@@ -29,6 +29,7 @@ import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
 import no.vegetarguide.scanner.model.Product;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
+import no.vegetarguide.scanner.wizard.MetaInformation;
 import no.vegetarguide.scanner.wizard.ObviouslyNotVegetarian;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
@@ -84,7 +85,7 @@ public class MainActivity extends Activity {
         launchNewAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent launchNext = new Intent(getBaseContext(), ObviouslyNotVegetarian.class);
+                Intent launchNext = new Intent(getBaseContext(), MetaInformation.class);
                 launchNext.putExtra(Application.PRODUCT_DETAILS_KEY, new Product());
                 startActivity(launchNext);
             }
@@ -94,18 +95,24 @@ public class MainActivity extends Activity {
         launchNewModify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ObviouslyNotVegetarian.class);
+                Intent intent = new Intent(getBaseContext(), MetaInformation.class);
 
                 Product product = new Product();
                 product.setTitle("Fake title");
                 product.setBrand("Fake brand");
                 product.setSubtitle("Fake subtitle");
+                product.setGtin("12345678901234");
 
-                product.setContainsBodyParts(true);
+                product.setContainsBodyParts(false);
                 product.setContainsRedListedAdditives(null);
                 product.setContainsMajorUnspecifiedAdditives(null);
 
-                // TODO populate model fully
+                product.setContainsAnimalMilk(true);
+                product.setContainsHoney(true);
+                product.setContainsPossibleAnimalEnumbers(true);
+
+                product.setManufacturerConfirmsProductIsVegan(false);
+
                 intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
                 startActivity(intent);
             }

@@ -60,12 +60,20 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".wizard.ObviouslyNotVegetarian"
+            android:name=".wizard.MetaInformation"
             android:label="Fra dyrekropper"
             android:parentActivityName=".ProductDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ProductDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".wizard.ObviouslyNotVegetarian"
+            android:label="Fra dyrekropper"
+            android:parentActivityName=".wizard.MetaInformation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".wizard.MetaInformation" />
         </activity>
         <activity
             android:name=".wizard.MaybeVegan"
@@ -83,6 +91,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.MaybeVegan" />
         </activity>
+
         <activity android:name=".about.AboutActivity"
             android:label="Om appen"
             android:parentActivityName=".MainActivity">

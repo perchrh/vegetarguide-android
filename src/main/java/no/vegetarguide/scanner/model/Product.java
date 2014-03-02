@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import java.net.URL;
 
 public class Product implements Parcelable {
+
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public Product createFromParcel(Parcel in) {
             return new Product(in);
@@ -82,76 +83,116 @@ public class Product implements Parcelable {
         this.subtitle = subtitle;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String getGtin() {
+        return gtin;
+    }
+
+    public void setGtin(String gtin) {
+        this.gtin = gtin;
+    }
+
+    public URL getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(URL imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    public Boolean getContainsBodyParts() {
+        return containsBodyParts;
+    }
+
     public void setContainsBodyParts(Boolean containsBodyParts) {
         this.containsBodyParts = containsBodyParts;
     }
 
-    public Boolean isContainsBodyParts() {
-        return containsBodyParts;
+    public Boolean getContainsRedListedAdditives() {
+        return containsRedListedAdditives;
     }
 
     public void setContainsRedListedAdditives(Boolean containsRedListedAdditives) {
         this.containsRedListedAdditives = containsRedListedAdditives;
     }
 
-    public Boolean isContainsRedListedAdditives() {
-        return containsRedListedAdditives;
+    public Boolean getContainsMajorUnspecifiedAdditives() {
+        return containsMajorUnspecifiedAdditives;
     }
 
     public void setContainsMajorUnspecifiedAdditives(Boolean containsMajorUnspecifiedAdditives) {
         this.containsMajorUnspecifiedAdditives = containsMajorUnspecifiedAdditives;
     }
 
-    public Boolean isContainsMajorUnspecifiedAdditives() {
-        return containsMajorUnspecifiedAdditives;
+    public Boolean getContainsHoney() {
+        return containsHoney;
     }
 
     public void setContainsHoney(Boolean containsHoney) {
         this.containsHoney = containsHoney;
     }
 
-    public Boolean isContainsHoney() {
-        return containsHoney;
+    public Boolean getContainsEggs() {
+        return containsEggs;
     }
 
     public void setContainsEggs(Boolean containsEggs) {
         this.containsEggs = containsEggs;
     }
 
-    public Boolean isContainsEggs() {
-        return containsEggs;
+    public Boolean getContainsAnimalMilk() {
+        return containsAnimalMilk;
     }
 
     public void setContainsAnimalMilk(Boolean containsAnimalMilk) {
         this.containsAnimalMilk = containsAnimalMilk;
     }
 
-    public Boolean isContainsAnimalMilk() {
-        return containsAnimalMilk;
+    public Boolean getManufacturerConfirmsProductIsVegan() {
+        return manufacturerConfirmsProductIsVegan;
     }
 
     public void setManufacturerConfirmsProductIsVegan(Boolean manufacturerConfirmsProductIsVegan) {
         this.manufacturerConfirmsProductIsVegan = manufacturerConfirmsProductIsVegan;
     }
 
-    public Boolean isManufacturerConfirmsProductIsVegan() {
-        return manufacturerConfirmsProductIsVegan;
+    public Boolean getContainsPossibleAnimalAdditives() {
+        return containsPossibleAnimalAdditives;
     }
 
     public void setContainsPossibleAnimalAdditives(Boolean containsPossibleAnimalAdditives) {
         this.containsPossibleAnimalAdditives = containsPossibleAnimalAdditives;
     }
 
-    public Boolean isContainsPossibleAnimalAdditives() {
-        return containsPossibleAnimalAdditives;
+    public Boolean getContainsPossibleAnimalEnumbers() {
+        return containsPossibleAnimalEnumbers;
     }
 
     public void setContainsPossibleAnimalEnumbers(Boolean containsPossibleAnimalEnumbers) {
         this.containsPossibleAnimalEnumbers = containsPossibleAnimalEnumbers;
-    }
-
-    public Boolean isContainsPossibleAnimalEnumbers() {
-        return containsPossibleAnimalEnumbers;
     }
 
     @Override

@@ -9,19 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
+import static org.apache.commons.lang3.StringUtils.trimToNull;
 
-public class ObviouslyNotVegetarian extends Activity {
+public class MetaInformation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_obviously_not_vegetarian);
+        setContentView(R.layout.activity_metainformation);
 
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
@@ -29,34 +32,35 @@ public class ObviouslyNotVegetarian extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, ObviouslyNotVegetarianFragment.newInstance(product))
+                    .add(R.id.container, MetaInformationFragment.newInstance(product))
                     .commit();
         }
 
     }
 
-    public static class ObviouslyNotVegetarianFragment extends Fragment {
+    public static class MetaInformationFragment extends Fragment {
 
         private Product product;
-        private CheckBox animal_bodies;
-        private CheckBox red_listed_additives;
-        private CheckBox major_unspecified_additives;
+        private EditText brand_edit;
+        private TextView gtin_value;
+        private EditText title_edit;
+        private EditText subtitle_edit;
 
-        public static ObviouslyNotVegetarianFragment newInstance(Product productDetails) {
-            ObviouslyNotVegetarianFragment frag = new ObviouslyNotVegetarianFragment();
+        public MetaInformationFragment() {
+
+        }
+
+        public static MetaInformationFragment newInstance(Product productDetails) {
+            MetaInformationFragment frag = new MetaInformationFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
             frag.setArguments(args);
             return frag;
         }
 
-        public ObviouslyNotVegetarianFragment() {
-
-        }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_obviously_not_vegetarian, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_metainformation, container, false);
             Bundle arguments = getArguments();
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
@@ -65,28 +69,25 @@ public class ObviouslyNotVegetarian extends Activity {
 
             createNextButton(rootView, product);
             createCancelButton(rootView);
-            createCheckBoxes(rootView, product);
+            createTextEdits(rootView, product);
 
             return rootView;
         }
 
-        private void createCheckBoxes(View rootView, Product product) {
-            animal_bodies = (CheckBox) rootView.findViewById(R.id.animal_bodies);
-            if (product.getContainsBodyParts() != null) {
-                animal_bodies.setChecked(product.getContainsBodyParts());
-            }
-            red_listed_additives = (CheckBox) rootView.findViewById(R.id.red_listed_additives);
-            if (product.getContainsRedListedAdditives() != null) {
-                red_listed_additives.setChecked(product.getContainsRedListedAdditives());
-            }
-            major_unspecified_additives = (CheckBox) rootView.findViewById(R.id.major_unspecified_additives);
-            if (product.getContainsMajorUnspecifiedAdditives() != null) {
-                red_listed_additives.setChecked(product.getContainsMajorUnspecifiedAdditives());
-            }
+        private void createTextEdits(View rootView, Product product) {
+            gtin_value = (TextView) rootView.findViewById(R.id.gtin_value);
+            gtin_value.setText(product.getGtin());
+
+            title_edit = (EditText) rootView.findViewById(R.id.title_edit);
+            title_edit.setText(product.getTitle());
+            subtitle_edit = (EditText) rootView.findViewById(R.id.subtitle_edit);
+            subtitle_edit.setText(product.getSubtitle());
+            brand_edit = (EditText) rootView.findViewById(R.id.brand_edit);
+            brand_edit.setText(product.getBrand());
         }
 
         private void createCancelButton(View rootView) {
-            View cancelButton = rootView.findViewById(R.id.obviously_not_vegetarian_cancel_button);
+            View cancelButton = rootView.findViewById(R.id.metainformation_cancel_button);
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,15 +98,13 @@ public class ObviouslyNotVegetarian extends Activity {
         }
 
         private void createNextButton(View rootView, final Product product) {
-            View nextButton = rootView.findViewById(R.id.obviously_not_vegetarian_next_button);
+            View nextButton = rootView.findViewById(R.id.metainformation_next_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent launchNext = new Intent(getActivity(), MaybeVegan.class);
+                    Intent launchNext = new Intent(getActivity(), ObviouslyNotVegetarian.class);
 
                     mergeProductValues();
-
-                    // TODO if product is non-vegan, goto different activity
 
                     launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
                     startActivity(launchNext);
@@ -114,9 +113,15 @@ public class ObviouslyNotVegetarian extends Activity {
         }
 
         private void mergeProductValues() {
-            product.setContainsBodyParts(animal_bodies.isChecked());
-            product.setContainsRedListedAdditives(red_listed_additives.isChecked());
-            product.setContainsMajorUnspecifiedAdditives(major_unspecified_additives.isChecked());
+            String trimmedTitle = trimToNull(title_edit.getText().toString());
+            product.setTitle(trimmedTitle == null ? product.getTitle() : trimmedTitle); // keep previous value if missing
+
+            String trimmedSubtitle = trimToNull(subtitle_edit.getText().toString());
+            product.setSubtitle(trimmedSubtitle == null ? product.getSubtitle() : trimmedSubtitle); // keep previous value if missing
+
+            String trimmedBrand = trimToNull(brand_edit.getText().toString());
+            product.setBrand(trimmedBrand == null ? product.getBrand() : trimmedBrand); // keep previous value if missing
+
         }
     }
 }

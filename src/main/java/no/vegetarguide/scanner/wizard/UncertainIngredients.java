@@ -79,16 +79,16 @@ public class UncertainIngredients extends Activity {
 
         private void createCheckBoxes(View rootView, Product product) {
             animal_e_number = (CheckBox) rootView.findViewById(R.id.animal_e_number);
-            if (product.isContainsPossibleAnimalEnumbers() != null) {
-                animal_e_number.setChecked(product.isContainsPossibleAnimalEnumbers());
+            if (product.getContainsPossibleAnimalEnumbers() != null) {
+                animal_e_number.setChecked(product.getContainsPossibleAnimalEnumbers());
             }
             other_animal_derived_additives = (CheckBox) rootView.findViewById(R.id.other_animal_derived_additives);
-            if (product.isContainsPossibleAnimalAdditives() != null) {
-                other_animal_derived_additives.setChecked(product.isContainsPossibleAnimalAdditives());
+            if (product.getContainsPossibleAnimalAdditives() != null) {
+                other_animal_derived_additives.setChecked(product.getContainsPossibleAnimalAdditives());
             }
             manufacturer_confirms_vegan = (CheckBox) rootView.findViewById(R.id.manufacturer_confirms_vegan);
-            if (product.isManufacturerConfirmsProductIsVegan() != null) {
-                manufacturer_confirms_vegan.setChecked(product.isManufacturerConfirmsProductIsVegan());
+            if (product.getManufacturerConfirmsProductIsVegan() != null) {
+                manufacturer_confirms_vegan.setChecked(product.getManufacturerConfirmsProductIsVegan());
             }
         }
 
