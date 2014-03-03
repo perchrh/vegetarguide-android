@@ -45,8 +45,9 @@ public class ObviouslyNotVegetarian extends Activity {
         private CheckBox animal_bodies;
         private CheckBox red_listed_additives;
         private CheckBox major_unspecified_additives;
-        // TODO let user declare that the source of unspecified additives is known after contacting manufacturer
-        private EditText comment; //use this comment for the unspecified additives, must be at least lacto-ovo vegetarian
+        private EditText comment;
+        private CheckBox manufacturer_confirms_vegetarian;
+        private EditText confirmed_vegetarian_comment;
 
         public ObviouslyNotVegetarianFragment() {
 
@@ -76,7 +77,7 @@ public class ObviouslyNotVegetarian extends Activity {
             return rootView;
         }
 
-        private void createCheckBoxes(View rootView, Product product) {
+        private void createCheckBoxes(final View rootView, final Product product) {
             comment = (EditText) rootView.findViewById(R.id.obviously_not_vegetarian_comment);
             comment.setText(product.getNotLactoOvoVegetarianComment());
 
@@ -92,13 +93,11 @@ public class ObviouslyNotVegetarian extends Activity {
             if (product.getContainsMajorUnspecifiedAdditives() != null) {
                 red_listed_additives.setChecked(product.getContainsMajorUnspecifiedAdditives());
             }
-
             CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (animal_bodies.isChecked()
                             || red_listed_additives.isChecked()
-                            || major_unspecified_additives.isChecked()
                             || StringUtils.isNotEmpty(comment.getText())) {
                         comment.setVisibility(View.VISIBLE);
                     } else {
@@ -108,7 +107,40 @@ public class ObviouslyNotVegetarian extends Activity {
             };
             animal_bodies.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
             red_listed_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
-            major_unspecified_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+
+            confirmed_vegetarian_comment = (EditText) rootView.findViewById(R.id.confirmed_vegetarian_comment);
+            confirmed_vegetarian_comment.setText(product.getConfirmedLactoOvoVegetarianComment());
+            manufacturer_confirms_vegetarian = (CheckBox) rootView.findViewById(R.id.manufacturer_confirms_vegetarian);
+            if (product.getManufacturerConfirmsProductIsLactoOvoVegetarian() != null) {
+                manufacturer_confirms_vegetarian.setChecked(product.getManufacturerConfirmsProductIsLactoOvoVegetarian());
+            }
+
+            confirmed_vegetarian_comment.setVisibility(StringUtils.isEmpty(product.getConfirmedLactoOvoVegetarianComment())
+                    ? View.GONE : View.VISIBLE); // initial value. TODO add initial value to other edittext comment-fields
+
+            major_unspecified_additives.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        manufacturer_confirms_vegetarian.setVisibility(View.VISIBLE);
+                    } else {
+                        manufacturer_confirms_vegetarian.setVisibility(View.GONE);
+                        confirmed_vegetarian_comment.setText(null);
+                        confirmed_vegetarian_comment.setVisibility(View.GONE);
+                    }
+                }
+            });
+            manufacturer_confirms_vegetarian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked || StringUtils.isNotEmpty(product.getConfirmedLactoOvoVegetarianComment())) {
+                        confirmed_vegetarian_comment.setVisibility(View.VISIBLE);
+                    } else {
+                        confirmed_vegetarian_comment.setVisibility(View.GONE);
+                    }
+                }
+            });
+
         }
 
         private void createCancelButton(View rootView) {
@@ -144,6 +176,7 @@ public class ObviouslyNotVegetarian extends Activity {
         }
 
         private void mergeProductValues() {
+            // TODO update with new fields
             product.setContainsBodyParts(animal_bodies.isChecked());
             product.setContainsRedListedAdditives(red_listed_additives.isChecked());
             product.setContainsMajorUnspecifiedAdditives(major_unspecified_additives.isChecked());

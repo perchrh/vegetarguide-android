@@ -41,6 +41,8 @@ public class Product implements Parcelable {
     private String notLactoOvoVegetarianComment;
     private String uncertainIngredientsComment;
     private String generalComment;
+    private Boolean manufacturerConfirmsProductIsLactoOvoVegetarian;
+    private String confirmedLactoOvoVegetarianComment;
 
     public Product() {
     }
@@ -66,14 +68,13 @@ public class Product implements Parcelable {
     }
 
     public boolean isMaybeVegan() {
-        return Boolean.FALSE.equals(this.containsBodyParts)
-                && Boolean.FALSE.equals(this.containsRedListedAdditives)
+        return isLactoOvoVegetarian()
                 && Boolean.FALSE.equals(this.containsInsectExcretions)
                 && Boolean.FALSE.equals(this.containsEggs)
                 && Boolean.FALSE.equals(this.containsAnimalMilk);
     }
 
-    public boolean isAnimalDerivedForCertain(){
+    public boolean isAnimalDerivedForCertain() {
         return Boolean.TRUE.equals(this.containsBodyParts)
                 || Boolean.TRUE.equals(this.containsRedListedAdditives);
     }
@@ -87,15 +88,14 @@ public class Product implements Parcelable {
         return Boolean.FALSE.equals(this.containsBodyParts)
                 && Boolean.FALSE.equals(this.containsRedListedAdditives)
                 && Boolean.FALSE.equals(this.containsBodyParts)
-                && !containsMajorUnspecifiedAdditives;
-        //TODO also allow unspecified additives if has been OKed by manufacturer
+                && (Boolean.FALSE.equals(containsMajorUnspecifiedAdditives)
+                || Boolean.TRUE.equals(manufacturerConfirmsProductIsLactoOvoVegetarian));
     }
 
     public boolean isVegan() {
         return (isMaybeVegan() && Boolean.TRUE.equals(manufacturerConfirmsProductIsVegan))
-                || (isMaybeVegan() && !containsPossibleAnimalAdditives
-                && !containsPossibleAnimalEnumbers
-                && !containsMajorUnspecifiedAdditives);
+                || (isMaybeVegan() && Boolean.FALSE.equals(containsPossibleAnimalAdditives)
+                && Boolean.FALSE.equals(containsPossibleAnimalEnumbers));
     }
 
     public String getTitle() {
@@ -290,5 +290,21 @@ public class Product implements Parcelable {
 
     public void setGeneralComment(String generalComment) {
         this.generalComment = generalComment;
+    }
+
+    public Boolean getManufacturerConfirmsProductIsLactoOvoVegetarian() {
+        return manufacturerConfirmsProductIsLactoOvoVegetarian;
+    }
+
+    public void setManufacturerConfirmsProductIsLactoOvoVegetarian(Boolean manufacturerConfirmsProductIsLactoOvoVegetarian) {
+        this.manufacturerConfirmsProductIsLactoOvoVegetarian = manufacturerConfirmsProductIsLactoOvoVegetarian;
+    }
+
+    public String getConfirmedLactoOvoVegetarianComment() {
+        return confirmedLactoOvoVegetarianComment;
+    }
+
+    public void setConfirmedLactoOvoVegetarianComment(String confirmedLactoOvoVegetarianComment) {
+        this.confirmedLactoOvoVegetarianComment = confirmedLactoOvoVegetarianComment;
     }
 }

@@ -153,6 +153,7 @@ public class MaybeVegan extends Activity {
         }
 
         private void mergeProductValues(Product product) {
+            // TODO update with new fields?
             product.setContainsAnimalMilk(contains_animal_milk.isChecked());
             product.setContainsEggs(contains_eggs.isChecked());
             product.setContainsInsectExcretions(contains_honey.isChecked());

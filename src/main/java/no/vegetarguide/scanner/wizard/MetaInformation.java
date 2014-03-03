@@ -123,6 +123,7 @@ public class MetaInformation extends Activity {
         }
 
         private void mergeProductValues() {
+            // TODO update with new fields?
             String trimmedTitle = trimToNull(title_edit.getText().toString());
             product.setTitle(trimmedTitle == null ? product.getTitle() : trimmedTitle); // keep previous value if missing
 

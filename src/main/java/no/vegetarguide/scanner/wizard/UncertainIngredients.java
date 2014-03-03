@@ -145,6 +145,7 @@ public class UncertainIngredients extends Activity {
         }
 
         private void mergeProductValues(Product product) {
+            // TODO update with new fields?
             product.setContainsPossibleAnimalEnumbers(animal_e_number.isChecked());
             product.setContainsPossibleAnimalAdditives(other_animal_derived_additives.isChecked());
             product.setManufacturerConfirmsProductIsVegan(manufacturer_confirms_vegan.isChecked());

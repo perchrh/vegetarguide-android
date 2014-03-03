@@ -47,17 +47,36 @@
             android:layout_below="@+id/red_listed_additives"
             android:text="Uspesifiserte oljer og aromaer" />
 
+        <CheckBox
+            android:id="@+id/manufacturer_confirms_vegetarian"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Produsenten har bekreftet at produktet er vegetarisk"
+            android:layout_below="@+id/major_unspecified_additives" />
+
+        <EditText
+            android:id="@+id/confirmed_vegetarian_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/manufacturer_confirms_vegetarian"
+            android:inputType="textCapSentences|textMultiLine"
+            android:visibility="gone"
+            android:ems="10"
+            android:gravity="left|top"
+            android:minLines="2"
+            android:hint="Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag" />
 
         <EditText
             android:id="@+id/obviously_not_vegetarian_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:inputType="textCapSentences|textMultiLine"
+            android:visibility="gone"
             android:ems="10"
             android:gravity="left|top"
             android:minLines="2"
-            android:layout_below="@+id/major_unspecified_additives"
+            android:layout_below="@+id/confirmed_vegetarian_comment"
             android:hint="Hva inneholder varen av dyrekropper?" />
 
 
