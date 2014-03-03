@@ -20,7 +20,7 @@ import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
-public class ObviouslyNotVegetarian extends Activity {
+public class CheckIfNotVegetarianAtAll extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +41,13 @@ public class ObviouslyNotVegetarian extends Activity {
 
     public static class ObviouslyNotVegetarianFragment extends Fragment {
 
-        private Product product;
         private CheckBox animal_bodies;
         private CheckBox red_listed_additives;
         private CheckBox major_unspecified_additives;
         private EditText comment;
         private CheckBox manufacturer_confirms_vegetarian;
         private EditText confirmed_vegetarian_comment;
+        private Product product;
 
         public ObviouslyNotVegetarianFragment() {
 
@@ -165,7 +165,7 @@ public class ObviouslyNotVegetarian extends Activity {
                     Intent launchNext;
 
                     if (product.isMaybeLactoOvoVegetarian()) {
-                        launchNext = new Intent(getActivity(), MaybeVegan.class);
+                        launchNext = new Intent(getActivity(), CheckIfLactoOvoVegetarian.class);
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);
                     }
@@ -176,10 +176,19 @@ public class ObviouslyNotVegetarian extends Activity {
         }
 
         private void mergeProductValues() {
-            // TODO update with new fields
             product.setContainsBodyParts(animal_bodies.isChecked());
             product.setContainsRedListedAdditives(red_listed_additives.isChecked());
             product.setContainsMajorUnspecifiedAdditives(major_unspecified_additives.isChecked());
+
+            if (manufacturer_confirms_vegetarian.getVisibility() == View.VISIBLE) {
+                product.setManufacturerConfirmsProductIsLactoOvoVegetarian(manufacturer_confirms_vegetarian.isChecked());
+            }
+            if (comment.getVisibility() == View.VISIBLE) {
+                product.setNotLactoOvoVegetarianComment(StringUtils.trimToNull(comment.getText().toString()));
+            }
+            if (confirmed_vegetarian_comment.getVisibility() == View.VISIBLE) {
+                product.setConfirmedLactoOvoVegetarianComment(StringUtils.trimToNull(confirmed_vegetarian_comment.getText().toString()));
+            }
         }
     }
 }

@@ -59,22 +59,24 @@ public class EnoughInformation extends Activity {
             final Product product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
 
-            String format = "Produktet er %s.";
+            final String format = "Produktet er %s.";
             TextView status = (TextView) rootView.findViewById(R.id.status);
-            if (product.isVegan()) {
-                status.setText(String.format(format, "vegansk"));
-            } else if (product.isMaybeVegan() && product.isLactoOvoVegetarian()) {
-                status.setText(String.format(format, "lakto-ovo vegetarisk, og kanskje vegansk"));
+            if (product.isAnimalDerivedForCertain()) {
+                status.setText(String.format(format, "ikke vegetarisk"));
             } else if (product.isMaybeVegan()) {
-                status.setText(String.format(format, "kanskje vegansk"));
-            } else if (product.isLactoOvoVegetarian()) {
-                status.setText(String.format(format, "lakto-ovo vegetarisk"));
+                if (product.isLactoOvoVegetarian()) {
+                    status.setText(String.format(format, "lakto-ovo vegetarisk og kanskje vegansk"));
+                } else if (product.isVegan()) {
+                    status.setText(String.format(format, "vegansk"));
+                } else if (product.isMaybeLactoOvoVegetarian()) {
+                    status.setText(String.format(format, "kanskje vegetarisk eller vegansk"));
+                }
             } else if (product.isMaybeLactoOvoVegetarian()) {
-                status.setText(String.format(format, "kanskje lakto-ovo vegetarisk"));
-            } else if (product.isAnimalDerivedForCertain()) {
-                status.setText("ikke vegetarisk");
-            } else {
-                status.setText("Produktet har ukjent status");
+                if (product.isLactoOvoVegetarian()) {
+                    status.setText(String.format(format, "lakto-ovo vegetarisk"));
+                } else {
+                    status.setText(String.format(format, "kanskje vegetarisk"));
+                }
             }
 
             View submitButton = rootView.findViewById(R.id.submit_button);
@@ -82,7 +84,7 @@ public class EnoughInformation extends Activity {
                 @Override
                 public void onClick(View v) {
                     // TODO submit to server
-                    Toast.makeText(getActivity(), "Her ville produktet bli sendt inn til serveren", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Her ville produktet blitt sendt inn til serveren", Toast.LENGTH_LONG).show();
 
                     getActivity().setResult(RESULT_OK);
                     getActivity().finish();

@@ -3,5 +3,5 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="no.vegetarguide.scanner.wizard.MaybeVegan"
+    tools:context="no.vegetarguide.scanner.wizard.CheckIfLactoOvoVegetarian"
     tools:ignore="MergeRootFrame" />

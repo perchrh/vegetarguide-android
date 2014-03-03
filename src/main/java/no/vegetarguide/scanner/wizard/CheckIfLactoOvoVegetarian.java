@@ -21,7 +21,7 @@ import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
-public class MaybeVegan extends Activity {
+public class CheckIfLactoOvoVegetarian extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class MaybeVegan extends Activity {
         private CheckBox contains_animal_milk;
         private CheckBox contains_eggs;
         private CheckBox contains_honey;
+        private EditText lacto_ovo_vegetarian_comment;
         private Product product;
-        private EditText comment;
 
         public MaybeVeganFragment() {
 
@@ -86,8 +86,8 @@ public class MaybeVegan extends Activity {
         }
 
         private void createCheckBoxes(View rootView) {
-            comment = (EditText) rootView.findViewById(R.id.maybe_vegan_comment);
-            comment.setText(product.getNotVeganComment());
+            lacto_ovo_vegetarian_comment = (EditText) rootView.findViewById(R.id.lacto_ovo_vegetarian_comment);
+            lacto_ovo_vegetarian_comment.setText(product.getLactoOvoVegetarianComment());
 
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
             if (product.getContainsAnimalMilk() != null) {
@@ -108,10 +108,10 @@ public class MaybeVegan extends Activity {
                     if (contains_animal_milk.isChecked()
                             || contains_eggs.isChecked()
                             || contains_honey.isChecked()
-                            || StringUtils.isNotEmpty(comment.getText())) {
-                        comment.setVisibility(View.VISIBLE);
+                            || StringUtils.isNotEmpty(lacto_ovo_vegetarian_comment.getText())) {
+                        lacto_ovo_vegetarian_comment.setVisibility(View.VISIBLE);
                     } else {
-                        comment.setVisibility(View.GONE);
+                        lacto_ovo_vegetarian_comment.setVisibility(View.GONE);
                     }
                 }
             };
@@ -141,7 +141,7 @@ public class MaybeVegan extends Activity {
 
                     Intent launchNext;
                     if (product.isMaybeVegan()) {
-                        launchNext = new Intent(getActivity(), UncertainIngredients.class);
+                        launchNext = new Intent(getActivity(), CheckIfVegan.class);
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);
                     }
@@ -153,7 +153,7 @@ public class MaybeVegan extends Activity {
         }
 
         private void mergeProductValues(Product product) {
-            // TODO update with new fields?
+            product.setLactoOvoVegetarianComment(StringUtils.trimToNull(lacto_ovo_vegetarian_comment.getText().toString()));
             product.setContainsAnimalMilk(contains_animal_milk.isChecked());
             product.setContainsEggs(contains_eggs.isChecked());
             product.setContainsInsectExcretions(contains_honey.isChecked());

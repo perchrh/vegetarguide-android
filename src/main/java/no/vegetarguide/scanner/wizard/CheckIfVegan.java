@@ -20,7 +20,7 @@ import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
-public class UncertainIngredients extends Activity {
+public class CheckIfVegan extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class UncertainIngredients extends Activity {
         private CheckBox animal_e_number;
         private CheckBox manufacturer_confirms_vegan;
         private CheckBox other_animal_derived_additives;
-        private EditText comment;
+        private EditText confirmed_vegan_comment;
 
         public UncertainIngredientsFragment() {
 
@@ -82,8 +82,8 @@ public class UncertainIngredients extends Activity {
         }
 
         private void createCheckBoxes(View rootView, Product product) {
-            comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
-            comment.setText(product.getConfirmedVeganComment());
+            confirmed_vegan_comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
+            confirmed_vegan_comment.setText(product.getConfirmedVeganComment());
 
             animal_e_number = (CheckBox) rootView.findViewById(R.id.animal_e_number);
             if (product.getContainsPossibleAnimalEnumbers() != null) {
@@ -103,14 +103,14 @@ public class UncertainIngredients extends Activity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (animal_e_number.isChecked()
                             || other_animal_derived_additives.isChecked()
-                            || StringUtils.isNotEmpty(comment.getText())) {
+                            || StringUtils.isNotEmpty(confirmed_vegan_comment.getText())) {
                         manufacturer_confirms_vegan.setVisibility(View.VISIBLE);
                     } else {
                         manufacturer_confirms_vegan.setVisibility(View.GONE);
                     }
 
-                    if (!manufacturer_confirms_vegan.isChecked() && StringUtils.isEmpty(comment.getText())) {
-                        comment.setVisibility(View.GONE);
+                    if (!manufacturer_confirms_vegan.isChecked() && StringUtils.isEmpty(confirmed_vegan_comment.getText())) {
+                        confirmed_vegan_comment.setVisibility(View.GONE);
                     }
                 }
             };
@@ -119,10 +119,10 @@ public class UncertainIngredients extends Activity {
             manufacturer_confirms_vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked || StringUtils.isNotEmpty(comment.getText())) {
-                        comment.setVisibility(View.VISIBLE);
+                    if (isChecked || StringUtils.isNotEmpty(confirmed_vegan_comment.getText())) {
+                        confirmed_vegan_comment.setVisibility(View.VISIBLE);
                     } else {
-                        comment.setVisibility(View.GONE);
+                        confirmed_vegan_comment.setVisibility(View.GONE);
                     }
 
                 }
@@ -145,7 +145,9 @@ public class UncertainIngredients extends Activity {
         }
 
         private void mergeProductValues(Product product) {
-            // TODO update with new fields?
+            if (confirmed_vegan_comment.getVisibility() == View.VISIBLE) {
+                product.setConfirmedVeganComment(StringUtils.trimToNull(confirmed_vegan_comment.getText().toString()));
+            }
             product.setContainsPossibleAnimalEnumbers(animal_e_number.isChecked());
             product.setContainsPossibleAnimalAdditives(other_animal_derived_additives.isChecked());
             product.setManufacturerConfirmsProductIsVegan(manufacturer_confirms_vegan.isChecked());

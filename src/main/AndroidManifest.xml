@@ -60,45 +60,47 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".wizard.MetaInformation"
-            android:label="Fra dyrekropper"
+            android:name=".wizard.RequestMetaInformation"
+            android:label="Beskrivelse"
             android:parentActivityName=".ProductDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ProductDetailsActivity" />
         </activity>
         <activity
-            android:name=".wizard.ObviouslyNotVegetarian"
+            android:name=".wizard.CheckIfNotVegetarianAtAll"
             android:label="Fra dyrekropper"
-            android:parentActivityName=".wizard.MetaInformation">
+            android:parentActivityName=".wizard.RequestMetaInformation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.MetaInformation" />
         </activity>
         <activity
-            android:name=".wizard.MaybeVegan"
+            android:name=".wizard.CheckIfLactoOvoVegetarian"
             android:label="Utskilt fra dyrekropper"
-            android:parentActivityName=".wizard.ObviouslyNotVegetarian">
+            android:parentActivityName=".wizard.CheckIfNotVegetarianAtAll">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.ObviouslyNotVegetarian" />
         </activity>
         <activity
-            android:name=".wizard.UncertainIngredients"
+            android:name=".wizard.CheckIfVegan"
             android:label="Tvilstilfeller"
-            android:parentActivityName=".wizard.MaybeVegan">
+            android:parentActivityName=".wizard.CheckIfLactoOvoVegetarian">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.MaybeVegan" />
         </activity>
         <activity
             android:name=".wizard.EnoughInformation"
-            android:label="Nok informasjon"/>
+            android:label="Nok informasjon" />
 
-        <activity android:name=".about.AboutActivity"
+        <activity
+            android:name=".about.AboutActivity"
             android:label="Om appen"
             android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
     </application>

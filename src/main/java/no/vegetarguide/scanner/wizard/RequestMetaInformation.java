@@ -18,7 +18,7 @@ import no.vegetarguide.scanner.model.Product;
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 import static org.apache.commons.lang3.StringUtils.trimToNull;
 
-public class MetaInformation extends Activity {
+public class RequestMetaInformation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +105,7 @@ public class MetaInformation extends Activity {
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent launchNext = new Intent(getActivity(), ObviouslyNotVegetarian.class);
+                    Intent launchNext = new Intent(getActivity(), CheckIfNotVegetarianAtAll.class);
 
                     mergeProductValues();
                     if (missingValues()) {
@@ -119,11 +119,14 @@ public class MetaInformation extends Activity {
         }
 
         private boolean missingValues() {
+            // validate input, check for required fields
             return false;
         }
 
         private void mergeProductValues() {
-            // TODO update with new fields?
+            String trimmedComment = trimToNull(comment.getText().toString());
+            product.setGeneralComment(trimmedComment); // overwrite previous value always
+
             String trimmedTitle = trimToNull(title_edit.getText().toString());
             product.setTitle(trimmedTitle == null ? product.getTitle() : trimmedTitle); // keep previous value if missing
 

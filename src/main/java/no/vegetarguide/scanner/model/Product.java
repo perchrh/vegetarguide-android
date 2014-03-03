@@ -33,16 +33,16 @@ public class Product implements Parcelable {
     private Boolean containsEggs;
     private Boolean containsAnimalMilk;
     private Boolean manufacturerConfirmsProductIsVegan;
+    private Boolean manufacturerConfirmsProductIsLactoOvoVegetarian;
 
     private Boolean containsPossibleAnimalAdditives;
     private Boolean containsPossibleAnimalEnumbers;
 
-    private String notVeganComment;
+    private String lactoOvoVegetarianComment;
     private String notLactoOvoVegetarianComment;
-    private String uncertainIngredientsComment;
     private String generalComment;
-    private Boolean manufacturerConfirmsProductIsLactoOvoVegetarian;
     private String confirmedLactoOvoVegetarianComment;
+    private String confirmedVeganComment;
 
     public Product() {
     }
@@ -65,10 +65,16 @@ public class Product implements Parcelable {
         this.manufacturerConfirmsProductIsVegan = (Boolean) in.readSerializable();
         this.containsPossibleAnimalAdditives = (Boolean) in.readSerializable();
         this.containsPossibleAnimalEnumbers = (Boolean) in.readSerializable();
+        this.lactoOvoVegetarianComment = in.readString();
+        this.notLactoOvoVegetarianComment = in.readString();
+        this.confirmedVeganComment = in.readString();
+        this.generalComment = in.readString();
+        this.manufacturerConfirmsProductIsLactoOvoVegetarian = (Boolean) in.readSerializable();
+        this.confirmedLactoOvoVegetarianComment = in.readString();
     }
 
     public boolean isMaybeVegan() {
-        return isLactoOvoVegetarian()
+        return isMaybeLactoOvoVegetarian()
                 && Boolean.FALSE.equals(this.containsInsectExcretions)
                 && Boolean.FALSE.equals(this.containsEggs)
                 && Boolean.FALSE.equals(this.containsAnimalMilk);
@@ -80,22 +86,26 @@ public class Product implements Parcelable {
     }
 
     public boolean isMaybeLactoOvoVegetarian() {
-        return Boolean.FALSE.equals(this.containsBodyParts)
-                && Boolean.FALSE.equals(this.containsRedListedAdditives);
+        return !isAnimalDerivedForCertain();
     }
 
     public boolean isLactoOvoVegetarian() {
-        return Boolean.FALSE.equals(this.containsBodyParts)
-                && Boolean.FALSE.equals(this.containsRedListedAdditives)
-                && Boolean.FALSE.equals(this.containsBodyParts)
-                && (Boolean.FALSE.equals(containsMajorUnspecifiedAdditives)
-                || Boolean.TRUE.equals(manufacturerConfirmsProductIsLactoOvoVegetarian));
+        return isMaybeLactoOvoVegetarian() && unspecifiedAdditivesAreLactoOvoVegetarian();
+    }
+
+    private boolean unspecifiedAdditivesAreLactoOvoVegetarian() {
+        return Boolean.FALSE.equals(containsMajorUnspecifiedAdditives)
+                || Boolean.TRUE.equals(manufacturerConfirmsProductIsLactoOvoVegetarian);
     }
 
     public boolean isVegan() {
-        return (isMaybeVegan() && Boolean.TRUE.equals(manufacturerConfirmsProductIsVegan))
-                || (isMaybeVegan() && Boolean.FALSE.equals(containsPossibleAnimalAdditives)
-                && Boolean.FALSE.equals(containsPossibleAnimalEnumbers));
+        final boolean isCandidate = isMaybeVegan();
+        final boolean isConfirmed = Boolean.TRUE.equals(manufacturerConfirmsProductIsVegan);
+
+        return ((isCandidate && isConfirmed)
+                || (isCandidate && Boolean.FALSE.equals(containsPossibleAnimalAdditives)
+                && Boolean.FALSE.equals(containsPossibleAnimalEnumbers)
+                && Boolean.FALSE.equals(containsMajorUnspecifiedAdditives)));
     }
 
     public String getTitle() {
@@ -234,38 +244,12 @@ public class Product implements Parcelable {
         this.containsPossibleAnimalEnumbers = containsPossibleAnimalEnumbers;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getLactoOvoVegetarianComment() {
+        return lactoOvoVegetarianComment;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.title);
-        dest.writeString(this.brand);
-        dest.writeString(this.subtitle);
-        dest.writeString(this.category);
-        dest.writeString(this.subcategory);
-        dest.writeString(this._id);
-        dest.writeString(this.gtin);
-        dest.writeSerializable(this.imageurl);
-        dest.writeSerializable(this.containsBodyParts);
-        dest.writeSerializable(this.containsRedListedAdditives);
-        dest.writeSerializable(this.containsMajorUnspecifiedAdditives);
-        dest.writeSerializable(this.containsInsectExcretions);
-        dest.writeSerializable(this.containsEggs);
-        dest.writeSerializable(this.containsAnimalMilk);
-        dest.writeSerializable(this.manufacturerConfirmsProductIsVegan);
-        dest.writeSerializable(this.containsPossibleAnimalAdditives);
-        dest.writeSerializable(this.containsPossibleAnimalEnumbers);
-    }
-
-    public String getNotVeganComment() {
-        return notVeganComment;
-    }
-
-    public void setNotVeganComment(String notVeganComment) {
-        this.notVeganComment = notVeganComment;
+    public void setLactoOvoVegetarianComment(String lactoOvoVegetarianComment) {
+        this.lactoOvoVegetarianComment = lactoOvoVegetarianComment;
     }
 
     public String getNotLactoOvoVegetarianComment() {
@@ -274,14 +258,6 @@ public class Product implements Parcelable {
 
     public void setNotLactoOvoVegetarianComment(String notLactoOvoVegetarianComment) {
         this.notLactoOvoVegetarianComment = notLactoOvoVegetarianComment;
-    }
-
-    public String getConfirmedVeganComment() {
-        return uncertainIngredientsComment;
-    }
-
-    public void setUncertainIngredientsComment(String uncertainIngredientsComment) {
-        this.uncertainIngredientsComment = uncertainIngredientsComment;
     }
 
     public String getGeneralComment() {
@@ -306,5 +282,45 @@ public class Product implements Parcelable {
 
     public void setConfirmedLactoOvoVegetarianComment(String confirmedLactoOvoVegetarianComment) {
         this.confirmedLactoOvoVegetarianComment = confirmedLactoOvoVegetarianComment;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.brand);
+        dest.writeString(this.subtitle);
+        dest.writeString(this.category);
+        dest.writeString(this.subcategory);
+        dest.writeString(this._id);
+        dest.writeString(this.gtin);
+        dest.writeSerializable(this.imageurl);
+        dest.writeSerializable(this.containsBodyParts);
+        dest.writeSerializable(this.containsRedListedAdditives);
+        dest.writeSerializable(this.containsMajorUnspecifiedAdditives);
+        dest.writeSerializable(this.containsInsectExcretions);
+        dest.writeSerializable(this.containsEggs);
+        dest.writeSerializable(this.containsAnimalMilk);
+        dest.writeSerializable(this.manufacturerConfirmsProductIsVegan);
+        dest.writeSerializable(this.containsPossibleAnimalAdditives);
+        dest.writeSerializable(this.containsPossibleAnimalEnumbers);
+        dest.writeString(this.lactoOvoVegetarianComment);
+        dest.writeString(this.notLactoOvoVegetarianComment);
+        dest.writeString(this.confirmedVeganComment);
+        dest.writeString(this.generalComment);
+        dest.writeSerializable(this.manufacturerConfirmsProductIsLactoOvoVegetarian);
+        dest.writeString(this.confirmedLactoOvoVegetarianComment);
+    }
+
+    public String getConfirmedVeganComment() {
+        return confirmedVeganComment;
+    }
+
+    public void setConfirmedVeganComment(String confirmedVeganComment) {
+        this.confirmedVeganComment = confirmedVeganComment;
     }
 }
