@@ -87,7 +87,7 @@ public class MaybeVegan extends Activity {
 
         private void createCheckBoxes(View rootView) {
             comment = (EditText) rootView.findViewById(R.id.maybe_vegan_comment);
-// TODO set value of comment from Product
+            comment.setText(product.getNotVeganComment());
 
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
             if (product.getContainsAnimalMilk() != null) {
@@ -153,7 +153,6 @@ public class MaybeVegan extends Activity {
         }
 
         private void mergeProductValues(Product product) {
-            // TODO støtte tri-state? yes, no, undecided?
             product.setContainsAnimalMilk(contains_animal_milk.isChecked());
             product.setContainsEggs(contains_eggs.isChecked());
             product.setContainsInsectExcretions(contains_honey.isChecked());

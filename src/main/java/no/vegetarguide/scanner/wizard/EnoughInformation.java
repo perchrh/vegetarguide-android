@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.MainActivity;
@@ -60,10 +61,16 @@ public class EnoughInformation extends Activity {
 
             String format = "Produktet er %s.";
             TextView status = (TextView) rootView.findViewById(R.id.status);
-            if (Boolean.FALSE.equals(product.isMaybeLactoOvoVegetarian())) {
-                status.setText(String.format(format, "ikke vegetarisk"));
-            } else if (Boolean.FALSE.equals(product.isMaybeVegan())) {
+            if (product.isVegan()) {
+                status.setText(String.format(format, "vegansk"));
+            } else if (product.isLactoOvoVegetarian()) {
                 status.setText(String.format(format, "lakto-ovo vegetarisk"));
+            } else if (product.isMaybeVegan()) {
+                status.setText(String.format(format, "kanskje vegansk"));
+            } else if (product.isMaybeLactoOvoVegetarian()) {
+                status.setText(String.format(format, "kanskje lakto-ovo vegetarisk"));
+            } else if (product.isAnimalDerivedForCertain()) {
+                status.setText("ikke vegetarisk");
             }
 
             View submitButton = rootView.findViewById(R.id.submit_button);
@@ -71,10 +78,12 @@ public class EnoughInformation extends Activity {
                 @Override
                 public void onClick(View v) {
                     // TODO submit to server
+                    Toast.makeText(getActivity(), "Her ville produktet bli sendt inn til serveren", Toast.LENGTH_LONG).show();
 
                     getActivity().setResult(RESULT_OK);
                     getActivity().finish();
                     Intent gotoStart = new Intent(getActivity(), MainActivity.class);
+                    gotoStart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(gotoStart);
                 }
             });

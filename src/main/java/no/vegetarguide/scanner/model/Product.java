@@ -33,24 +33,16 @@ public class Product implements Parcelable {
     private Boolean containsEggs;
     private Boolean containsAnimalMilk;
     private Boolean manufacturerConfirmsProductIsVegan;
+
     private Boolean containsPossibleAnimalAdditives;
     private Boolean containsPossibleAnimalEnumbers;
 
+    private String notVeganComment;
+    private String notLactoOvoVegetarianComment;
+    private String uncertainIngredientsComment;
+    private String generalComment;
+
     public Product() {
-    }
-
-    public boolean isMaybeVegan(){
-        return Boolean.FALSE.equals(this.containsAnimalMilk)
-                && Boolean.FALSE.equals(this.containsAnimalMilk)
-                && Boolean.FALSE.equals(this.containsBodyParts)
-                && Boolean.FALSE.equals(this.containsEggs)
-                && Boolean.FALSE.equals(this.containsInsectExcretions)
-                && Boolean.FALSE.equals(this.containsRedListedAdditives);
-    }
-
-    public boolean isMaybeLactoOvoVegetarian(){
-        return Boolean.FALSE.equals(this.containsBodyParts)
-                && Boolean.FALSE.equals(this.containsRedListedAdditives);
     }
 
     public Product(Parcel in) {
@@ -71,6 +63,39 @@ public class Product implements Parcelable {
         this.manufacturerConfirmsProductIsVegan = (Boolean) in.readSerializable();
         this.containsPossibleAnimalAdditives = (Boolean) in.readSerializable();
         this.containsPossibleAnimalEnumbers = (Boolean) in.readSerializable();
+    }
+
+    public boolean isMaybeVegan() {
+        return Boolean.FALSE.equals(this.containsBodyParts)
+                && Boolean.FALSE.equals(this.containsRedListedAdditives)
+                && Boolean.FALSE.equals(this.containsInsectExcretions)
+                && Boolean.FALSE.equals(this.containsEggs)
+                && Boolean.FALSE.equals(this.containsAnimalMilk);
+    }
+
+    public boolean isAnimalDerivedForCertain(){
+        return Boolean.TRUE.equals(this.containsBodyParts)
+                || Boolean.TRUE.equals(this.containsRedListedAdditives);
+    }
+
+    public boolean isMaybeLactoOvoVegetarian() {
+        return Boolean.FALSE.equals(this.containsBodyParts)
+                && Boolean.FALSE.equals(this.containsRedListedAdditives);
+    }
+
+    public boolean isLactoOvoVegetarian() {
+        return Boolean.FALSE.equals(this.containsBodyParts)
+                && Boolean.FALSE.equals(this.containsRedListedAdditives)
+                && Boolean.FALSE.equals(this.containsBodyParts)
+                && !containsMajorUnspecifiedAdditives;
+        //TODO also allow unspecified additives if has been OKed by manufacturer
+    }
+
+    public boolean isVegan() {
+        return (isMaybeVegan() && Boolean.TRUE.equals(manufacturerConfirmsProductIsVegan))
+                || (isMaybeVegan() && !containsPossibleAnimalAdditives
+                && !containsPossibleAnimalEnumbers
+                && !containsMajorUnspecifiedAdditives);
     }
 
     public String getTitle() {
@@ -233,5 +258,37 @@ public class Product implements Parcelable {
         dest.writeSerializable(this.manufacturerConfirmsProductIsVegan);
         dest.writeSerializable(this.containsPossibleAnimalAdditives);
         dest.writeSerializable(this.containsPossibleAnimalEnumbers);
+    }
+
+    public String getNotVeganComment() {
+        return notVeganComment;
+    }
+
+    public void setNotVeganComment(String notVeganComment) {
+        this.notVeganComment = notVeganComment;
+    }
+
+    public String getNotLactoOvoVegetarianComment() {
+        return notLactoOvoVegetarianComment;
+    }
+
+    public void setNotLactoOvoVegetarianComment(String notLactoOvoVegetarianComment) {
+        this.notLactoOvoVegetarianComment = notLactoOvoVegetarianComment;
+    }
+
+    public String getConfirmedVeganComment() {
+        return uncertainIngredientsComment;
+    }
+
+    public void setUncertainIngredientsComment(String uncertainIngredientsComment) {
+        this.uncertainIngredientsComment = uncertainIngredientsComment;
+    }
+
+    public String getGeneralComment() {
+        return generalComment;
+    }
+
+    public void setGeneralComment(String generalComment) {
+        this.generalComment = generalComment;
     }
 }

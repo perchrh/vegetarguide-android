@@ -44,6 +44,7 @@ public class MetaInformation extends Activity {
         private TextView gtin_value;
         private EditText title_edit;
         private EditText subtitle_edit;
+        private EditText comment;
 
         public MetaInformationFragment() {
 
@@ -83,6 +84,9 @@ public class MetaInformation extends Activity {
             subtitle_edit.setText(product.getSubtitle());
             brand_edit = (EditText) rootView.findViewById(R.id.brand_edit);
             brand_edit.setText(product.getBrand());
+
+            comment = (EditText) rootView.findViewById(R.id.commentary_edit);
+            comment.setText(product.getGeneralComment());
         }
 
         private void createCancelButton(View rootView) {
@@ -104,11 +108,18 @@ public class MetaInformation extends Activity {
                     Intent launchNext = new Intent(getActivity(), ObviouslyNotVegetarian.class);
 
                     mergeProductValues();
-
-                    launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
-                    startActivity(launchNext);
+                    if (missingValues()) {
+                        //TODO show popup saying what is wrong
+                    } else {
+                        launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
+                        startActivity(launchNext);
+                    }
                 }
             });
+        }
+
+        private boolean missingValues() {
+            return false;
         }
 
         private void mergeProductValues() {

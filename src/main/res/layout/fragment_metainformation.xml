@@ -109,6 +109,18 @@
 
         </LinearLayout>
 
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_commentary_hint"
+            android:id="@+id/commentary_edit"
+            android:layout_below="@+id/brand_row"
+            android:inputType="textCapSentences|textMultiLine"
+            android:ems="10"
+            android:gravity="left|top"
+            android:layout_marginTop="10dp"
+            android:lines="2" />
+
 
         <Button
             android:id="@+id/metainformation_next_button"
@@ -116,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/brand_row"
+            android:layout_below="@+id/commentary_edit"
             android:layout_marginTop="10dp"
             android:text="@string/action_next" />
 
@@ -124,7 +136,7 @@
             android:id="@+id/metainformation_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/brand_row"
+            android:layout_below="@+id/commentary_edit"
             android:layout_toLeftOf="@+id/metainformation_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"

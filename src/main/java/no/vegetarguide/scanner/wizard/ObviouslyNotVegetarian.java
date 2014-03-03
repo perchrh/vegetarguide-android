@@ -45,7 +45,8 @@ public class ObviouslyNotVegetarian extends Activity {
         private CheckBox animal_bodies;
         private CheckBox red_listed_additives;
         private CheckBox major_unspecified_additives;
-        private EditText comment;
+        // TODO let user declare that the source of unspecified additives is known after contacting manufacturer
+        private EditText comment; //use this comment for the unspecified additives, must be at least lacto-ovo vegetarian
 
         public ObviouslyNotVegetarianFragment() {
 
@@ -77,7 +78,7 @@ public class ObviouslyNotVegetarian extends Activity {
 
         private void createCheckBoxes(View rootView, Product product) {
             comment = (EditText) rootView.findViewById(R.id.obviously_not_vegetarian_comment);
-            // TODO set value of comment from Product
+            comment.setText(product.getNotLactoOvoVegetarianComment());
 
             animal_bodies = (CheckBox) rootView.findViewById(R.id.animal_bodies);
             if (product.getContainsBodyParts() != null) {
@@ -91,7 +92,6 @@ public class ObviouslyNotVegetarian extends Activity {
             if (product.getContainsMajorUnspecifiedAdditives() != null) {
                 red_listed_additives.setChecked(product.getContainsMajorUnspecifiedAdditives());
             }
-
 
             CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -137,7 +137,6 @@ public class ObviouslyNotVegetarian extends Activity {
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);
                     }
-
                     launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
                     startActivity(launchNext);
                 }

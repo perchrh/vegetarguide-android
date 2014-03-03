@@ -52,11 +52,14 @@
 
 
         <EditText
-            android:id="@+id/uncertain_ingredients_comment"
+            android:id="@+id/confirmed_vegan_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_below="@+id/manufacturer_confirms_vegan"
+            android:inputType="textCapSentences|textMultiLine"
+            android:ems="10"
+            android:gravity="left|top"
             android:minLines="2"
             android:hint="Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag" />
 
@@ -67,15 +70,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/uncertain_ingredients_comment"
+            android:layout_below="@+id/confirmed_vegan_comment"
             android:layout_marginTop="10dp"
-            android:text="Send inn" />
+            android:text="@string/action_next" />
 
         <Button
             android:id="@+id/uncertain_ingredients_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/uncertain_ingredients_comment"
+            android:layout_below="@+id/confirmed_vegan_comment"
             android:layout_toLeftOf="@+id/uncertain_ingredients_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"

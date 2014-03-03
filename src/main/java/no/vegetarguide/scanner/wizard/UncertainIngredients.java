@@ -15,7 +15,6 @@ import android.widget.EditText;
 import org.apache.commons.lang3.StringUtils;
 
 import no.vegetarguide.scanner.Application;
-import no.vegetarguide.scanner.MainActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.model.Product;
 
@@ -83,8 +82,8 @@ public class UncertainIngredients extends Activity {
         }
 
         private void createCheckBoxes(View rootView, Product product) {
-            comment = (EditText) rootView.findViewById(R.id.uncertain_ingredients_comment);
-            // TODO set value of comment from Product
+            comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
+            comment.setText(product.getConfirmedVeganComment());
 
             animal_e_number = (CheckBox) rootView.findViewById(R.id.animal_e_number);
             if (product.getContainsPossibleAnimalEnumbers() != null) {
@@ -135,13 +134,12 @@ public class UncertainIngredients extends Activity {
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // send productDetails over network, wait for result
-
                     mergeProductValues(product);
 
-                    Intent gotoStart = new Intent(getActivity(), MainActivity.class);
-                    gotoStart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(gotoStart);
+                    Intent launchNext = new Intent(getActivity(), EnoughInformation.class);
+                    launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
+
+                    startActivity(launchNext);
                 }
             });
         }
