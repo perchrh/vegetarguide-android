@@ -1,0 +1,139 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="no.vegetarguide.scanner.wizard.CheckIfLactoOvoVegetarian.MaybeVeganFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/maybe_vegan_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/maybe_vegan_headline"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:id="@+id/contains_animal_milk_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/maybe_vegan_headline"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/contains_animal_milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/contains_animal_milk" />
+
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0"
+                android:onClick="showToolTip"
+                android:src="@android:drawable/ic_menu_help" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contains_eggs_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_animal_milk_row"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/contains_eggs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/contains_egg_label" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0"
+                android:onClick="showToolTip"
+                android:src="@android:drawable/ic_menu_help" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/contains_honey_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_eggs_row"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/contains_honey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/contains_insect_excretions_label" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0"
+                android:onClick="showToolTip"
+                android:src="@android:drawable/ic_menu_help" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/lacto_ovo_vegetarian_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_honey_row"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:inputType="textCapSentences|textMultiLine"
+            android:ems="10"
+            android:gravity="left|top"
+            android:minLines="2"
+            android:hint="@string/maybe_vegan_comment_hint" />
+
+
+        <Button
+            android:id="@+id/maybe_vegan_next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/lacto_ovo_vegetarian_comment"
+            android:layout_marginTop="10dp"
+            android:text="@string/action_next" />
+
+        <Button
+            android:id="@+id/maybe_vegan_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lacto_ovo_vegetarian_comment"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/maybe_vegan_next_button"
+            android:text="@string/action_previous" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,105 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="no.vegetarguide.scanner.wizard.CheckIfNotVegetarianAtAll.ObviouslyNotVegetarianFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/maybe_vegetarian_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/maybe_vegetarian_headline"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <CheckBox
+            android:layout_marginTop="10dp"
+            android:id="@+id/animal_bodies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/maybe_vegetarian_headline"
+            android:text="@string/animal_bodies_enumeration" />
+
+
+        <CheckBox
+            android:layout_marginTop="10dp"
+            android:id="@+id/red_listed_additives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/animal_bodies"
+            android:text="@string/red_listed_ingredients" />
+
+        <CheckBox
+            android:layout_marginTop="10dp"
+            android:id="@+id/major_unspecified_additives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/red_listed_additives"
+            android:text="Uspesifiserte oljer og aromaer" />
+
+        <CheckBox
+            android:id="@+id/manufacturer_confirms_vegetarian"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Produsenten har bekreftet at produktet er vegetarisk"
+            android:layout_below="@+id/major_unspecified_additives" />
+
+        <EditText
+            android:id="@+id/confirmed_vegetarian_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/manufacturer_confirms_vegetarian"
+            android:inputType="textCapSentences|textMultiLine"
+            android:visibility="gone"
+            android:ems="10"
+            android:gravity="left|top"
+            android:minLines="2"
+            android:hint="Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag" />
+
+        <EditText
+            android:id="@+id/obviously_not_vegetarian_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:visibility="gone"
+            android:ems="10"
+            android:gravity="left|top"
+            android:minLines="2"
+            android:layout_below="@+id/confirmed_vegetarian_comment"
+            android:hint="Hva inneholder varen av dyrekropper?" />
+
+
+        <Button
+            android:id="@+id/obviously_not_vegetarian_next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/obviously_not_vegetarian_comment"
+            android:layout_marginTop="10dp"
+            android:text="@string/action_next" />
+
+        <Button
+            android:id="@+id/obviously_not_vegetarian_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/obviously_not_vegetarian_comment"
+            android:layout_toLeftOf="@+id/obviously_not_vegetarian_next_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:text="@string/action_previous" />
+
+    </RelativeLayout>
+
+</ScrollView>

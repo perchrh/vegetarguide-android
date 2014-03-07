@@ -27,7 +27,7 @@ import no.vegetarguide.scanner.model.AdditivesDetails;
 import no.vegetarguide.scanner.model.ModifyProductResponse;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
 
-import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_SUCCESS;
+import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class ModifyProductActivity extends Activity {

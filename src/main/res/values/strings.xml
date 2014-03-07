@@ -82,4 +82,7 @@
     <string name="manual_gtin_search">Søk</string>
     <string name="manual_input_gtin_label">Strekkode</string>
 
+
+    <string name="action_about">Om appen</string>
+
 </resources>

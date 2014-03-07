@@ -22,8 +22,8 @@ import no.vegetarguide.scanner.model.ProductLookupResponse;
 import no.vegetarguide.scanner.model.ResultType;
 import no.vegetarguide.scanner.model.StatusType;
 
-import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_REQUEST_CODE;
-import static no.vegetarguide.scanner.SuperScan.START_SCANNING;
+import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_REQUEST_CODE;
+import static no.vegetarguide.scanner.Application.START_SCANNING;
 
 public class ProductDetailsActivity extends Activity {
 

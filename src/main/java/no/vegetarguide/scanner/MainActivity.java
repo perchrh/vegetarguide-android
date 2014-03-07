@@ -8,6 +8,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,14 +23,17 @@ import com.android.volley.VolleyError;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import no.vegetarguide.scanner.about.AboutActivity;
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
+import no.vegetarguide.scanner.model.Product;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
+import no.vegetarguide.scanner.wizard.RequestMetaInformation;
 
-import static no.vegetarguide.scanner.SuperScan.MODIFY_PRODUCT_SUCCESS;
-import static no.vegetarguide.scanner.SuperScan.PRODUCT_DETAILS_REQUEST_CODE;
-import static no.vegetarguide.scanner.SuperScan.START_SCANNING;
+import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
+import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_REQUEST_CODE;
+import static no.vegetarguide.scanner.Application.START_SCANNING;
 
 public class MainActivity extends Activity {
 
@@ -75,13 +80,71 @@ public class MainActivity extends Activity {
             }
         });
 
+        View launchNewAdd = findViewById(R.id.test_new_add);
+        launchNewAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launchNext = new Intent(getBaseContext(), RequestMetaInformation.class);
+                launchNext.putExtra(Application.PRODUCT_DETAILS_KEY, new Product());
+                startActivity(launchNext);
+            }
+        });
+
+        View launchNewModify = findViewById(R.id.test_new_modify);
+        launchNewModify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), RequestMetaInformation.class);
+
+                Product product = new Product();
+                product.setTitle("Fake title");
+                product.setBrand("Fake brand");
+                product.setSubtitle("Fake subtitle");
+                product.setGtin("12345678901234");
+
+                product.setContainsBodyParts(false);
+                product.setContainsRedListedAdditives(null);
+                product.setContainsMajorUnspecifiedAdditives(null);
+
+                product.setContainsAnimalMilk(true);
+                product.setContainsInsectExcretions(true);
+                product.setContainsPossibleAnimalEnumbers(true);
+
+
+            //TODO add more fields
+                product.setManufacturerConfirmsProductIsVegan(false);
+
+                intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_about) {
+            startActivity(new Intent(this, AboutActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void startScan() {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.initiateScan(IntentIntegrator.PRODUCT_CODE_TYPES);
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {

@@ -1,0 +1,41 @@
+<resources>
+    <!-- red list -->
+    <string-array name="not_vegetarian">
+        <item>Karmin/cochinell (E120)</item>
+        <item>Fiskesaus</item>
+        <item>Østerssaus</item>
+        <item>Gelatin</item>
+        <item>Aspik</item>
+        <item>Pepsin</item>
+        <item>Løpe/rennin fra kalv</item>
+        <item>Kalsium mesoinositol hexafosfat</item>
+    </string-array>
+
+    <!-- orange list -->
+    <string-array name="not_vegan">
+        <item>E901</item>
+        <item>E904</item>
+        <item>E966</item>
+        <item>E1105</item>
+    </string-array>
+
+    <!-- yellow list -->
+    <string-array name="unknowns">
+        <item>E304</item>
+        <item>E322</item>
+        <item>E470–475</item>
+        <item>E477</item>
+        <item>E479</item>
+        <item>E481–483</item>
+        <item>E491–495</item>
+        <item>E626–629</item>
+        <item>E1518</item>
+    </string-array>
+
+    <!-- red list -->
+    <string name="animal_bodies_enumeration">En eller flere typer dyrekjøtt, inklusive fisk, fugl, skalldyr, skjell og insekter.</string>
+    <string name="red_listed_ingredients">Karmin (E120), østerssaus, rogn, kjøttkraft, kjøttbuljong, gelatin, aspik, pepsin, løpe eller rennin fra kalv eller kalsium mesoinositol hexafosfat.</string>
+
+
+
+</resources>

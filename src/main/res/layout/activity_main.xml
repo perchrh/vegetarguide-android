@@ -7,16 +7,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/launcher_background"
             android:alpha="0.2"
-            android:scaleType="centerCrop"/>
-        </RelativeLayout>
+            android:scaleType="centerCrop" />
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,7 +29,7 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingBottom="@dimen/activity_vertical_margin">
 
-        <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/scanning_headline"
@@ -62,7 +61,7 @@
                 android:padding="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="38dp"
                 android:textSize="36sp" />
 
             <Button
@@ -72,7 +71,36 @@
                 android:id="@+id/input_code"
                 android:layout_below="@+id/scan_button"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/rounded_corners_green_bg"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="36sp" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test legg til"
+                android:id="@+id/test_new_add"
+                android:layout_below="@+id/input_code"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/rounded_corners_green_bg"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="36sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test endre"
+                android:id="@+id/test_new_modify"
+                android:layout_below="@+id/test_new_add"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="38dp"
                 android:background="@drawable/rounded_corners_green_bg"
                 android:padding="10dp"
                 android:layout_marginLeft="10dp"

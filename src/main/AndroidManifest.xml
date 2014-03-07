@@ -15,8 +15,8 @@
 
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,20 +29,80 @@
             android:label="@string/app_name" />
         <activity
             android:name=".ProductDetailsActivity"
-            android:label="@string/title_activity_product_details" />
-        <activity
-            android:name=".ModifyProductActivity"
-            android:label="@string/title_activity_modify_product" />
-        <activity
-            android:name=".VerifyAdditivesActivity"
-            android:label="@string/title_activity_verify_additives"/>
-        <activity android:name=".ManualInputActivity"
-            android:label="@string/title_activity_manual_input"
+            android:label="@string/title_activity_product_details"
             android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name=".ModifyProductActivity"
+            android:label="@string/title_activity_modify_product"
+            android:parentActivityName=".ProductDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".VerifyAdditivesActivity"
+            android:label="@string/title_activity_verify_additives"
+            android:parentActivityName=".ModifyProductActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ModifyProductActivity" />
+        </activity>
+        <activity
+            android:name=".ManualInputActivity"
+            android:label="@string/title_activity_manual_input"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".wizard.RequestMetaInformation"
+            android:label="Beskrivelse"
+            android:parentActivityName=".ProductDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProductDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".wizard.CheckIfNotVegetarianAtAll"
+            android:label="Fra dyrekropper"
+            android:parentActivityName=".wizard.RequestMetaInformation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".wizard.MetaInformation" />
+        </activity>
+        <activity
+            android:name=".wizard.CheckIfLactoOvoVegetarian"
+            android:label="Utskilt fra dyrekropper"
+            android:parentActivityName=".wizard.CheckIfNotVegetarianAtAll">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".wizard.ObviouslyNotVegetarian" />
+        </activity>
+        <activity
+            android:name=".wizard.CheckIfVegan"
+            android:label="Tvilstilfeller"
+            android:parentActivityName=".wizard.CheckIfLactoOvoVegetarian">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".wizard.MaybeVegan" />
+        </activity>
+        <activity
+            android:name=".wizard.EnoughInformation"
+            android:label="Nok informasjon" />
 
+        <activity
+            android:name=".about.AboutActivity"
+            android:label="Om appen"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
