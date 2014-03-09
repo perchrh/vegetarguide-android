@@ -87,11 +87,12 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             }
             contains_unspecified_possibly_animal_additives = (CheckBox) rootView.findViewById(R.id.contains_unspecified_possibly_animal_additives);
             if (product.getIngredients().getContains_unspecified_possibly_animal_additives() != null) {
-                contains_animal_additives.setChecked(product.getIngredients().getContains_unspecified_possibly_animal_additives());
+                contains_unspecified_possibly_animal_additives.setChecked(product.getIngredients().getContains_unspecified_possibly_animal_additives());
             }
 
             confirmed_vegetarian_comment = (EditText) rootView.findViewById(R.id.confirmed_vegetarian_comment);
             confirmed_vegetarian_comment.setText(product.getIngredients().getConfirmed_vegetarian_comment());
+
             manufacturer_confirms_vegetarian = (CheckBox) rootView.findViewById(R.id.manufacturer_confirms_vegetarian);
             if (product.getIngredients().getManufacturer_confirms_vegetarian() != null) {
                 manufacturer_confirms_vegetarian.setChecked(product.getIngredients().getManufacturer_confirms_vegetarian());
