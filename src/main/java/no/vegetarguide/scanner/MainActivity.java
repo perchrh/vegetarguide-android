@@ -101,16 +101,19 @@ public class MainActivity extends Activity {
                 product.setBrand("Fake brand");
                 product.setSubtitle("Fake subtitle");
                 product.setGtin("12345678901234");
+                product.setGeneral_comment("Nå uten melk");
 
                 product.getIngredients().setContains_body_parts(false);
-                product.getIngredients().setContains_animal_additives(null);
-                product.getIngredients().setContains_unspecified_possibly_animal_additives(null);
 
-                product.getIngredients().setContains_animal_milk(true);
+                product.getIngredients().setContains_animal_milk(false);
+                product.getIngredients().setContains_eggs(true);
                 product.getIngredients().setContains_insect_excretions(true);
 
-                //TODO add more fields
-                product.getIngredients().setManufacturer_confirms_vegan(false);
+                product.getIngredients().setContains_unspecified_possibly_animal_additives(true);
+                product.getIngredients().setManufacturer_confirms_vegetarian(true);
+                product.getIngredients().setConfirmed_vegetarian_comment("Står på pakken at det er vegetarisk");
+
+                product.getIngredients().setContains_animal_additives(true);
 
                 intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
                 startActivity(intent);
