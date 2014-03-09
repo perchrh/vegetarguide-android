@@ -146,7 +146,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
 
                     Intent launchNext;
 
-                    if (product.getIngredients().isMaybeLactoOvoVegetarian()) {
+                    if (product.getIngredients().isMaybeVegetarian()) {
                         launchNext = new Intent(getActivity(), CheckIfVegetarian.class);
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);

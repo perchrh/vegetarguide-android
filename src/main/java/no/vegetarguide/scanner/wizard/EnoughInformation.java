@@ -58,22 +58,21 @@ public class EnoughInformation extends Activity {
             View rootView = inflater.inflate(R.layout.fragment_enough_information, container, false);
             final Product product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
-
             final String format = "Produktet er %s.";
             TextView status = (TextView) rootView.findViewById(R.id.status);
             if (product.getIngredients().isAnimalDerivedForCertain()) {
                 status.setText(String.format(format, "ikke vegetarisk"));
             } else if (product.getIngredients().isMaybeVegan()) {
-                if (product.getIngredients().isLactoOvoVegetarian()) {
-                    status.setText(String.format(format, "lakto-ovo vegetarisk og kanskje vegansk"));
+                if (product.getIngredients().isVegetarian()) {
+                    status.setText(String.format(format, "vegetarisk og kanskje vegansk"));
                 } else if (product.getIngredients().isVegan()) {
                     status.setText(String.format(format, "vegansk"));
-                } else if (product.getIngredients().isMaybeLactoOvoVegetarian()) {
+                } else if (product.getIngredients().isMaybeVegetarian()) {
                     status.setText(String.format(format, "kanskje vegetarisk eller vegansk"));
                 }
-            } else if (product.getIngredients().isMaybeLactoOvoVegetarian()) {
-                if (product.getIngredients().isLactoOvoVegetarian()) {
-                    status.setText(String.format(format, "lakto-ovo vegetarisk"));
+            } else if (product.getIngredients().isMaybeVegetarian()) {
+                if (product.getIngredients().isVegetarian()) {
+                    status.setText(String.format(format, "vegetarisk"));
                 } else {
                     status.setText(String.format(format, "kanskje vegetarisk"));
                 }

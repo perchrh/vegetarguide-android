@@ -59,7 +59,7 @@ public class Ingredients implements Parcelable {
 
 
     public boolean isMaybeVegan() {
-        return isMaybeLactoOvoVegetarian()
+        return isMaybeVegetarian()
                 && Boolean.FALSE.equals(this.contains_insect_excretions)
                 && Boolean.FALSE.equals(this.contains_eggs)
                 && Boolean.FALSE.equals(this.contains_animal_milk);
@@ -70,15 +70,15 @@ public class Ingredients implements Parcelable {
                 || Boolean.TRUE.equals(this.contains_animal_additives);
     }
 
-    public boolean isMaybeLactoOvoVegetarian() {
+    public boolean isMaybeVegetarian() {
         return !isAnimalDerivedForCertain();
     }
 
-    public boolean isLactoOvoVegetarian() {
-        return isMaybeLactoOvoVegetarian() && unspecifiedAdditivesAreLactoOvoVegetarian();
+    public boolean isVegetarian() {
+        return isMaybeVegetarian() && unspecifiedAdditivesAreVegetarian();
     }
 
-    private boolean unspecifiedAdditivesAreLactoOvoVegetarian() {
+    private boolean unspecifiedAdditivesAreVegetarian() {
         return Boolean.FALSE.equals(contains_unspecified_possibly_animal_additives)
                 || Boolean.TRUE.equals(manufacturer_confirms_vegetarian);
     }
