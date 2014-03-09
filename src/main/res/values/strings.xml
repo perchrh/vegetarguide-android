@@ -84,5 +84,11 @@
 
 
     <string name="action_about">Om appen</string>
+    <string name="about_activity_title">Om appen</string>
+    <string name="enough_information_title">Nok informasjon</string>
+    <string name="check_if_vegan_title">Tvilstilfeller</string>
+    <string name="check_if_vegetarian_title">Utskilt fra dyrekropper</string>
+    <string name="check_if_not_vegetarian_at_all_title">Fra dyrekropper</string>
+    <string name="request_meta_information_title">Beskrivelse</string>
 
 </resources>

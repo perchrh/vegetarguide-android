@@ -61,18 +61,18 @@ public class EnoughInformation extends Activity {
 
             final String format = "Produktet er %s.";
             TextView status = (TextView) rootView.findViewById(R.id.status);
-            if (product.isAnimalDerivedForCertain()) {
+            if (product.getIngredients().isAnimalDerivedForCertain()) {
                 status.setText(String.format(format, "ikke vegetarisk"));
-            } else if (product.isMaybeVegan()) {
-                if (product.isLactoOvoVegetarian()) {
+            } else if (product.getIngredients().isMaybeVegan()) {
+                if (product.getIngredients().isLactoOvoVegetarian()) {
                     status.setText(String.format(format, "lakto-ovo vegetarisk og kanskje vegansk"));
-                } else if (product.isVegan()) {
+                } else if (product.getIngredients().isVegan()) {
                     status.setText(String.format(format, "vegansk"));
-                } else if (product.isMaybeLactoOvoVegetarian()) {
+                } else if (product.getIngredients().isMaybeLactoOvoVegetarian()) {
                     status.setText(String.format(format, "kanskje vegetarisk eller vegansk"));
                 }
-            } else if (product.isMaybeLactoOvoVegetarian()) {
-                if (product.isLactoOvoVegetarian()) {
+            } else if (product.getIngredients().isMaybeLactoOvoVegetarian()) {
+                if (product.getIngredients().isLactoOvoVegetarian()) {
                     status.setText(String.format(format, "lakto-ovo vegetarisk"));
                 } else {
                     status.setText(String.format(format, "kanskje vegetarisk"));

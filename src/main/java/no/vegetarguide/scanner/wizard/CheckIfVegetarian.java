@@ -21,12 +21,12 @@ import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
-public class CheckIfLactoOvoVegetarian extends Activity {
+public class CheckIfVegetarian extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_if_lacto_ovo_vegetarian);
+        setContentView(R.layout.activity_check_if_vegetarian);
 
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
@@ -34,7 +34,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, CheckIfLactoOvoVegetarianFragment.newInstance(product))
+                    .add(R.id.container, CheckIfVegetarianFragment.newInstance(product))
                     .commit();
         }
 
@@ -49,19 +49,19 @@ public class CheckIfLactoOvoVegetarian extends Activity {
     }
 
 
-    public static class CheckIfLactoOvoVegetarianFragment extends Fragment {
+    public static class CheckIfVegetarianFragment extends Fragment {
         private CheckBox contains_animal_milk;
         private CheckBox contains_eggs;
         private CheckBox contains_insect_excretions;
         private EditText vegetarian_comment;
         private Product product;
 
-        public CheckIfLactoOvoVegetarianFragment() {
+        public CheckIfVegetarianFragment() {
 
         }
 
-        public static CheckIfLactoOvoVegetarianFragment newInstance(Product productDetails) {
-            CheckIfLactoOvoVegetarianFragment frag = new CheckIfLactoOvoVegetarianFragment();
+        public static CheckIfVegetarianFragment newInstance(Product productDetails) {
+            CheckIfVegetarianFragment frag = new CheckIfVegetarianFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
             frag.setArguments(args);
@@ -70,7 +70,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_check_if_lacto_ovo_vegetarian, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_check_if_vegetarian, container, false);
             Bundle arguments = getArguments();
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
@@ -87,19 +87,19 @@ public class CheckIfLactoOvoVegetarian extends Activity {
 
         private void createCheckBoxes(View rootView) {
             vegetarian_comment = (EditText) rootView.findViewById(R.id.vegetarian_comment);
-            vegetarian_comment.setText(product.getVegetarian_comment());
+            vegetarian_comment.setText(product.getIngredients().getVegetarian_comment());
 
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
-            if (product.getContains_animal_milk() != null) {
-                contains_animal_milk.setChecked(product.getContains_animal_milk());
+            if (product.getIngredients().getContains_animal_milk() != null) {
+                contains_animal_milk.setChecked(product.getIngredients().getContains_animal_milk());
             }
             contains_eggs = (CheckBox) rootView.findViewById(R.id.contains_eggs);
-            if (product.getContains_eggs() != null) {
-                contains_eggs.setChecked(product.getContains_eggs());
+            if (product.getIngredients().getContains_eggs() != null) {
+                contains_eggs.setChecked(product.getIngredients().getContains_eggs());
             }
             contains_insect_excretions = (CheckBox) rootView.findViewById(R.id.contains_insect_excretions);
-            if (product.getContains_insect_excretions() != null) {
-                contains_insect_excretions.setChecked(product.getContains_insect_excretions());
+            if (product.getIngredients().getContains_insect_excretions() != null) {
+                contains_insect_excretions.setChecked(product.getIngredients().getContains_insect_excretions());
             }
 
             CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
@@ -140,7 +140,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
                     mergeProductValues(product);
 
                     Intent launchNext;
-                    if (product.isMaybeVegan()) {
+                    if (product.getIngredients().isMaybeVegan()) {
                         launchNext = new Intent(getActivity(), CheckIfVegan.class);
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);
@@ -153,10 +153,10 @@ public class CheckIfLactoOvoVegetarian extends Activity {
         }
 
         private void mergeProductValues(Product product) {
-            product.setVegetarian_comment(StringUtils.trimToNull(vegetarian_comment.getText().toString()));
-            product.setContains_animal_milk(contains_animal_milk.isChecked());
-            product.setContains_eggs(contains_eggs.isChecked());
-            product.setContains_insect_excretions(contains_insect_excretions.isChecked());
+            product.getIngredients().setVegetarian_comment(StringUtils.trimToNull(vegetarian_comment.getText().toString()));
+            product.getIngredients().setContains_animal_milk(contains_animal_milk.isChecked());
+            product.getIngredients().setContains_eggs(contains_eggs.isChecked());
+            product.getIngredients().setContains_insect_excretions(contains_insect_excretions.isChecked());
         }
 
     }

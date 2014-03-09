@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name=".wizard.RequestMetaInformation"
-            android:label="Beskrivelse"
+            android:label="@string/request_meta_information_title"
             android:parentActivityName=".ProductDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -69,15 +69,15 @@
         </activity>
         <activity
             android:name=".wizard.CheckIfNotVegetarianAtAll"
-            android:label="Fra dyrekropper"
+            android:label="@string/check_if_not_vegetarian_at_all_title"
             android:parentActivityName=".wizard.RequestMetaInformation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.MetaInformation" />
         </activity>
         <activity
-            android:name=".wizard.CheckIfLactoOvoVegetarian"
-            android:label="Utskilt fra dyrekropper"
+            android:name=".wizard.CheckIfVegetarian"
+            android:label="@string/check_if_vegetarian_title"
             android:parentActivityName=".wizard.CheckIfNotVegetarianAtAll">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -85,19 +85,19 @@
         </activity>
         <activity
             android:name=".wizard.CheckIfVegan"
-            android:label="Tvilstilfeller"
-            android:parentActivityName=".wizard.CheckIfLactoOvoVegetarian">
+            android:label="@string/check_if_vegan_title"
+            android:parentActivityName=".wizard.CheckIfVegetarian">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".wizard.MaybeVegan" />
         </activity>
         <activity
             android:name=".wizard.EnoughInformation"
-            android:label="Nok informasjon" />
+            android:label="@string/enough_information_title" />
 
         <activity
             android:name=".about.AboutActivity"
-            android:label="Om appen"
+            android:label="@string/about_activity_title"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
