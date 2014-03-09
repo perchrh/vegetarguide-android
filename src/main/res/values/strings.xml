@@ -90,5 +90,12 @@
     <string name="check_if_vegetarian_title">Utskilt fra dyrekropper</string>
     <string name="check_if_not_vegetarian_at_all_title">Fra dyrekropper</string>
     <string name="request_meta_information_title">Beskrivelse</string>
+    <string name="product_status_format">Produktet er %s.</string>
+    <string name="status_not_vegetarian">ikke vegetarisk</string>
+    <string name="status_not_vegetarian_and_maybe_vegan">vegetarisk og kanskje vegansk</string>
+    <string name="status_vegan">vegansk</string>
+    <string name="status_maybe_vegetarian_or_maybe_vegan">kanskje vegetarisk eller vegansk</string>
+    <string name="status_vegetarian">vegetarisk</string>
+    <string name="status_maybe_vegetarian">kanskje vegetarisk</string>
 
 </resources>

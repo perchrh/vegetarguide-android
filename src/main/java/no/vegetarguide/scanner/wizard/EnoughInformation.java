@@ -58,23 +58,23 @@ public class EnoughInformation extends Activity {
             View rootView = inflater.inflate(R.layout.fragment_enough_information, container, false);
             final Product product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
-            final String format = "Produktet er %s.";
+            final String format = getString(R.string.product_status_format);
             TextView status = (TextView) rootView.findViewById(R.id.status);
             if (product.getIngredients().isAnimalDerivedForCertain()) {
-                status.setText(String.format(format, "ikke vegetarisk"));
+                status.setText(String.format(format, getString(R.string.status_not_vegetarian)));
             } else if (product.getIngredients().isMaybeVegan()) {
                 if (product.getIngredients().isVegetarian()) {
-                    status.setText(String.format(format, "vegetarisk og kanskje vegansk"));
+                    status.setText(String.format(format, getString(R.string.status_not_vegetarian_and_maybe_vegan)));
                 } else if (product.getIngredients().isVegan()) {
-                    status.setText(String.format(format, "vegansk"));
+                    status.setText(String.format(format, getString(R.string.status_vegan)));
                 } else if (product.getIngredients().isMaybeVegetarian()) {
-                    status.setText(String.format(format, "kanskje vegetarisk eller vegansk"));
+                    status.setText(String.format(format, getString(R.string.status_maybe_vegetarian_or_maybe_vegan)));
                 }
             } else if (product.getIngredients().isMaybeVegetarian()) {
                 if (product.getIngredients().isVegetarian()) {
-                    status.setText(String.format(format, "vegetarisk"));
+                    status.setText(String.format(format, getString(R.string.status_vegetarian)));
                 } else {
-                    status.setText(String.format(format, "kanskje vegetarisk"));
+                    status.setText(String.format(format, getString(R.string.status_maybe_vegetarian)));
                 }
             }
 
