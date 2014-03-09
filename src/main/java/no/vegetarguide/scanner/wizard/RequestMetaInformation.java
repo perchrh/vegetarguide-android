@@ -86,11 +86,11 @@ public class RequestMetaInformation extends Activity {
             brand_edit.setText(product.getBrand());
 
             comment = (EditText) rootView.findViewById(R.id.commentary_edit);
-            comment.setText(product.getGeneralComment());
+            comment.setText(product.getGeneral_comment());
         }
 
         private void createCancelButton(View rootView) {
-            View cancelButton = rootView.findViewById(R.id.metainformation_cancel_button);
+            View cancelButton = rootView.findViewById(R.id.cancel_wizard_button);
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -101,7 +101,7 @@ public class RequestMetaInformation extends Activity {
         }
 
         private void createNextButton(View rootView, final Product product) {
-            View nextButton = rootView.findViewById(R.id.metainformation_next_button);
+            View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,7 +125,7 @@ public class RequestMetaInformation extends Activity {
 
         private void mergeProductValues() {
             String trimmedComment = trimToNull(comment.getText().toString());
-            product.setGeneralComment(trimmedComment); // overwrite previous value always
+            product.setGeneral_comment(trimmedComment); // overwrite previous value always
 
             String trimmedTitle = trimToNull(title_edit.getText().toString());
             product.setTitle(trimmedTitle == null ? product.getTitle() : trimmedTitle); // keep previous value if missing

@@ -36,7 +36,6 @@
                 android:layout_weight="1"
                 android:text="@string/contains_animal_milk" />
 
-
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +82,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/contains_honey"
+                android:id="@+id/contains_insect_excretions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -101,7 +100,7 @@
 
 
         <EditText
-            android:id="@+id/lacto_ovo_vegetarian_comment"
+            android:id="@+id/vegetarian_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contains_honey_row"
@@ -115,23 +114,23 @@
 
 
         <Button
-            android:id="@+id/maybe_vegan_next_button"
+            android:id="@+id/next_wizard_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/lacto_ovo_vegetarian_comment"
+            android:layout_below="@+id/vegetarian_comment"
             android:layout_marginTop="10dp"
             android:text="@string/action_next" />
 
         <Button
-            android:id="@+id/maybe_vegan_cancel_button"
+            android:id="@+id/cancel_wizard_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lacto_ovo_vegetarian_comment"
+            android:layout_below="@+id/vegetarian_comment"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/maybe_vegan_next_button"
+            android:layout_toLeftOf="@+id/next_wizard_button"
             android:text="@string/action_previous" />
 
     </RelativeLayout>

@@ -24,7 +24,7 @@
 
         <CheckBox
             android:layout_marginTop="10dp"
-            android:id="@+id/animal_bodies"
+            android:id="@+id/contains_body_parts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/maybe_vegetarian_headline"
@@ -33,18 +33,18 @@
 
         <CheckBox
             android:layout_marginTop="10dp"
-            android:id="@+id/red_listed_additives"
+            android:id="@+id/contains_animal_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/animal_bodies"
+            android:layout_below="@+id/contains_body_parts"
             android:text="@string/red_listed_ingredients" />
 
         <CheckBox
             android:layout_marginTop="10dp"
-            android:id="@+id/major_unspecified_additives"
+            android:id="@+id/contains_unspecified_possibly_animal_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/red_listed_additives"
+            android:layout_below="@+id/contains_animal_additives"
             android:text="@string/unspecified_aromas_and_oils" />
 
         <CheckBox
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/manufacturer_confirms_product_is_vegetarian"
-            android:layout_below="@+id/major_unspecified_additives" />
+            android:layout_below="@+id/contains_unspecified_possibly_animal_additives" />
 
         <EditText
             android:id="@+id/confirmed_vegetarian_comment"
@@ -68,7 +68,7 @@
             android:hint="@string/insert_documentation_from_manufacturer" />
 
         <Button
-            android:id="@+id/obviously_not_vegetarian_next_button"
+            android:id="@+id/next_wizard_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -78,11 +78,11 @@
             android:text="@string/action_next" />
 
         <Button
-            android:id="@+id/obviously_not_vegetarian_cancel_button"
+            android:id="@+id/cancel_wizard_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/confirmed_vegetarian_comment"
-            android:layout_toLeftOf="@+id/obviously_not_vegetarian_next_button"
+            android:layout_toLeftOf="@+id/next_wizard_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:text="@string/action_previous" />

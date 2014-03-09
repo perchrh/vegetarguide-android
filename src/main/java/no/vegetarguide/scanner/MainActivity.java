@@ -102,17 +102,16 @@ public class MainActivity extends Activity {
                 product.setSubtitle("Fake subtitle");
                 product.setGtin("12345678901234");
 
-                product.setContainsBodyParts(false);
-                product.setContainsRedListedAdditives(null);
-                product.setContainsMajorUnspecifiedAdditives(null);
+                product.setContains_body_parts(false);
+                product.setContains_animal_additives(null);
+                product.setContains_unspecified_possibly_animal_additives(null);
 
-                product.setContainsAnimalMilk(true);
-                product.setContainsInsectExcretions(true);
-                product.setContainsPossibleAnimalEnumbers(true);
+                product.setContains_animal_milk(true);
+                product.setContains_insect_excretions(true);
 
 
             //TODO add more fields
-                product.setManufacturerConfirmsProductIsVegan(false);
+                product.setManufacturer_confirms_vegan(false);
 
                 intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
                 startActivity(intent);

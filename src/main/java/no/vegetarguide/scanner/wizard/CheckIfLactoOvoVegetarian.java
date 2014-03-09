@@ -52,8 +52,8 @@ public class CheckIfLactoOvoVegetarian extends Activity {
     public static class CheckIfLactoOvoVegetarianFragment extends Fragment {
         private CheckBox contains_animal_milk;
         private CheckBox contains_eggs;
-        private CheckBox contains_honey;
-        private EditText lacto_ovo_vegetarian_comment;
+        private CheckBox contains_insect_excretions;
+        private EditText vegetarian_comment;
         private Product product;
 
         public CheckIfLactoOvoVegetarianFragment() {
@@ -86,20 +86,20 @@ public class CheckIfLactoOvoVegetarian extends Activity {
         }
 
         private void createCheckBoxes(View rootView) {
-            lacto_ovo_vegetarian_comment = (EditText) rootView.findViewById(R.id.lacto_ovo_vegetarian_comment);
-            lacto_ovo_vegetarian_comment.setText(product.getLactoOvoVegetarianComment());
+            vegetarian_comment = (EditText) rootView.findViewById(R.id.vegetarian_comment);
+            vegetarian_comment.setText(product.getVegetarian_comment());
 
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
-            if (product.getContainsAnimalMilk() != null) {
-                contains_animal_milk.setChecked(product.getContainsAnimalMilk());
+            if (product.getContains_animal_milk() != null) {
+                contains_animal_milk.setChecked(product.getContains_animal_milk());
             }
             contains_eggs = (CheckBox) rootView.findViewById(R.id.contains_eggs);
-            if (product.getContainsEggs() != null) {
-                contains_eggs.setChecked(product.getContainsEggs());
+            if (product.getContains_eggs() != null) {
+                contains_eggs.setChecked(product.getContains_eggs());
             }
-            contains_honey = (CheckBox) rootView.findViewById(R.id.contains_honey);
-            if (product.getContainsInsectExcretions() != null) {
-                contains_honey.setChecked(product.getContainsInsectExcretions());
+            contains_insect_excretions = (CheckBox) rootView.findViewById(R.id.contains_insect_excretions);
+            if (product.getContains_insect_excretions() != null) {
+                contains_insect_excretions.setChecked(product.getContains_insect_excretions());
             }
 
             CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
@@ -107,21 +107,21 @@ public class CheckIfLactoOvoVegetarian extends Activity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (contains_animal_milk.isChecked()
                             || contains_eggs.isChecked()
-                            || contains_honey.isChecked()
-                            || StringUtils.isNotEmpty(lacto_ovo_vegetarian_comment.getText())) {
-                        lacto_ovo_vegetarian_comment.setVisibility(View.VISIBLE);
+                            || contains_insect_excretions.isChecked()
+                            || StringUtils.isNotEmpty(vegetarian_comment.getText())) {
+                        vegetarian_comment.setVisibility(View.VISIBLE);
                     } else {
-                        lacto_ovo_vegetarian_comment.setVisibility(View.GONE);
+                        vegetarian_comment.setVisibility(View.GONE);
                     }
                 }
             };
             contains_animal_milk.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
             contains_eggs.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
-            contains_honey.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            contains_insect_excretions.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
         }
 
         private void createCancelButton(View rootView) {
-            View cancelButton = rootView.findViewById(R.id.maybe_vegan_cancel_button);
+            View cancelButton = rootView.findViewById(R.id.cancel_wizard_button);
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -132,7 +132,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
         }
 
         private void createNextButton(View rootView) {
-            View nextButton = rootView.findViewById(R.id.maybe_vegan_next_button);
+            View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -153,10 +153,10 @@ public class CheckIfLactoOvoVegetarian extends Activity {
         }
 
         private void mergeProductValues(Product product) {
-            product.setLactoOvoVegetarianComment(StringUtils.trimToNull(lacto_ovo_vegetarian_comment.getText().toString()));
-            product.setContainsAnimalMilk(contains_animal_milk.isChecked());
-            product.setContainsEggs(contains_eggs.isChecked());
-            product.setContainsInsectExcretions(contains_honey.isChecked());
+            product.setVegetarian_comment(StringUtils.trimToNull(vegetarian_comment.getText().toString()));
+            product.setContains_animal_milk(contains_animal_milk.isChecked());
+            product.setContains_eggs(contains_eggs.isChecked());
+            product.setContains_insect_excretions(contains_insect_excretions.isChecked());
         }
 
     }
