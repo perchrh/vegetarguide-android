@@ -140,6 +140,8 @@ public class CheckIfVegan extends Activity {
         private void mergeProductValues(Product product) {
             if (confirmed_vegan_comment.getVisibility() == View.VISIBLE) {
                 product.getIngredients().setConfirmed_vegan_comment(StringUtils.trimToNull(confirmed_vegan_comment.getText().toString()));
+            } else {
+                product.getIngredients().setConfirmed_vegan_comment(null);
             }
             product.getIngredients().setContains_possible_animal_additives(possible_animal_derived_additives.isChecked());
             product.getIngredients().setManufacturer_confirms_vegan(manufacturer_confirms_vegan.isChecked());

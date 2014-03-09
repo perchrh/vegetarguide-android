@@ -164,9 +164,14 @@ public class CheckIfNotVegetarianAtAll extends Activity {
 
             if (manufacturer_confirms_vegetarian.getVisibility() == View.VISIBLE) {
                 product.getIngredients().setManufacturer_confirms_vegetarian(manufacturer_confirms_vegetarian.isChecked());
+            } else {
+                product.getIngredients().setManufacturer_confirms_vegetarian(null);
             }
+
             if (confirmed_vegetarian_comment.getVisibility() == View.VISIBLE) {
                 product.getIngredients().setConfirmed_vegetarian_comment(StringUtils.trimToNull(confirmed_vegetarian_comment.getText().toString()));
+            } else {
+                product.getIngredients().setConfirmed_vegetarian_comment(null);
             }
         }
     }

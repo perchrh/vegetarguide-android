@@ -92,7 +92,7 @@
     <string name="request_meta_information_title">Beskrivelse</string>
     <string name="product_status_format">Produktet er %s.</string>
     <string name="status_not_vegetarian">ikke vegetarisk</string>
-    <string name="status_not_vegetarian_and_maybe_vegan">vegetarisk og kanskje vegansk</string>
+    <string name="status_vegetarian_and_maybe_vegan">vegetarisk og kanskje vegansk</string>
     <string name="status_vegan">vegansk</string>
     <string name="status_maybe_vegetarian_or_maybe_vegan">kanskje vegetarisk eller vegansk</string>
     <string name="status_vegetarian">vegetarisk</string>

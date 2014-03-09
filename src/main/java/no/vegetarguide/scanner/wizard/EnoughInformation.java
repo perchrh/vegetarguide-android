@@ -63,19 +63,17 @@ public class EnoughInformation extends Activity {
             if (product.getIngredients().isAnimalDerivedForCertain()) {
                 status.setText(String.format(format, getString(R.string.status_not_vegetarian)));
             } else if (product.getIngredients().isMaybeVegan()) {
-                if (product.getIngredients().isVegetarian()) {
-                    status.setText(String.format(format, getString(R.string.status_not_vegetarian_and_maybe_vegan)));
-                } else if (product.getIngredients().isVegan()) {
+                if (product.getIngredients().isVegan()) {
                     status.setText(String.format(format, getString(R.string.status_vegan)));
+                } else if (product.getIngredients().isVegetarian()) {
+                    status.setText(String.format(format, getString(R.string.status_vegetarian_and_maybe_vegan)));
                 } else if (product.getIngredients().isMaybeVegetarian()) {
                     status.setText(String.format(format, getString(R.string.status_maybe_vegetarian_or_maybe_vegan)));
                 }
-            } else if (product.getIngredients().isMaybeVegetarian()) {
-                if (product.getIngredients().isVegetarian()) {
-                    status.setText(String.format(format, getString(R.string.status_vegetarian)));
-                } else {
-                    status.setText(String.format(format, getString(R.string.status_maybe_vegetarian)));
-                }
+            } else if (product.getIngredients().isVegetarian()) {
+                status.setText(String.format(format, getString(R.string.status_vegetarian)));
+            } else {
+                status.setText(String.format(format, getString(R.string.status_maybe_vegetarian)));
             }
 
             View submitButton = rootView.findViewById(R.id.submit_button);
