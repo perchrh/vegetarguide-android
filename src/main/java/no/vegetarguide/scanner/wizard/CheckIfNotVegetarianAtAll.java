@@ -98,7 +98,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             }
 
             confirmed_vegetarian_comment.setVisibility(StringUtils.isEmpty(product.getIngredients().getConfirmed_vegetarian_comment())
-                    ? View.GONE : View.VISIBLE); // initial value. TODO add initial value to other edittext comment-fields
+                    ? View.GONE : View.VISIBLE); // initial value
 
             contains_unspecified_possibly_animal_additives.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override

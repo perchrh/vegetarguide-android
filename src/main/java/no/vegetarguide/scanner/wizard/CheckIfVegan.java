@@ -83,6 +83,8 @@ public class CheckIfVegan extends Activity {
         private void createCheckBoxes(View rootView, Product product) {
             confirmed_vegan_comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
             confirmed_vegan_comment.setText(product.getIngredients().getConfirmed_vegan_comment());
+            confirmed_vegan_comment.setVisibility(StringUtils.isEmpty(product.getIngredients().getConfirmed_vegan_comment())
+                    ? View.GONE : View.VISIBLE); // initial value
 
             possible_animal_derived_additives = (CheckBox) rootView.findViewById(R.id.possible_animal_derived_additives);
             if (product.getIngredients().getContains_possible_animal_additives() != null) {
