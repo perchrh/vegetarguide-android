@@ -113,8 +113,6 @@ public class MainActivity extends Activity {
                 product.getIngredients().setManufacturer_confirms_vegetarian(true);
                 product.getIngredients().setConfirmed_vegetarian_comment("Står på pakken at det er vegetarisk");
 
-                product.getIngredients().setContains_animal_additives(true);
-
                 intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
                 startActivity(intent);
             }

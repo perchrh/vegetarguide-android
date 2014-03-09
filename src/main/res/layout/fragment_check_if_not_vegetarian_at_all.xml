@@ -48,6 +48,7 @@
             android:text="@string/unspecified_aromas_and_oils" />
 
         <CheckBox
+            android:layout_marginTop="10dp"
             android:id="@+id/manufacturer_confirms_vegetarian"
             android:visibility="gone"
             android:layout_width="wrap_content"
@@ -56,6 +57,7 @@
             android:layout_below="@+id/contains_unspecified_possibly_animal_additives" />
 
         <EditText
+            android:layout_marginTop="10dp"
             android:id="@+id/confirmed_vegetarian_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

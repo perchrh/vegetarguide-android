@@ -44,6 +44,7 @@ public class CheckIfVegan extends Activity {
         private CheckBox possible_animal_derived_additives;
         private CheckBox manufacturer_confirms_vegan;
         private EditText confirmed_vegan_comment;
+        private Product product;
 
         public CheckIfVeganFragment() {
 
@@ -60,11 +61,11 @@ public class CheckIfVegan extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_check_if_vegan, container, false);
-            final Product product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
+            product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
-            createNextButton(rootView, product);
+            createNextButton(rootView);
             createCancelButton(rootView);
-            createCheckBoxes(rootView, product);
+            createCheckBoxes(rootView);
 
             return rootView;
         }
@@ -80,7 +81,7 @@ public class CheckIfVegan extends Activity {
             });
         }
 
-        private void createCheckBoxes(View rootView, Product product) {
+        private void createCheckBoxes(View rootView) {
             confirmed_vegan_comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
             confirmed_vegan_comment.setText(product.getIngredients().getConfirmed_vegan_comment());
             confirmed_vegan_comment.setVisibility(StringUtils.isEmpty(product.getIngredients().getConfirmed_vegan_comment())
@@ -124,7 +125,7 @@ public class CheckIfVegan extends Activity {
             });
         }
 
-        private void createNextButton(View rootView, final Product product) {
+        private void createNextButton(View rootView) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override

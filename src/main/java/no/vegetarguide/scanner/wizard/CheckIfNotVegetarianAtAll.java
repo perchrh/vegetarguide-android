@@ -69,14 +69,14 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             }
             product = arguments.getParcelable(PRODUCT_DETAILS_KEY);
 
-            createNextButton(rootView, product);
+            createNextButton(rootView);
             createCancelButton(rootView);
-            createCheckBoxes(rootView, product);
+            createCheckBoxes(rootView);
 
             return rootView;
         }
 
-        private void createCheckBoxes(final View rootView, final Product product) {
+        private void createCheckBoxes(final View rootView) {
             contains_body_parts = (CheckBox) rootView.findViewById(R.id.contains_body_parts);
             if (product.getIngredients().getContains_body_parts() != null) {
                 contains_body_parts.setChecked(product.getIngredients().getContains_body_parts());
@@ -137,7 +137,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             });
         }
 
-        private void createNextButton(View rootView, final Product product) {
+        private void createNextButton(View rootView) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override

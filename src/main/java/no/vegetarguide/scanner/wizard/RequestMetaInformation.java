@@ -67,14 +67,14 @@ public class RequestMetaInformation extends Activity {
             }
             product = arguments.getParcelable(PRODUCT_DETAILS_KEY);
 
-            createNextButton(rootView, product);
+            createNextButton(rootView);
             createCancelButton(rootView);
-            createTextEdits(rootView, product);
+            createTextEdits(rootView);
 
             return rootView;
         }
 
-        private void createTextEdits(View rootView, Product product) {
+        private void createTextEdits(View rootView) {
             gtin_value = (TextView) rootView.findViewById(R.id.gtin_value);
             gtin_value.setText(product.getGtin());
 
@@ -100,7 +100,7 @@ public class RequestMetaInformation extends Activity {
             });
         }
 
-        private void createNextButton(View rootView, final Product product) {
+        private void createNextButton(View rootView) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
