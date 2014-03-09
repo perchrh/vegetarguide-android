@@ -25,7 +25,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_obviously_not_vegetarian);
+        setContentView(R.layout.activity_check_if_not_vegetarian_at_all);
 
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
@@ -33,28 +33,27 @@ public class CheckIfNotVegetarianAtAll extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, ObviouslyNotVegetarianFragment.newInstance(product))
+                    .add(R.id.container, CheckIfNotVegetarianAtAllFragment.newInstance(product))
                     .commit();
         }
 
     }
 
-    public static class ObviouslyNotVegetarianFragment extends Fragment {
+    public static class CheckIfNotVegetarianAtAllFragment extends Fragment {
 
         private CheckBox animal_bodies;
         private CheckBox red_listed_additives;
         private CheckBox major_unspecified_additives;
-        private EditText comment;
         private CheckBox manufacturer_confirms_vegetarian;
         private EditText confirmed_vegetarian_comment;
         private Product product;
 
-        public ObviouslyNotVegetarianFragment() {
+        public CheckIfNotVegetarianAtAllFragment() {
 
         }
 
-        public static ObviouslyNotVegetarianFragment newInstance(Product productDetails) {
-            ObviouslyNotVegetarianFragment frag = new ObviouslyNotVegetarianFragment();
+        public static CheckIfNotVegetarianAtAllFragment newInstance(Product productDetails) {
+            CheckIfNotVegetarianAtAllFragment frag = new CheckIfNotVegetarianAtAllFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
             frag.setArguments(args);
@@ -63,7 +62,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_obviously_not_vegetarian, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_check_if_not_vegetarian_at_all, container, false);
             Bundle arguments = getArguments();
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
@@ -78,9 +77,6 @@ public class CheckIfNotVegetarianAtAll extends Activity {
         }
 
         private void createCheckBoxes(final View rootView, final Product product) {
-            comment = (EditText) rootView.findViewById(R.id.obviously_not_vegetarian_comment);
-            comment.setText(product.getNotLactoOvoVegetarianComment());
-
             animal_bodies = (CheckBox) rootView.findViewById(R.id.animal_bodies);
             if (product.getContainsBodyParts() != null) {
                 animal_bodies.setChecked(product.getContainsBodyParts());
@@ -93,20 +89,6 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             if (product.getContainsMajorUnspecifiedAdditives() != null) {
                 red_listed_additives.setChecked(product.getContainsMajorUnspecifiedAdditives());
             }
-            CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (animal_bodies.isChecked()
-                            || red_listed_additives.isChecked()
-                            || StringUtils.isNotEmpty(comment.getText())) {
-                        comment.setVisibility(View.VISIBLE);
-                    } else {
-                        comment.setVisibility(View.GONE);
-                    }
-                }
-            };
-            animal_bodies.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
-            red_listed_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
 
             confirmed_vegetarian_comment = (EditText) rootView.findViewById(R.id.confirmed_vegetarian_comment);
             confirmed_vegetarian_comment.setText(product.getConfirmedLactoOvoVegetarianComment());
@@ -182,9 +164,6 @@ public class CheckIfNotVegetarianAtAll extends Activity {
 
             if (manufacturer_confirms_vegetarian.getVisibility() == View.VISIBLE) {
                 product.setManufacturerConfirmsProductIsLactoOvoVegetarian(manufacturer_confirms_vegetarian.isChecked());
-            }
-            if (comment.getVisibility() == View.VISIBLE) {
-                product.setNotLactoOvoVegetarianComment(StringUtils.trimToNull(comment.getText().toString()));
             }
             if (confirmed_vegetarian_comment.getVisibility() == View.VISIBLE) {
                 product.setConfirmedLactoOvoVegetarianComment(StringUtils.trimToNull(confirmed_vegetarian_comment.getText().toString()));

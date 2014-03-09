@@ -78,7 +78,7 @@
     <string name="please_wait">Vennligst vent…</string>
 
     <string name="title_activity_manual_input">Skriv inn strekkode</string>
-    <string name="manual_gtin_input_instructions">Strekkoden består av bare tall og mellom 8 og 14 siffer</string>
+    <string name="manual_gtin_input_instructions">Strekkoden består av bare tall og er mellom 8 og 14 siffer</string>
     <string name="manual_gtin_search">Søk</string>
     <string name="manual_input_gtin_label">Strekkode</string>
 

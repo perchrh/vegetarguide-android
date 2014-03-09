@@ -36,10 +36,8 @@ public class Product implements Parcelable {
     private Boolean manufacturerConfirmsProductIsLactoOvoVegetarian;
 
     private Boolean containsPossibleAnimalAdditives;
-    private Boolean containsPossibleAnimalEnumbers;
 
     private String lactoOvoVegetarianComment;
-    private String notLactoOvoVegetarianComment;
     private String generalComment;
     private String confirmedLactoOvoVegetarianComment;
     private String confirmedVeganComment;
@@ -64,9 +62,7 @@ public class Product implements Parcelable {
         this.containsAnimalMilk = (Boolean) in.readSerializable();
         this.manufacturerConfirmsProductIsVegan = (Boolean) in.readSerializable();
         this.containsPossibleAnimalAdditives = (Boolean) in.readSerializable();
-        this.containsPossibleAnimalEnumbers = (Boolean) in.readSerializable();
         this.lactoOvoVegetarianComment = in.readString();
-        this.notLactoOvoVegetarianComment = in.readString();
         this.confirmedVeganComment = in.readString();
         this.generalComment = in.readString();
         this.manufacturerConfirmsProductIsLactoOvoVegetarian = (Boolean) in.readSerializable();
@@ -104,7 +100,6 @@ public class Product implements Parcelable {
 
         return ((isCandidate && isConfirmed)
                 || (isCandidate && Boolean.FALSE.equals(containsPossibleAnimalAdditives)
-                && Boolean.FALSE.equals(containsPossibleAnimalEnumbers)
                 && Boolean.FALSE.equals(containsMajorUnspecifiedAdditives)));
     }
 
@@ -236,28 +231,12 @@ public class Product implements Parcelable {
         this.containsPossibleAnimalAdditives = containsPossibleAnimalAdditives;
     }
 
-    public Boolean getContainsPossibleAnimalEnumbers() {
-        return containsPossibleAnimalEnumbers;
-    }
-
-    public void setContainsPossibleAnimalEnumbers(Boolean containsPossibleAnimalEnumbers) {
-        this.containsPossibleAnimalEnumbers = containsPossibleAnimalEnumbers;
-    }
-
     public String getLactoOvoVegetarianComment() {
         return lactoOvoVegetarianComment;
     }
 
     public void setLactoOvoVegetarianComment(String lactoOvoVegetarianComment) {
         this.lactoOvoVegetarianComment = lactoOvoVegetarianComment;
-    }
-
-    public String getNotLactoOvoVegetarianComment() {
-        return notLactoOvoVegetarianComment;
-    }
-
-    public void setNotLactoOvoVegetarianComment(String notLactoOvoVegetarianComment) {
-        this.notLactoOvoVegetarianComment = notLactoOvoVegetarianComment;
     }
 
     public String getGeneralComment() {
@@ -307,9 +286,7 @@ public class Product implements Parcelable {
         dest.writeSerializable(this.containsAnimalMilk);
         dest.writeSerializable(this.manufacturerConfirmsProductIsVegan);
         dest.writeSerializable(this.containsPossibleAnimalAdditives);
-        dest.writeSerializable(this.containsPossibleAnimalEnumbers);
         dest.writeString(this.lactoOvoVegetarianComment);
-        dest.writeString(this.notLactoOvoVegetarianComment);
         dest.writeString(this.confirmedVeganComment);
         dest.writeString(this.generalComment);
         dest.writeSerializable(this.manufacturerConfirmsProductIsLactoOvoVegetarian);

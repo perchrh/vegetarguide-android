@@ -25,7 +25,7 @@ public class CheckIfVegan extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uncertain_ingredients);
+        setContentView(R.layout.activity_check_if_vegan);
 
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
@@ -33,25 +33,24 @@ public class CheckIfVegan extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, UncertainIngredientsFragment.newInstance(product))
+                    .add(R.id.container, CheckIfVeganFragment.newInstance(product))
                     .commit();
         }
 
     }
 
-    public static class UncertainIngredientsFragment extends Fragment {
+    public static class CheckIfVeganFragment extends Fragment {
 
-        private CheckBox animal_e_number;
+        private CheckBox possible_animal_derived_additives;
         private CheckBox manufacturer_confirms_vegan;
-        private CheckBox other_animal_derived_additives;
         private EditText confirmed_vegan_comment;
 
-        public UncertainIngredientsFragment() {
+        public CheckIfVeganFragment() {
 
         }
 
-        public static UncertainIngredientsFragment newInstance(Product product) {
-            UncertainIngredientsFragment frag = new UncertainIngredientsFragment();
+        public static CheckIfVeganFragment newInstance(Product product) {
+            CheckIfVeganFragment frag = new CheckIfVeganFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, product);
             frag.setArguments(args);
@@ -60,7 +59,7 @@ public class CheckIfVegan extends Activity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_uncertain_ingredients, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_check_if_vegan, container, false);
             final Product product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
 
             createNextButton(rootView, product);
@@ -85,13 +84,9 @@ public class CheckIfVegan extends Activity {
             confirmed_vegan_comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
             confirmed_vegan_comment.setText(product.getConfirmedVeganComment());
 
-            animal_e_number = (CheckBox) rootView.findViewById(R.id.animal_e_number);
-            if (product.getContainsPossibleAnimalEnumbers() != null) {
-                animal_e_number.setChecked(product.getContainsPossibleAnimalEnumbers());
-            }
-            other_animal_derived_additives = (CheckBox) rootView.findViewById(R.id.other_animal_derived_additives);
+            possible_animal_derived_additives = (CheckBox) rootView.findViewById(R.id.possible_animal_derived_additives);
             if (product.getContainsPossibleAnimalAdditives() != null) {
-                other_animal_derived_additives.setChecked(product.getContainsPossibleAnimalAdditives());
+                possible_animal_derived_additives.setChecked(product.getContainsPossibleAnimalAdditives());
             }
             manufacturer_confirms_vegan = (CheckBox) rootView.findViewById(R.id.manufacturer_confirms_vegan);
             if (product.getManufacturerConfirmsProductIsVegan() != null) {
@@ -101,8 +96,7 @@ public class CheckIfVegan extends Activity {
             CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (animal_e_number.isChecked()
-                            || other_animal_derived_additives.isChecked()
+                    if (possible_animal_derived_additives.isChecked()
                             || StringUtils.isNotEmpty(confirmed_vegan_comment.getText())) {
                         manufacturer_confirms_vegan.setVisibility(View.VISIBLE);
                     } else {
@@ -114,8 +108,7 @@ public class CheckIfVegan extends Activity {
                     }
                 }
             };
-            animal_e_number.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
-            other_animal_derived_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
+            possible_animal_derived_additives.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
             manufacturer_confirms_vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -148,8 +141,7 @@ public class CheckIfVegan extends Activity {
             if (confirmed_vegan_comment.getVisibility() == View.VISIBLE) {
                 product.setConfirmedVeganComment(StringUtils.trimToNull(confirmed_vegan_comment.getText().toString()));
             }
-            product.setContainsPossibleAnimalEnumbers(animal_e_number.isChecked());
-            product.setContainsPossibleAnimalAdditives(other_animal_derived_additives.isChecked());
+            product.setContainsPossibleAnimalAdditives(possible_animal_derived_additives.isChecked());
             product.setManufacturerConfirmsProductIsVegan(manufacturer_confirms_vegan.isChecked());
         }
     }

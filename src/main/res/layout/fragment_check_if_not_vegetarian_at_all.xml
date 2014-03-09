@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="no.vegetarguide.scanner.wizard.CheckIfNotVegetarianAtAll.ObviouslyNotVegetarianFragment">
+    tools:context=".wizard.CheckIfNotVegetarianAtAll.CheckIfNotVegetarianAtAllFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,14 +45,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/red_listed_additives"
-            android:text="Uspesifiserte oljer og aromaer" />
+            android:text="@string/unspecified_aromas_and_oils" />
 
         <CheckBox
             android:id="@+id/manufacturer_confirms_vegetarian"
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Produsenten har bekreftet at produktet er vegetarisk"
+            android:text="@string/manufacturer_confirms_product_is_vegetarian"
             android:layout_below="@+id/major_unspecified_additives" />
 
         <EditText
@@ -65,20 +65,7 @@
             android:ems="10"
             android:gravity="left|top"
             android:minLines="2"
-            android:hint="Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag" />
-
-        <EditText
-            android:id="@+id/obviously_not_vegetarian_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textCapSentences|textMultiLine"
-            android:visibility="gone"
-            android:ems="10"
-            android:gravity="left|top"
-            android:minLines="2"
-            android:layout_below="@+id/confirmed_vegetarian_comment"
-            android:hint="Hva inneholder varen av dyrekropper?" />
-
+            android:hint="@string/insert_documentation_from_manufacturer" />
 
         <Button
             android:id="@+id/obviously_not_vegetarian_next_button"
@@ -86,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/obviously_not_vegetarian_comment"
+            android:layout_below="@+id/confirmed_vegetarian_comment"
             android:layout_marginTop="10dp"
             android:text="@string/action_next" />
 
@@ -94,7 +81,7 @@
             android:id="@+id/obviously_not_vegetarian_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/obviously_not_vegetarian_comment"
+            android:layout_below="@+id/confirmed_vegetarian_comment"
             android:layout_toLeftOf="@+id/obviously_not_vegetarian_next_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"

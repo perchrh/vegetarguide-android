@@ -14,5 +14,14 @@
     <string name="action_next">Videre</string>
     <string name="action_previous">Tilbake</string>
     <string name="action_cancel">Avbryt</string>
+    <string name="submit_for_approval">Send inn til redaksjonen</string>
+    <string name="cancel_wizard">Avbryt</string>
+    <string name="wizard_complete_thanks">Takk! Det er all informasjonen vi trenger.</string>
+    <string name="unspecified_aromas_and_oils">Uspesifiserte oljer og aromaer</string>
+    <string name="manufacturer_confirms_product_is_vegetarian">Produsenten har bekreftet at produktet er vegetarisk</string>
+    <string name="manufacturer_confirms_product_is_vegan">Produsenten har bekreftet at produktet er vegansk</string>
+    <string name="insert_documentation_from_manufacturer">Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag</string>
+    <string name="contains_additives_of_possible_animal_origins">Inneholdet produktet tilsetningsstoffer som kan komme fra dyr? Kryss av for det varen inneholder:</string>
+    <string name="possible_animal_derived_additives">Tilsetningsstoffer som kan ha animalsk opprinnelse</string>
 
 </resources>

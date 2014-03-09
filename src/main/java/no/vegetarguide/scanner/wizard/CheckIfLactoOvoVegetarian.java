@@ -26,7 +26,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maybe_vegan);
+        setContentView(R.layout.activity_check_if_lacto_ovo_vegetarian);
 
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
@@ -34,7 +34,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, MaybeVeganFragment.newInstance(product))
+                    .add(R.id.container, CheckIfLactoOvoVegetarianFragment.newInstance(product))
                     .commit();
         }
 
@@ -49,19 +49,19 @@ public class CheckIfLactoOvoVegetarian extends Activity {
     }
 
 
-    public static class MaybeVeganFragment extends Fragment {
+    public static class CheckIfLactoOvoVegetarianFragment extends Fragment {
         private CheckBox contains_animal_milk;
         private CheckBox contains_eggs;
         private CheckBox contains_honey;
         private EditText lacto_ovo_vegetarian_comment;
         private Product product;
 
-        public MaybeVeganFragment() {
+        public CheckIfLactoOvoVegetarianFragment() {
 
         }
 
-        public static MaybeVeganFragment newInstance(Product productDetails) {
-            MaybeVeganFragment frag = new MaybeVeganFragment();
+        public static CheckIfLactoOvoVegetarianFragment newInstance(Product productDetails) {
+            CheckIfLactoOvoVegetarianFragment frag = new CheckIfLactoOvoVegetarianFragment();
             Bundle args = new Bundle();
             args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
             frag.setArguments(args);
@@ -70,7 +70,7 @@ public class CheckIfLactoOvoVegetarian extends Activity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_maybe_vegan, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_check_if_lacto_ovo_vegetarian, container, false);
             Bundle arguments = getArguments();
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
