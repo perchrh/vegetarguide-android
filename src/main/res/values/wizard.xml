@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="maybe_vegan_tooltip">Dyremelk: Laktose, melkesukker, myse, kasein og ghee.\nEgg: Eggehvite/albumin, eggeprotein og lysosomer (E1105).\nFra insekter: Dronning-gelé, bivoks (E901) og shellakk (E904).</string>
-    <string name="maybe_vegan_tooltip_headline">Sjekkliste</string>
-    <string name="maybe_vegan_headline">Inneholdet produktet andre ingredienser fra dyr? Kryss av for det varen inneholder:</string>
-    <string name="maybe_vegan_comment_hint">Hvilke ingredienser kommer fra dyr?</string>
-    <string name="contains_insect_excretions_label">Honning eller andre ingredienser som kommer fra insekter?</string>
-    <string name="contains_egg_label">Egg eller ingredienser laget av egg?</string>
-    <string name="contains_animal_milk">Dyremelk eller ingredienser laget av dyremelk?</string>
-
-    <string name="maybe_vegetarian_headline">Inneholdet produktet biter av dyrekropper? Kryss av for det varen inneholder:</string>
-
     <string name="action_next">Videre</string>
     <string name="action_previous">Tilbake</string>
     <string name="action_cancel">Avbryt</string>
-    <string name="submit_for_approval">Send inn til redaksjonen</string>
     <string name="cancel_wizard">Avbryt</string>
-    <string name="wizard_complete_thanks">Takk! Det er all informasjonen vi trenger.</string>
-    <string name="unspecified_aromas_and_oils">Uspesifiserte oljer og aromaer</string>
+
+    <!-- step 1 -->
+    <string name="maybe_vegetarian_headline">Inneholdet produktet animalske ingredienser? Kryss av for det varen inneholder:</string>
+    <string name="contains_body_parts">Kjøtt</string>
+    <string name="contains_body_parts_details">Inkl. fisk, fugl, skalldyr, skjell, insekter og andre dyr.</string>
+    <string name="contains_animal_additives">Ingredienser basert på dyrekropper</string>
+    <string name="contains_animal_additives_details">Kjøttkraft, kjøttbuljong, rogn, østerssaus, gelatin, løpe eller rennin fra kalv, karmin (E120), aspik, pepsin eller kalsium mesoinositol hexafosfat.</string>
+    <string name="contains_unspecified_possibly_animal_additives">Uspesifiserte oljer eller aromaer</string>
+    <string name="contains_unspecified_possibly_animal_additives_details">Hvis oljen eller aromaen kan komme fra dyrekropper.</string>
+
+    <!-- step 2 -->
+    <string name="maybe_vegan_headline">Inneholdet produktet andre ingredienser fra dyr? Kryss av for det varen inneholder:</string>
+    <string name="contains_animal_milk">Dyremelk</string>
+    <string name="contains_animal_milk_details">Inkl. melkeprotein, melkesukker, laktose, myse, kasein, ghee og laktitol (E966).</string>
+    <string name="contains_egg">Egg</string>
+    <string name="contains_egg_details">Inkl. eggeprotein, eggehvite/albumin og lysosomer (E1105).</string>
+    <string name="contains_insect_excretions">Produsert av insekter</string>
+    <string name="contains_insect_excretions_details">Honning, bivoks (E901), dronning-gelé og shellakk (E904).</string>
     <string name="manufacturer_confirms_product_is_vegetarian">Produsenten har bekreftet at produktet er vegetarisk</string>
+    <string name="vegetarian_comment_hint">Hvilke ingredienser kommer fra dyr?</string>
+
+    <!-- step 3 -->
+    <string name="contains_additives_of_possible_animal_origins_headline">Inneholdet produktet tilsetningsstoffer som kan komme fra dyr? Kryss av for det varen inneholder:</string>
+    <string name="possible_animal_derived_additives">Tilsetningsstoffer kanskje fra dyr</string>
+    <string name="possible_animal_derived_additives_details">Har produktet ingredienser fra den gule listen? </string>
     <string name="manufacturer_confirms_product_is_vegan">Produsenten har bekreftet at produktet er vegansk</string>
     <string name="insert_documentation_from_manufacturer">Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag</string>
-    <string name="contains_additives_of_possible_animal_origins">Inneholdet produktet tilsetningsstoffer som kan komme fra dyr? Kryss av for det varen inneholder:</string>
-    <string name="possible_animal_derived_additives">Tilsetningsstoffer som kan ha animalsk opprinnelse</string>
+    <string name="show_yellow_ingredients_list">Vis gul liste</string>
 
-    <!-- red list -->
-    <string name="animal_bodies_enumeration">En eller flere typer dyrekjøtt, inklusive fisk, fugl, skalldyr, skjell og insekter.</string>
-    <string name="red_listed_ingredients">Kjøttkraft, kjøttbuljong, rogn, østerssaus, gelatin, løpe eller rennin fra kalv, karmin (E120), aspik, pepsin eller kalsium mesoinositol hexafosfat.</string>
+    <!-- step 4 -->
+    <string name="submit_for_approval">Send inn til redaksjonen</string>
+    <string name="wizard_complete_thanks">Takk! Det er all informasjonen vi trenger.</string>
 
 </resources>

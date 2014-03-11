@@ -3,6 +3,7 @@ package no.vegetarguide.scanner.wizard;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -37,6 +38,11 @@ public class CheckIfVegan extends Activity {
                     .commit();
         }
 
+    }
+
+    public void viewYellowList(View v) {
+        Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("http://app.vegansamfunnet.no/yellow_list_no.html"));
+        startActivity(browse);
     }
 
     public static class CheckIfVeganFragment extends Fragment {

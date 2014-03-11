@@ -21,7 +21,6 @@ public class Ingredients implements Parcelable {
     private Boolean contains_insect_excretions;
     private Boolean contains_eggs;
     private Boolean contains_animal_milk;
-    private String vegetarian_comment;
 
     private Boolean manufacturer_confirms_vegan;
     private Boolean manufacturer_confirms_vegetarian;
@@ -40,7 +39,6 @@ public class Ingredients implements Parcelable {
         this.contains_insect_excretions = (Boolean) in.readSerializable();
         this.contains_eggs = (Boolean) in.readSerializable();
         this.contains_animal_milk = (Boolean) in.readSerializable();
-        this.vegetarian_comment = in.readString();
         this.manufacturer_confirms_vegan = (Boolean) in.readSerializable();
         this.manufacturer_confirms_vegetarian = (Boolean) in.readSerializable();
         this.confirmed_vegetarian_comment = in.readString();
@@ -139,14 +137,6 @@ public class Ingredients implements Parcelable {
         this.contains_animal_milk = contains_animal_milk;
     }
 
-    public String getVegetarian_comment() {
-        return vegetarian_comment;
-    }
-
-    public void setVegetarian_comment(String vegetarian_comment) {
-        this.vegetarian_comment = vegetarian_comment;
-    }
-
     public Boolean getManufacturer_confirms_vegan() {
         return manufacturer_confirms_vegan;
     }
@@ -193,7 +183,6 @@ public class Ingredients implements Parcelable {
         dest.writeSerializable(this.contains_insect_excretions);
         dest.writeSerializable(this.contains_eggs);
         dest.writeSerializable(this.contains_animal_milk);
-        dest.writeString(this.vegetarian_comment);
         dest.writeSerializable(this.manufacturer_confirms_vegan);
         dest.writeSerializable(this.manufacturer_confirms_vegetarian);
         dest.writeString(this.confirmed_vegetarian_comment);

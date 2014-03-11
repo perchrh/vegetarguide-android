@@ -9,12 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import org.apache.commons.lang3.StringUtils;
-
-import no.vegetarguide.scanner.AlertDialogFragment;
 import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.model.Product;
@@ -39,15 +35,6 @@ public class CheckIfVegetarian extends Activity {
         }
 
     }
-
-    public void showToolTip(View v) {
-        AlertDialogFragment tooltip = AlertDialogFragment.newInstance(
-                R.string.maybe_vegan_tooltip_headline, R.string.maybe_vegan_tooltip);
-        if (tooltip != null) {
-            tooltip.show(getFragmentManager(), "tooltip");
-        }
-    }
-
 
     public static class CheckIfVegetarianFragment extends Fragment {
         private CheckBox contains_animal_milk;
@@ -86,11 +73,6 @@ public class CheckIfVegetarian extends Activity {
         }
 
         private void createCheckBoxes(View rootView) {
-            vegetarian_comment = (EditText) rootView.findViewById(R.id.vegetarian_comment);
-            vegetarian_comment.setText(product.getIngredients().getVegetarian_comment());
-            vegetarian_comment.setVisibility(StringUtils.isEmpty(product.getIngredients().getVegetarian_comment())
-                    ? View.GONE : View.VISIBLE); // initial value
-
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
             if (product.getIngredients().getContains_animal_milk() != null) {
                 contains_animal_milk.setChecked(product.getIngredients().getContains_animal_milk());
@@ -103,23 +85,6 @@ public class CheckIfVegetarian extends Activity {
             if (product.getIngredients().getContains_insect_excretions() != null) {
                 contains_insect_excretions.setChecked(product.getIngredients().getContains_insect_excretions());
             }
-
-            CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (contains_animal_milk.isChecked()
-                            || contains_eggs.isChecked()
-                            || contains_insect_excretions.isChecked()
-                            || StringUtils.isNotEmpty(vegetarian_comment.getText())) {
-                        vegetarian_comment.setVisibility(View.VISIBLE);
-                    } else {
-                        vegetarian_comment.setVisibility(View.GONE);
-                    }
-                }
-            };
-            contains_animal_milk.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
-            contains_eggs.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
-            contains_insect_excretions.setOnCheckedChangeListener(showCommentFieldIfAnyChecked);
         }
 
         private void createCancelButton(View rootView) {
@@ -155,7 +120,6 @@ public class CheckIfVegetarian extends Activity {
         }
 
         private void mergeProductValues(Product product) {
-            product.getIngredients().setVegetarian_comment(StringUtils.trimToNull(vegetarian_comment.getText().toString()));
             product.getIngredients().setContains_animal_milk(contains_animal_milk.isChecked());
             product.getIngredients().setContains_eggs(contains_eggs.isChecked());
             product.getIngredients().setContains_insect_excretions(contains_insect_excretions.isChecked());

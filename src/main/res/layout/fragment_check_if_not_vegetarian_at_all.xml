@@ -28,30 +28,59 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/maybe_vegetarian_headline"
             android:layout_marginTop="10dp"
-            android:text="@string/animal_bodies_enumeration" />
+            android:text="@string/contains_body_parts"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/contains_body_parts_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_body_parts"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="@dimen/padding_checkbox"
+            android:text="@string/contains_body_parts_details" />
 
         <CheckBox
             android:id="@+id/contains_animal_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/contains_body_parts"
+            android:layout_below="@+id/contains_body_parts_details"
             android:layout_marginTop="10dp"
-            android:text="@string/red_listed_ingredients" />
+            android:text="@string/contains_animal_additives"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contains_animal_additives_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_animal_additives"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="@dimen/padding_checkbox"
+            android:text="@string/contains_animal_additives_details" />
 
         <CheckBox
             android:id="@+id/contains_unspecified_possibly_animal_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/contains_animal_additives"
+            android:layout_below="@+id/contains_animal_additives_details"
             android:layout_marginTop="10dp"
-            android:text="@string/unspecified_aromas_and_oils" />
+            android:text="@string/contains_unspecified_possibly_animal_additives"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contains_unspecified_possibly_animal_additives_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_unspecified_possibly_animal_additives"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="@dimen/padding_checkbox"
+            android:text="@string/contains_unspecified_possibly_animal_additives_details" />
 
         <CheckBox
             android:id="@+id/manufacturer_confirms_vegetarian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/contains_unspecified_possibly_animal_additives"
+            android:layout_below="@+id/contains_unspecified_possibly_animal_additives_details"
             android:layout_marginTop="10dp"
             android:text="@string/manufacturer_confirms_product_is_vegetarian"
             android:visibility="gone" />
