@@ -22,34 +22,34 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <CheckBox
-            android:layout_marginTop="10dp"
             android:id="@+id/possible_animal_derived_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/uncertain_ingredients_headline"
+            android:layout_marginTop="10dp"
             android:text="@string/possible_animal_derived_additives" />
 
 
         <CheckBox
             android:id="@+id/manufacturer_confirms_vegan"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/possible_animal_derived_additives"
             android:text="@string/manufacturer_confirms_product_is_vegan"
-            android:layout_below="@+id/possible_animal_derived_additives" />
+            android:visibility="gone" />
 
 
         <EditText
             android:id="@+id/confirmed_vegan_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_below="@+id/manufacturer_confirms_vegan"
-            android:inputType="textCapSentences|textMultiLine"
             android:ems="10"
             android:gravity="left|top"
+            android:hint="@string/insert_documentation_from_manufacturer"
+            android:inputType="textCapSentences|textMultiLine"
             android:minLines="2"
-            android:hint="@string/insert_documentation_from_manufacturer" />
+            android:visibility="gone" />
 
 
         <Button
@@ -67,9 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/confirmed_vegan_comment"
-            android:layout_toLeftOf="@+id/next_wizard_button"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/next_wizard_button"
             android:text="@string/action_previous" />
 
     </RelativeLayout>

@@ -4,15 +4,14 @@ import com.google.gson.annotations.Expose;
 
 public class ModifyProductResponse {
 
-    @SuppressWarnings("unused")
-    public ModifyProductResponse() {
-        //used by Gson
-    }
-
     @Expose
     private Integer code = -1;
     @Expose
     private String message;
+    @SuppressWarnings("unused")
+    public ModifyProductResponse() {
+        //used by Gson
+    }
 
     public Integer getCode() {
         return code;

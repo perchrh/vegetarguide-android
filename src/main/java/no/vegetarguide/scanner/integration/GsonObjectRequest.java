@@ -21,12 +21,11 @@ import static java.lang.String.format;
 public class GsonObjectRequest<R, T> extends Request<T> {
 
     private static final Gson FILTERING_GSON = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    private static final String PROTOCOL_CONTENT_TYPE = format("application/json; charset=%s", CharEncoding.UTF_8);
     private final Listener<T> listener;
     private final Class<R> inputType;
     private final Class<T> outputType;
     private final R object;
-
-    private static final String PROTOCOL_CONTENT_TYPE = format("application/json; charset=%s", CharEncoding.UTF_8);
 
     public GsonObjectRequest(int method, String url, R postObject, Class<R> inputType, Class<T> outputType,
                              Listener<T> listener, ErrorListener errorListener) {

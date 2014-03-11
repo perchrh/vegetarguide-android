@@ -4,19 +4,19 @@
     <item android:state_pressed="true">
 
         <shape>
-            <gradient android:startColor="#607F1D" android:centerColor="#6E8739" android:endColor="#3B500F" android:angle="90" android:type="linear" />
+            <gradient android:angle="90" android:centerColor="#6E8739" android:endColor="#3B500F" android:startColor="#607F1D" android:type="linear" />
             <stroke android:width="2dp" android:color="#526021" />
             <corners android:radius="10dp" />
-            <padding android:left="10dp" android:top="10dp" android:right="10dp" android:bottom="10dp" />
+            <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
         </shape>
     </item>
 
     <item>
         <shape>
-            <gradient android:endColor="#607F1D" android:centerColor="#6E8739" android:startColor="#3B500F" android:angle="90" android:type="linear" />
+            <gradient android:angle="90" android:centerColor="#6E8739" android:endColor="#607F1D" android:startColor="#3B500F" android:type="linear" />
             <stroke android:width="2dp" android:color="#526021" />
             <corners android:radius="10dp" />
-            <padding android:left="10dp" android:top="10dp" android:right="10dp" android:bottom="10dp" />
+            <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
         </shape>
     </item>
 </selector>

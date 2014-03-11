@@ -13,6 +13,10 @@ public class AlertDialogFragment extends DialogFragment {
     private static final String TITLE_KEY = "title";
     private static final String MESSAGESTRING_KEY = "messageString";
 
+    public AlertDialogFragment() {
+        super();
+    }
+
     public static AlertDialogFragment newInstance(int title, String message) {
         AlertDialogFragment frag = new AlertDialogFragment();
         Bundle args = new Bundle();
@@ -29,10 +33,6 @@ public class AlertDialogFragment extends DialogFragment {
         args.putInt(MESSAGE_KEY, message);
         frag.setArguments(args);
         return frag;
-    }
-
-    public AlertDialogFragment() {
-        super();
     }
 
     /**

@@ -105,12 +105,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/contains_honey_row"
             android:layout_marginTop="10dp"
-            android:visibility="gone"
-            android:inputType="textCapSentences|textMultiLine"
             android:ems="10"
             android:gravity="left|top"
+            android:hint="@string/maybe_vegan_comment_hint"
+            android:inputType="textCapSentences|textMultiLine"
             android:minLines="2"
-            android:hint="@string/maybe_vegan_comment_hint" />
+            android:visibility="gone" />
 
 
         <Button

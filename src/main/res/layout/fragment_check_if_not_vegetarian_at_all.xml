@@ -23,51 +23,51 @@
 
 
         <CheckBox
-            android:layout_marginTop="10dp"
             android:id="@+id/contains_body_parts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/maybe_vegetarian_headline"
+            android:layout_marginTop="10dp"
             android:text="@string/animal_bodies_enumeration" />
 
 
         <CheckBox
-            android:layout_marginTop="10dp"
             android:id="@+id/contains_animal_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contains_body_parts"
+            android:layout_marginTop="10dp"
             android:text="@string/red_listed_ingredients" />
 
         <CheckBox
-            android:layout_marginTop="10dp"
             android:id="@+id/contains_unspecified_possibly_animal_additives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contains_animal_additives"
+            android:layout_marginTop="10dp"
             android:text="@string/unspecified_aromas_and_oils" />
 
         <CheckBox
-            android:layout_marginTop="10dp"
             android:id="@+id/manufacturer_confirms_vegetarian"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/contains_unspecified_possibly_animal_additives"
+            android:layout_marginTop="10dp"
             android:text="@string/manufacturer_confirms_product_is_vegetarian"
-            android:layout_below="@+id/contains_unspecified_possibly_animal_additives" />
+            android:visibility="gone" />
 
         <EditText
-            android:layout_marginTop="10dp"
             android:id="@+id/confirmed_vegetarian_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/manufacturer_confirms_vegetarian"
-            android:inputType="textCapSentences|textMultiLine"
-            android:visibility="gone"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:gravity="left|top"
+            android:hint="@string/insert_documentation_from_manufacturer"
+            android:inputType="textCapSentences|textMultiLine"
             android:minLines="2"
-            android:hint="@string/insert_documentation_from_manufacturer" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/next_wizard_button"
@@ -84,9 +84,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/confirmed_vegetarian_comment"
-            android:layout_toLeftOf="@+id/next_wizard_button"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/next_wizard_button"
             android:text="@string/action_previous" />
 
     </RelativeLayout>
