@@ -6,7 +6,25 @@
     <string name="action_cancel">Avbryt</string>
     <string name="cancel_wizard">Avbryt</string>
 
+    <!-- step 0 -->
+    <string name="request_meta_information_title">Beskrivelse</string>
+
+    <string name="product_gtin_label">Strekkode</string>
+    <string name="product_name_label">Navn</string>
+    <string name="product_name_hint">Produktets navn</string>
+    <string name="product_variant_label">Variant</string>
+    <string name="product_variant_hint">Antall, vekt/volum, undertittel etc.</string>
+    <string name="product_status_label">Innhold</string>
+    <string name="product_modification_submit_label">Send til redaksjonen</string>
+    <string name="product_other_animal_derived_label">Annet animalsk</string>
+    <string name="product_other_animal_derived_hint">Hva gjør at produktet ikke er vegansk?</string>
+    <string name="product_brand_label">Merke</string>
+    <string name="product_brand_hint">Merkenavn eller produsent</string>
+
+
     <!-- step 1 -->
+    <string name="check_if_not_vegetarian_at_all_title">Fra dyrekropper</string>
+
     <string name="maybe_vegetarian_headline">Inneholdet produktet animalske ingredienser? Kryss av for det varen inneholder:</string>
     <string name="contains_body_parts">Kjøtt</string>
     <string name="contains_body_parts_details">Inkl. fisk, fugl, skalldyr, skjell, insekter og andre dyr.</string>
@@ -16,6 +34,8 @@
     <string name="contains_unspecified_possibly_animal_additives_details">Hvis oljen eller aromaen kan komme fra dyrekropper.</string>
 
     <!-- step 2 -->
+    <string name="check_if_vegetarian_title">Utskilt fra dyrekropper</string>
+
     <string name="maybe_vegan_headline">Inneholdet produktet andre ingredienser fra dyr? Kryss av for det varen inneholder:</string>
     <string name="contains_animal_milk">Dyremelk</string>
     <string name="contains_animal_milk_details">Inkl. melkeprotein, melkesukker, laktose, myse, kasein, ghee og laktitol (E966).</string>
@@ -27,6 +47,8 @@
     <string name="vegetarian_comment_hint">Hvilke ingredienser kommer fra dyr?</string>
 
     <!-- step 3 -->
+    <string name="check_if_vegan_title">Tvilstilfeller</string>
+
     <string name="contains_additives_of_possible_animal_origins_headline">Inneholdet produktet tilsetningsstoffer som kan komme fra dyr? Kryss av for det varen inneholder:</string>
     <string name="possible_animal_derived_additives">Tilsetningsstoffer kanskje fra dyr</string>
     <string name="possible_animal_derived_additives_details">Har produktet ingredienser fra den gule listen? </string>
@@ -35,7 +57,17 @@
     <string name="show_yellow_ingredients_list">Vis gul liste</string>
 
     <!-- step 4 -->
-    <string name="submit_for_approval">Send inn til redaksjonen</string>
+    <string name="enough_information_title">Nok informasjon</string>
+
     <string name="wizard_complete_thanks">Takk! Det er all informasjonen vi trenger.</string>
+    <string name="submit_for_approval">Send inn til redaksjonen</string>
+
+    <string name="product_status_format">Produktet er %s.</string>
+    <string name="status_not_vegetarian">ikke vegetarisk</string>
+    <string name="status_vegetarian_and_maybe_vegan">vegetarisk og kanskje vegansk</string>
+    <string name="status_vegan">vegansk</string>
+    <string name="status_maybe_vegetarian_or_maybe_vegan">kanskje vegetarisk eller vegansk</string>
+    <string name="status_vegetarian">vegetarisk</string>
+    <string name="status_maybe_vegetarian">kanskje vegetarisk</string>
 
 </resources>

@@ -41,17 +41,9 @@
     <string name="error_unknown_lookup_error">En ukjent feil oppstod for denne strekkkoden.</string>
     <string name="no_network_connection">Du må være koblet til Internett for å søke etter varer</string>
     <string name="enquire_vegan_status">Vennligst legg til info om disse ingrediensene:\u0020</string>
-    <string name="product_gtin_label">Strekkode</string>
-    <string name="product_name_label">Navn</string>
-    <string name="product_name_hint">Produktets navn</string>
-    <string name="product_variant_label">Variant</string>
-    <string name="product_variant_hint">Antall, vekt/volum, undertittel etc.</string>
-    <string name="product_status_label">Innhold</string>
-    <string name="product_modification_submit_label">Send til redaksjonen</string>
-    <string name="product_other_animal_derived_label">Annet animalsk</string>
-    <string name="product_other_animal_derived_hint">Hva gjør at produktet ikke er vegansk?</string>
-    <string name="product_brand_label">Merke</string>
-    <string name="product_brand_hint">Merkenavn eller produsent</string>
+
+
+
     <string name="product_contains_bodyparts">Biter av dyrekropper</string>
     <string name="product_contains_honey">Honning</string>
     <string name="product_contains_eggs">Egg</string>
@@ -85,17 +77,6 @@
 
     <string name="action_about">Om appen</string>
     <string name="about_activity_title">Om appen</string>
-    <string name="enough_information_title">Nok informasjon</string>
-    <string name="check_if_vegan_title">Tvilstilfeller</string>
-    <string name="check_if_vegetarian_title">Utskilt fra dyrekropper</string>
-    <string name="check_if_not_vegetarian_at_all_title">Fra dyrekropper</string>
-    <string name="request_meta_information_title">Beskrivelse</string>
-    <string name="product_status_format">Produktet er %s.</string>
-    <string name="status_not_vegetarian">ikke vegetarisk</string>
-    <string name="status_vegetarian_and_maybe_vegan">vegetarisk og kanskje vegansk</string>
-    <string name="status_vegan">vegansk</string>
-    <string name="status_maybe_vegetarian_or_maybe_vegan">kanskje vegetarisk eller vegansk</string>
-    <string name="status_vegetarian">vegetarisk</string>
-    <string name="status_maybe_vegetarian">kanskje vegetarisk</string>
+
 
 </resources>
