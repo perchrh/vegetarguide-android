@@ -80,44 +80,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        View launchNewAdd = findViewById(R.id.test_new_add);
-        launchNewAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchNext = new Intent(getBaseContext(), RequestMetaInformation.class);
-                launchNext.putExtra(Application.PRODUCT_DETAILS_KEY, new Product());
-                startActivity(launchNext);
-            }
-        });
-
-        View launchNewModify = findViewById(R.id.test_new_modify);
-        launchNewModify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), RequestMetaInformation.class);
-
-                Product product = new Product();
-                product.setTitle("Fake title");
-                product.setBrand("Fake brand");
-                product.setSubtitle("Fake subtitle");
-                product.setGtin("12345678901234");
-                product.setGeneral_comment("Nå uten melk");
-
-                product.getIngredients().setContains_body_parts(false);
-
-                product.getIngredients().setContains_animal_milk(false);
-                product.getIngredients().setContains_eggs(true);
-                product.getIngredients().setContains_insect_excretions(true);
-
-                product.getIngredients().setContains_unspecified_possibly_animal_additives(true);
-                product.getIngredients().setManufacturer_confirms_vegetarian(true);
-                product.getIngredients().setConfirmed_vegetarian_comment("Står på pakken at det er vegetarisk");
-
-                intent.putExtra(Application.PRODUCT_DETAILS_KEY, product);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override

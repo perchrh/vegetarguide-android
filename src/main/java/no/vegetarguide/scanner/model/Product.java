@@ -3,6 +3,8 @@ package no.vegetarguide.scanner.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 import java.net.URL;
 
 public class Product implements Parcelable {
@@ -16,17 +18,27 @@ public class Product implements Parcelable {
             return new Product[size];
         }
     };
+    @Expose
     private String title;
+    @Expose
     private String brand;
+    @Expose
     private String subtitle;
 
+    @Expose
     private String category;
+    @Expose
     private String subcategory;
+    @Expose
     private String _id;
+    @Expose
     private String gtin;
+    @Expose
     private URL imageurl;
+    @Expose
     private String general_comment;
 
+    @Expose
     private Ingredients ingredients = new Ingredients();
 
     public Product() {

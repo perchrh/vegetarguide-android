@@ -18,16 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import no.vegetarguide.scanner.integration.VolleySingleton;
+import no.vegetarguide.scanner.model.Ingredients;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
 import no.vegetarguide.scanner.model.ResultType;
 import no.vegetarguide.scanner.model.StatusType;
+import no.vegetarguide.scanner.wizard.RequestMetaInformation;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_REQUEST_CODE;
 import static no.vegetarguide.scanner.Application.START_SCANNING;
 
 public class ProductDetailsActivity extends Activity {
 
-    private ProductLookupResponse productDetails;
+    private ProductLookupResponse lookupResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class ProductDetailsActivity extends Activity {
 
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(ProductLookupResponse.class.getSimpleName());
-        productDetails = (ProductLookupResponse) obj;
+        lookupResponse = (ProductLookupResponse) obj;
 
         initViews();
     }
@@ -51,7 +53,7 @@ public class ProductDetailsActivity extends Activity {
 
     private void initImage() {
         NetworkImageView image = (NetworkImageView) findViewById(R.id.product_image);
-        URL imageUrl = productDetails.getImageurl();
+        URL imageUrl = lookupResponse.getProduct().getImageurl();
         if (imageUrl != null) {
             image.setVisibility(View.VISIBLE);
             image.setImageUrl(imageUrl.toString(), VolleySingleton.getInstance(this).getImageLoader());
@@ -65,13 +67,13 @@ public class ProductDetailsActivity extends Activity {
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent modifyProduct = new Intent(ProductDetailsActivity.this, ModifyProductActivity.class);
-                modifyProduct.putExtra(ProductLookupResponse.class.getSimpleName(), productDetails);
+                Intent modifyProduct = new Intent(ProductDetailsActivity.this, RequestMetaInformation.class);
+                modifyProduct.putExtra(ProductLookupResponse.class.getSimpleName(), lookupResponse);
                 startActivityForResult(modifyProduct, MODIFY_PRODUCT_REQUEST_CODE);
             }
         });
 
-        switch (productDetails.getResult()) {
+        switch (lookupResponse.getResult()) {
             case KNOWN_STATUS:
                 modifyButton.setText(R.string.label_modify_product);
                 break;
@@ -109,9 +111,9 @@ public class ProductDetailsActivity extends Activity {
         ViewGroup statusLine = (ViewGroup) findViewById(R.id.statusline);
         TextView status = (TextView) findViewById(R.id.status);
 
-        ResultType result = productDetails.getResult();
+        ResultType result = lookupResponse.getResult();
         if (result == ResultType.KNOWN_STATUS) {
-            StatusType statusType = productDetails.getStatus();
+            StatusType statusType = lookupResponse.getStatus();
             status.setText(statusType.getDescriptionResource());
             statusLine.setBackgroundColor(getResources().getColor(statusType.getColorResource()));
         } else {
@@ -122,10 +124,10 @@ public class ProductDetailsActivity extends Activity {
 
     private void initDescription() {
         TextView title = (TextView) findViewById(R.id.title);
-        title.setText(productDetails.getTitle());
+        title.setText(lookupResponse.getProduct().getTitle());
 
         TextView subtitle = (TextView) findViewById(R.id.subtitle);
-        subtitle.setText(productDetails.getSubtitle());
+        subtitle.setText(lookupResponse.getProduct().getSubtitle());
 
         TextView knownAnimalIngredients = (TextView) findViewById(R.id.contains_animal_ingredients);
 
@@ -145,13 +147,14 @@ public class ProductDetailsActivity extends Activity {
             List<String> unknownIngredients = new ArrayList<>(3);
             StringBuilder message = new StringBuilder(getString(R.string.enquire_vegan_status));
 
-            if (productDetails.getContains_eggs() == null) {
+            Ingredients ingredients = lookupResponse.getProduct().getIngredients();
+            if (ingredients.getContains_eggs() == null) {
                 unknownIngredients.add(getString(R.string.product_contains_eggs));
             }
-            if (productDetails.getContains_animal_milk() == null) {
+            if (ingredients.getContains_animal_milk() == null) {
                 unknownIngredients.add(getString(R.string.product_contains_animal_milk));
             }
-            if (productDetails.getContains_honey() == null) {
+            if (ingredients.getContains_insect_excretions() == null) {
                 unknownIngredients.add(getString(R.string.product_contains_honey));
             }
 
@@ -168,40 +171,31 @@ public class ProductDetailsActivity extends Activity {
     }
 
     private boolean isVegetarianMaybeVegan() {
-        return StatusType.VEGETARIAN.equals(productDetails.getStatus())
-                && (productDetails.getContains_honey() == null
-                || productDetails.getContains_animal_milk() == null
-                || productDetails.getContains_eggs() == null);
+        return lookupResponse.getProduct().getIngredients().isVegetarian() &&
+                lookupResponse.getProduct().getIngredients().isMaybeVegan();
     }
 
     private List<String> createAnimalIngredientList() {
         List<String> animalIngredients = new ArrayList<>();
-        if (Boolean.TRUE.equals(productDetails.getContains_animal_additives())) {
+        Ingredients ingredients = lookupResponse.getProduct().getIngredients();
+        if (Boolean.TRUE.equals(ingredients.getContains_animal_additives())) {
             animalIngredients.add(getString(R.string.product_contains_animal_additives));
         }
 
-        if (Boolean.TRUE.equals(productDetails.getContains_animal_milk())) {
+        if (Boolean.TRUE.equals(ingredients.getContains_animal_milk())) {
             animalIngredients.add(getString(R.string.product_contains_animal_milk));
         }
 
-        if (Boolean.TRUE.equals(productDetails.getContains_bodyparts())) {
+        if (Boolean.TRUE.equals(ingredients.getContains_body_parts())) {
             animalIngredients.add(getString(R.string.product_contains_bodyparts));
         }
 
-        if (Boolean.TRUE.equals(productDetails.getContains_eggs())) {
+        if (Boolean.TRUE.equals(ingredients.getContains_eggs())) {
             animalIngredients.add(getString(R.string.product_contains_eggs));
         }
 
-        if (Boolean.TRUE.equals(productDetails.getContains_honey())) {
+        if (Boolean.TRUE.equals(ingredients.getContains_insect_excretions())) {
             animalIngredients.add(getString(R.string.product_contains_honey));
-        }
-
-        if (Boolean.TRUE.equals(productDetails.getAnimal_tested())) {
-            animalIngredients.add(getString(R.string.product_is_animal_tested));
-        }
-
-        if (Boolean.TRUE.equals(productDetails.getOtherwise_animal_derived())) {
-            animalIngredients.add(getString(R.string.product_contains_other_animal_derived));
         }
 
         return animalIngredients;

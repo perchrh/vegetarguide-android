@@ -3,6 +3,8 @@ package no.vegetarguide.scanner.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 public class Ingredients implements Parcelable {
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -14,18 +16,29 @@ public class Ingredients implements Parcelable {
             return new Ingredients[size];
         }
     };
+    @Expose
     private Boolean contains_body_parts;
+    @Expose
     private Boolean contains_animal_additives;
+    @Expose
     private Boolean contains_possible_animal_additives;
+    @Expose
     private Boolean contains_unspecified_possibly_animal_additives;
+    @Expose
     private Boolean contains_insect_excretions;
+    @Expose
     private Boolean contains_eggs;
+    @Expose
     private Boolean contains_animal_milk;
 
+    @Expose
     private Boolean manufacturer_confirms_vegan;
+    @Expose
     private Boolean manufacturer_confirms_vegetarian;
 
+    @Expose
     private String confirmed_vegetarian_comment;
+    @Expose
     private String confirmed_vegan_comment;
 
     public Ingredients() {

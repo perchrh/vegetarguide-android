@@ -36,22 +36,6 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".ModifyProductActivity"
-            android:label="@string/title_activity_modify_product"
-            android:parentActivityName=".ProductDetailsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ProductDetailsActivity" />
-        </activity>
-        <activity
-            android:name=".VerifyAdditivesActivity"
-            android:label="@string/title_activity_verify_additives"
-            android:parentActivityName=".ModifyProductActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ModifyProductActivity" />
-        </activity>
-        <activity
             android:name=".ManualInputActivity"
             android:label="@string/title_activity_manual_input"
             android:parentActivityName=".MainActivity">
