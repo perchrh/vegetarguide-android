@@ -48,6 +48,7 @@ public class CheckIfVegan extends Activity {
     public static class CheckIfVeganFragment extends Fragment {
 
         private CheckBox possible_animal_derived_additives;
+        // TODO add animal tested and other animal derived if drinkable (isinglass etc)
         private CheckBox manufacturer_confirms_vegan;
         private EditText confirmed_vegan_comment;
         private Product product;

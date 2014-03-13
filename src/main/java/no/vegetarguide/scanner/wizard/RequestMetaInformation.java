@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.model.Product;
+import no.vegetarguide.scanner.model.ProductLookupResponse;
 
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 import static org.apache.commons.lang3.StringUtils.trimToNull;
@@ -26,12 +26,12 @@ public class RequestMetaInformation extends Activity {
         setContentView(R.layout.activity_metainformation);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
-        Product product = (Product) obj;
+        Parcelable obj = b.getParcelable(ProductLookupResponse.class.getSimpleName());
+        ProductLookupResponse response = (ProductLookupResponse) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, MetaInformationFragment.newInstance(product))
+                    .add(R.id.container, MetaInformationFragment.newInstance(response.getProduct()))
                     .commit();
         }
 
@@ -45,6 +45,7 @@ public class RequestMetaInformation extends Activity {
         private EditText title_edit;
         private EditText subtitle_edit;
         private EditText comment;
+        // TODO add category from list
 
         public MetaInformationFragment() {
 
