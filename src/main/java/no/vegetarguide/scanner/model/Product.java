@@ -30,8 +30,6 @@ public class Product implements Parcelable {
     @Expose
     private String subcategory;
     @Expose
-    private String _id;
-    @Expose
     private String gtin;
     @Expose
     private URL imageurl;
@@ -62,7 +60,6 @@ public class Product implements Parcelable {
         this.subtitle = in.readString();
         this.category = in.readString();
         this.subcategory = in.readString();
-        this._id = in.readString();
         this.gtin = in.readString();
         this.imageurl = (URL) in.readSerializable();
         this.general_comment = in.readString();
@@ -123,7 +120,6 @@ public class Product implements Parcelable {
         dest.writeString(this.subtitle);
         dest.writeString(this.category);
         dest.writeString(this.subcategory);
-        dest.writeString(this._id);
         dest.writeString(this.gtin);
         dest.writeSerializable(this.imageurl);
         dest.writeString(this.general_comment);
@@ -173,14 +169,6 @@ public class Product implements Parcelable {
 
     public void setSubcategory(String subcategory) {
         this.subcategory = subcategory;
-    }
-
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
     }
 
     public String getGtin() {

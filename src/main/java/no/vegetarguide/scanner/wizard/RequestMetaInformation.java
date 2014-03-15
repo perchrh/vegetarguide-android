@@ -12,10 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
-import no.vegetarguide.scanner.model.ProductLookupResponse;
 
-import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 import static org.apache.commons.lang3.StringUtils.trimToNull;
 
 public class RequestMetaInformation extends Activity {
@@ -26,12 +25,12 @@ public class RequestMetaInformation extends Activity {
         setContentView(R.layout.activity_metainformation);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(ProductLookupResponse.class.getSimpleName());
-        ProductLookupResponse response = (ProductLookupResponse) obj;
+        Parcelable obj = b.getParcelable(ModifyProductRequest.class.getSimpleName());
+        ModifyProductRequest modifyRequest = (ModifyProductRequest) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, MetaInformationFragment.newInstance(response.getProduct()))
+                    .add(R.id.container, MetaInformationFragment.newInstance(modifyRequest))
                     .commit();
         }
 
@@ -39,22 +38,22 @@ public class RequestMetaInformation extends Activity {
 
     public static class MetaInformationFragment extends Fragment {
 
-        private Product product;
         private EditText brand_edit;
         private TextView gtin_value;
         private EditText title_edit;
         private EditText subtitle_edit;
         private EditText comment;
+        private ModifyProductRequest modifyRequest;
         // TODO add category from list
 
         public MetaInformationFragment() {
 
         }
 
-        public static MetaInformationFragment newInstance(Product productDetails) {
+        public static MetaInformationFragment newInstance(ModifyProductRequest productDetails) {
             MetaInformationFragment frag = new MetaInformationFragment();
             Bundle args = new Bundle();
-            args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
+            args.putParcelable(ModifyProductRequest.class.getSimpleName(), productDetails);
             frag.setArguments(args);
             return frag;
         }
@@ -66,16 +65,16 @@ public class RequestMetaInformation extends Activity {
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
             }
-            product = arguments.getParcelable(PRODUCT_DETAILS_KEY);
+            modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
 
-            createNextButton(rootView);
+            createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);
-            createTextEdits(rootView);
+            createTextEdits(rootView, modifyRequest.getProduct());
 
             return rootView;
         }
 
-        private void createTextEdits(View rootView) {
+        private void createTextEdits(View rootView, final Product product) {
             gtin_value = (TextView) rootView.findViewById(R.id.gtin_value);
             gtin_value.setText(product.getGtin());
 
@@ -101,18 +100,18 @@ public class RequestMetaInformation extends Activity {
             });
         }
 
-        private void createNextButton(View rootView) {
+        private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent launchNext = new Intent(getActivity(), CheckIfNotVegetarianAtAll.class);
 
-                    mergeProductValues();
+                    mergeProductValues(product);
                     if (missingValues()) {
                         //TODO show popup saying what is wrong
                     } else {
-                        launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
+                        launchNext.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
                         startActivity(launchNext);
                     }
                 }
@@ -124,7 +123,7 @@ public class RequestMetaInformation extends Activity {
             return false;
         }
 
-        private void mergeProductValues() {
+        private void mergeProductValues(Product product) {
             String trimmedComment = trimToNull(comment.getText().toString());
             product.setGeneral_comment(trimmedComment); // overwrite previous value always
 

@@ -14,11 +14,9 @@ import android.widget.EditText;
 
 import org.apache.commons.lang3.StringUtils;
 
-import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
-
-import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
 public class CheckIfNotVegetarianAtAll extends Activity {
 
@@ -28,12 +26,12 @@ public class CheckIfNotVegetarianAtAll extends Activity {
         setContentView(R.layout.activity_check_if_not_vegetarian_at_all);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
-        Product product = (Product) obj;
+        Parcelable obj = b.getParcelable(ModifyProductRequest.class.getSimpleName());
+        ModifyProductRequest modifyRequest = (ModifyProductRequest) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, CheckIfNotVegetarianAtAllFragment.newInstance(product))
+                    .add(R.id.container, CheckIfNotVegetarianAtAllFragment.newInstance(modifyRequest))
                     .commit();
         }
 
@@ -46,16 +44,16 @@ public class CheckIfNotVegetarianAtAll extends Activity {
         private CheckBox contains_unspecified_possibly_animal_additives;
         private CheckBox manufacturer_confirms_vegetarian;
         private EditText confirmed_vegetarian_comment;
-        private Product product;
+        private ModifyProductRequest modifyRequest;
 
         public CheckIfNotVegetarianAtAllFragment() {
 
         }
 
-        public static CheckIfNotVegetarianAtAllFragment newInstance(Product productDetails) {
+        public static CheckIfNotVegetarianAtAllFragment newInstance(ModifyProductRequest modifyRequest) {
             CheckIfNotVegetarianAtAllFragment frag = new CheckIfNotVegetarianAtAllFragment();
             Bundle args = new Bundle();
-            args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
+            args.putParcelable(ModifyProductRequest.class.getSimpleName(), modifyRequest);
             frag.setArguments(args);
             return frag;
         }
@@ -67,16 +65,16 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
             }
-            product = arguments.getParcelable(PRODUCT_DETAILS_KEY);
+            modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
 
-            createNextButton(rootView);
+            createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);
-            createCheckBoxes(rootView);
+            createCheckBoxes(rootView, modifyRequest.getProduct());
 
             return rootView;
         }
 
-        private void createCheckBoxes(final View rootView) {
+        private void createCheckBoxes(final View rootView, final Product product) {
             contains_bodyparts = (CheckBox) rootView.findViewById(R.id.contains_bodyparts);
             if (product.getIngredients().getContains_bodyparts() != null) {
                 contains_bodyparts.setChecked(product.getIngredients().getContains_bodyparts());
@@ -137,13 +135,13 @@ public class CheckIfNotVegetarianAtAll extends Activity {
             });
         }
 
-        private void createNextButton(View rootView) {
+        private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    mergeProductValues();
+                    mergeProductValues(product);
 
                     Intent launchNext;
 
@@ -152,13 +150,13 @@ public class CheckIfNotVegetarianAtAll extends Activity {
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);
                     }
-                    launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
+                    launchNext.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
                     startActivity(launchNext);
                 }
             });
         }
 
-        private void mergeProductValues() {
+        private void mergeProductValues(Product product) {
             product.getIngredients().setContains_bodyparts(contains_bodyparts.isChecked());
             product.getIngredients().setContains_animal_additives(contains_animal_additives.isChecked());
             product.getIngredients().setContains_unspecified_possibly_animal_additives(contains_unspecified_possibly_animal_additives.isChecked());

@@ -8,6 +8,4 @@ public interface Application {
     int MODIFY_PRODUCT_REQUEST_CODE = 1014;
     int PRODUCT_DETAILS_REQUEST_CODE = 1013;
 
-    String PRODUCT_DETAILS_KEY = "product_details";
-
 }

@@ -27,6 +27,8 @@ public class ProductLookupResponse implements Parcelable {
     @Expose
     private Product product;
 
+    @Expose
+    private String objectId;
 
     @SuppressWarnings("unused")
     public ProductLookupResponse() {
@@ -38,6 +40,7 @@ public class ProductLookupResponse implements Parcelable {
         status = (StatusType) in.readSerializable();
         error = (LookupErrorType) in.readSerializable();
         product = in.readParcelable(Product.class.getClassLoader());
+        objectId = in.readString();
     }
 
     public boolean hasError() {
@@ -60,6 +63,10 @@ public class ProductLookupResponse implements Parcelable {
         return product;
     }
 
+    public String getObjectId() {
+        return objectId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -70,7 +77,8 @@ public class ProductLookupResponse implements Parcelable {
         dest.writeSerializable(result);
         dest.writeSerializable(status);
         dest.writeSerializable(error);
-        dest.writeParcelable(product, 0);
+        dest.writeParcelable(product, flags);
+        dest.writeString(objectId);
     }
 
 }

@@ -15,11 +15,9 @@ import android.widget.EditText;
 
 import org.apache.commons.lang3.StringUtils;
 
-import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
-
-import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
 public class CheckIfVegan extends Activity {
 
@@ -29,12 +27,12 @@ public class CheckIfVegan extends Activity {
         setContentView(R.layout.activity_check_if_vegan);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
-        Product product = (Product) obj;
+        Parcelable obj = b.getParcelable(ModifyProductRequest.class.getSimpleName());
+        ModifyProductRequest modifyRequest = (ModifyProductRequest) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, CheckIfVeganFragment.newInstance(product))
+                    .add(R.id.container, CheckIfVeganFragment.newInstance(modifyRequest))
                     .commit();
         }
 
@@ -51,16 +49,16 @@ public class CheckIfVegan extends Activity {
         // TODO add animal tested and other animal derived if drinkable (isinglass etc)
         private CheckBox manufacturer_confirms_vegan;
         private EditText confirmed_vegan_comment;
-        private Product product;
+        private ModifyProductRequest modifyRequest;
 
         public CheckIfVeganFragment() {
 
         }
 
-        public static CheckIfVeganFragment newInstance(Product product) {
+        public static CheckIfVeganFragment newInstance(ModifyProductRequest product) {
             CheckIfVeganFragment frag = new CheckIfVeganFragment();
             Bundle args = new Bundle();
-            args.putParcelable(PRODUCT_DETAILS_KEY, product);
+            args.putParcelable(ModifyProductRequest.class.getSimpleName(), product);
             frag.setArguments(args);
             return frag;
         }
@@ -68,11 +66,15 @@ public class CheckIfVegan extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_check_if_vegan, container, false);
-            product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
+            Bundle arguments = getArguments();
+            if (arguments == null) {
+                throw new IllegalStateException("Missing required state arguments bundle");
+            }
+            modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
 
-            createNextButton(rootView);
+            createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);
-            createCheckBoxes(rootView);
+            createCheckBoxes(rootView, modifyRequest.getProduct());
 
             return rootView;
         }
@@ -88,7 +90,8 @@ public class CheckIfVegan extends Activity {
             });
         }
 
-        private void createCheckBoxes(View rootView) {
+        private void createCheckBoxes(View rootView, Product product) {
+
             confirmed_vegan_comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
             confirmed_vegan_comment.setText(product.getConfirmed_vegan_comment());
             confirmed_vegan_comment.setVisibility(StringUtils.isEmpty(product.getConfirmed_vegan_comment())
@@ -132,7 +135,7 @@ public class CheckIfVegan extends Activity {
             });
         }
 
-        private void createNextButton(View rootView) {
+        private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -140,7 +143,7 @@ public class CheckIfVegan extends Activity {
                     mergeProductValues(product);
 
                     Intent launchNext = new Intent(getActivity(), EnoughInformation.class);
-                    launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
+                    launchNext.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
 
                     startActivity(launchNext);
                 }

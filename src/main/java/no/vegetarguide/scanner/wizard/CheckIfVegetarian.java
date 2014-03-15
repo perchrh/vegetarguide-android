@@ -9,13 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 
-import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
-
-import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
 public class CheckIfVegetarian extends Activity {
 
@@ -25,12 +22,12 @@ public class CheckIfVegetarian extends Activity {
         setContentView(R.layout.activity_check_if_vegetarian);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
-        Product product = (Product) obj;
+        Parcelable obj = b.getParcelable(ModifyProductRequest.class.getSimpleName());
+        ModifyProductRequest modifyRequest = (ModifyProductRequest) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, CheckIfVegetarianFragment.newInstance(product))
+                    .add(R.id.container, CheckIfVegetarianFragment.newInstance(modifyRequest))
                     .commit();
         }
 
@@ -40,17 +37,16 @@ public class CheckIfVegetarian extends Activity {
         private CheckBox contains_animal_milk;
         private CheckBox contains_eggs;
         private CheckBox contains_insect_excretions;
-        private EditText vegetarian_comment;
-        private Product product;
+        private ModifyProductRequest modifyRequest;
 
         public CheckIfVegetarianFragment() {
 
         }
 
-        public static CheckIfVegetarianFragment newInstance(Product productDetails) {
+        public static CheckIfVegetarianFragment newInstance(ModifyProductRequest modifyRequest) {
             CheckIfVegetarianFragment frag = new CheckIfVegetarianFragment();
             Bundle args = new Bundle();
-            args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
+            args.putParcelable(ModifyProductRequest.class.getSimpleName(), modifyRequest);
             frag.setArguments(args);
             return frag;
         }
@@ -62,17 +58,17 @@ public class CheckIfVegetarian extends Activity {
             if (arguments == null) {
                 throw new IllegalStateException("Missing required state arguments bundle");
             }
-            product = arguments.getParcelable(PRODUCT_DETAILS_KEY);
+            modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
 
-            createNextButton(rootView);
+            createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);
 
-            createCheckBoxes(rootView);
+            createCheckBoxes(rootView, modifyRequest.getProduct());
 
             return rootView;
         }
 
-        private void createCheckBoxes(View rootView) {
+        private void createCheckBoxes(View rootView, Product product) {
             contains_animal_milk = (CheckBox) rootView.findViewById(R.id.contains_animal_milk);
             if (product.getIngredients().getContains_animal_milk() != null) {
                 contains_animal_milk.setChecked(product.getIngredients().getContains_animal_milk());
@@ -98,7 +94,7 @@ public class CheckIfVegetarian extends Activity {
             });
         }
 
-        private void createNextButton(View rootView) {
+        private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
             nextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,7 +109,7 @@ public class CheckIfVegetarian extends Activity {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);
                     }
 
-                    launchNext.putExtra(PRODUCT_DETAILS_KEY, product);
+                    launchNext.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
                     startActivity(launchNext);
                 }
             });

@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.Ingredients;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
@@ -67,8 +68,10 @@ public class ProductDetailsActivity extends Activity {
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ModifyProductRequest modifyRequest = new ModifyProductRequest(lookupResponse);
+
                 Intent modifyProduct = new Intent(ProductDetailsActivity.this, RequestMetaInformation.class);
-                modifyProduct.putExtra(ProductLookupResponse.class.getSimpleName(), lookupResponse);
+                modifyProduct.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
                 startActivityForResult(modifyProduct, MODIFY_PRODUCT_REQUEST_CODE);
             }
         });
@@ -140,7 +143,6 @@ public class ProductDetailsActivity extends Activity {
             String joined = StringUtils.join(animalIngredients, "\n");
             knownAnimalIngredients.setText(joined);
         }
-        //TODO vis også kommentarer om "hvorfor tilsetningsstoffer vegansk" eller omvendt
 
         TextView missingVeganInformation = (TextView) findViewById(R.id.missing_vegan_information);
         if (isVegetarianMaybeVegan()) {

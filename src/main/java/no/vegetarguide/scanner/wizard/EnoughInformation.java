@@ -19,7 +19,6 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
 import no.vegetarguide.scanner.AlertDialogFragment;
-import no.vegetarguide.scanner.Application;
 import no.vegetarguide.scanner.MainActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
@@ -29,7 +28,6 @@ import no.vegetarguide.scanner.model.ModifyProductResponse;
 import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
-import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_KEY;
 
 public class EnoughInformation extends Activity {
 
@@ -40,29 +38,30 @@ public class EnoughInformation extends Activity {
         setContentView(R.layout.activity_enough_information);
 
         Bundle b = getIntent().getExtras();
-        Parcelable obj = b.getParcelable(Application.PRODUCT_DETAILS_KEY);
-        Product product = (Product) obj;
+        Parcelable obj = b.getParcelable(ModifyProductRequest.class.getSimpleName());
+        ModifyProductRequest modifyRequest = (ModifyProductRequest) obj;
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, EnoughInformationFragment.newInstance(product))
+                    .add(R.id.container, EnoughInformationFragment.newInstance(modifyRequest))
                     .commit();
         }
     }
 
 
     public static class EnoughInformationFragment extends Fragment {
+        private static final String MODIFY_PRODUCT_REQUEST = "modify_product_request";
         private View progressBar;
-        private Product product;
+        private ModifyProductRequest modifyRequest;
 
 
         public EnoughInformationFragment() {
         }
 
-        public static EnoughInformationFragment newInstance(Product productDetails) {
+        public static EnoughInformationFragment newInstance(ModifyProductRequest modifyRequest) {
             EnoughInformationFragment frag = new EnoughInformationFragment();
             Bundle args = new Bundle();
-            args.putParcelable(PRODUCT_DETAILS_KEY, productDetails);
+            args.putParcelable(MODIFY_PRODUCT_REQUEST, modifyRequest);
             frag.setArguments(args);
             return frag;
         }
@@ -76,7 +75,11 @@ public class EnoughInformation extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_enough_information, container, false);
-            product = getArguments().getParcelable(PRODUCT_DETAILS_KEY);
+            Bundle arguments = getArguments();
+            if (arguments == null) {
+                throw new IllegalStateException("Missing required state arguments bundle");
+            }
+            modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
 
             initProgressBar(rootView);
 
@@ -112,8 +115,11 @@ public class EnoughInformation extends Activity {
         }
 
         private void initStatusMessage(View rootView) {
+            Product product = modifyRequest.getProduct();
+
             final String format = getString(R.string.product_status_format);
             TextView status = (TextView) rootView.findViewById(R.id.status);
+
             if (product.isAnimalDerivedForCertain()) {
                 status.setText(String.format(format, getString(R.string.status_not_vegetarian)));
             } else if (product.isMaybeVegan()) {
@@ -131,7 +137,6 @@ public class EnoughInformation extends Activity {
             }
         }
 
-
         private void showProgressBar() {
             progressBar.setVisibility(View.VISIBLE);
         }
@@ -143,9 +148,7 @@ public class EnoughInformation extends Activity {
         private void performRequest() {
             showProgressBar();
 
-            ModifyProductRequest requestObject = new ModifyProductRequest(product);
-
-            ModifyProductRequestHandler requestHandler = new ModifyProductRequestHandler(requestObject);
+            ModifyProductRequestHandler requestHandler = new ModifyProductRequestHandler(modifyRequest);
 
             requestHandler.execute(VolleySingleton.getInstance(getActivity()).getRequestQueue(),
                     createModifyResponseListener(),
