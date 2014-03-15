@@ -17,7 +17,7 @@ public class Ingredients implements Parcelable {
         }
     };
     @Expose
-    private Boolean contains_body_parts;
+    private Boolean contains_bodyparts;
     @Expose
     private Boolean contains_animal_additives;
     @Expose
@@ -45,7 +45,7 @@ public class Ingredients implements Parcelable {
     }
 
     public Ingredients(Parcel in) {
-        this.contains_body_parts = (Boolean) in.readSerializable();
+        this.contains_bodyparts = (Boolean) in.readSerializable();
         this.contains_animal_additives = (Boolean) in.readSerializable();
         this.contains_possible_animal_additives = (Boolean) in.readSerializable();
         this.contains_unspecified_possibly_animal_additives = (Boolean) in.readSerializable();
@@ -77,7 +77,7 @@ public class Ingredients implements Parcelable {
     }
 
     public boolean isAnimalDerivedForCertain() {
-        return Boolean.TRUE.equals(this.contains_body_parts)
+        return Boolean.TRUE.equals(this.contains_bodyparts)
                 || Boolean.TRUE.equals(this.contains_animal_additives);
     }
 
@@ -94,12 +94,12 @@ public class Ingredients implements Parcelable {
                 || Boolean.TRUE.equals(manufacturer_confirms_vegetarian);
     }
 
-    public Boolean getContains_body_parts() {
-        return contains_body_parts;
+    public Boolean getContains_bodyparts() {
+        return contains_bodyparts;
     }
 
-    public void setContains_body_parts(Boolean contains_body_parts) {
-        this.contains_body_parts = contains_body_parts;
+    public void setContains_bodyparts(Boolean contains_bodyparts) {
+        this.contains_bodyparts = contains_bodyparts;
     }
 
     public Boolean getContains_animal_additives() {
@@ -189,7 +189,7 @@ public class Ingredients implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeSerializable(this.contains_body_parts);
+        dest.writeSerializable(this.contains_bodyparts);
         dest.writeSerializable(this.contains_animal_additives);
         dest.writeSerializable(this.contains_possible_animal_additives);
         dest.writeSerializable(this.contains_unspecified_possibly_animal_additives);

@@ -41,7 +41,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
 
     public static class CheckIfNotVegetarianAtAllFragment extends Fragment {
 
-        private CheckBox contains_body_parts;
+        private CheckBox contains_bodyparts;
         private CheckBox contains_animal_additives;
         private CheckBox contains_unspecified_possibly_animal_additives;
         private CheckBox manufacturer_confirms_vegetarian;
@@ -77,9 +77,9 @@ public class CheckIfNotVegetarianAtAll extends Activity {
         }
 
         private void createCheckBoxes(final View rootView) {
-            contains_body_parts = (CheckBox) rootView.findViewById(R.id.contains_body_parts);
-            if (product.getIngredients().getContains_body_parts() != null) {
-                contains_body_parts.setChecked(product.getIngredients().getContains_body_parts());
+            contains_bodyparts = (CheckBox) rootView.findViewById(R.id.contains_bodyparts);
+            if (product.getIngredients().getContains_bodyparts() != null) {
+                contains_bodyparts.setChecked(product.getIngredients().getContains_bodyparts());
             }
             contains_animal_additives = (CheckBox) rootView.findViewById(R.id.contains_animal_additives);
             if (product.getIngredients().getContains_animal_additives() != null) {
@@ -159,7 +159,7 @@ public class CheckIfNotVegetarianAtAll extends Activity {
         }
 
         private void mergeProductValues() {
-            product.getIngredients().setContains_body_parts(contains_body_parts.isChecked());
+            product.getIngredients().setContains_bodyparts(contains_bodyparts.isChecked());
             product.getIngredients().setContains_animal_additives(contains_animal_additives.isChecked());
             product.getIngredients().setContains_unspecified_possibly_animal_additives(contains_unspecified_possibly_animal_additives.isChecked());
 

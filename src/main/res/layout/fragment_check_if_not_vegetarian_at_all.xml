@@ -23,19 +23,19 @@
 
 
         <CheckBox
-            android:id="@+id/contains_body_parts"
+            android:id="@+id/contains_bodyparts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/maybe_vegetarian_headline"
             android:layout_marginTop="10dp"
-            android:text="@string/contains_body_parts"
+            android:text="@string/contains_bodyparts"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/contains_body_parts_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/contains_body_parts"
+            android:layout_below="@+id/contains_bodyparts"
             android:layout_marginTop="1dp"
             android:paddingLeft="@dimen/padding_checkbox"
             android:text="@string/contains_body_parts_details" />

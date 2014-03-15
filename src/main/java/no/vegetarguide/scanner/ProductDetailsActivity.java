@@ -186,7 +186,7 @@ public class ProductDetailsActivity extends Activity {
             animalIngredients.add(getString(R.string.product_contains_animal_milk));
         }
 
-        if (Boolean.TRUE.equals(ingredients.getContains_body_parts())) {
+        if (Boolean.TRUE.equals(ingredients.getContains_bodyparts())) {
             animalIngredients.add(getString(R.string.product_contains_bodyparts));
         }
 

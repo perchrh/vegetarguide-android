@@ -26,7 +26,7 @@
     <string name="check_if_not_vegetarian_at_all_title">Fra dyrekropper</string>
 
     <string name="maybe_vegetarian_headline">Inneholdet produktet animalske ingredienser? Kryss av for det varen inneholder:</string>
-    <string name="contains_body_parts">Kjøtt</string>
+    <string name="contains_bodyparts">Kjøtt</string>
     <string name="contains_body_parts_details">Inkl. fisk, fugl, skalldyr, skjell, insekter og andre dyr.</string>
     <string name="contains_animal_additives">Ingredienser basert på dyrekropper</string>
     <string name="contains_animal_additives_details">Kjøttkraft, kjøttbuljong, rogn, østerssaus, gelatin, løpe eller rennin fra kalv, karmin (E120), aspik, pepsin eller kalsium mesoinositol hexafosfat.</string>

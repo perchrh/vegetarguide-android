@@ -12,10 +12,10 @@ import no.vegetarguide.scanner.model.ModifyProductResponse;
 
 public class ModifyProductRequestHandler {
 
-    private final ModifyProductRequest product;
+    private final ModifyProductRequest request;
 
-    public ModifyProductRequestHandler(ModifyProductRequest product) {
-        this.product = product;
+    public ModifyProductRequestHandler(ModifyProductRequest request) {
+        this.request = request;
     }
 
     private String getEndpoint() {
@@ -33,7 +33,7 @@ public class ModifyProductRequestHandler {
         GsonObjectRequest<ModifyProductRequest, ModifyProductResponse> modifyRequest =
                 new GsonObjectRequest<>(Request.Method.POST,
                         getEndpoint(),
-                        product,
+                        request,
                         ModifyProductRequest.class,
                         ModifyProductResponse.class,
                         listener,
