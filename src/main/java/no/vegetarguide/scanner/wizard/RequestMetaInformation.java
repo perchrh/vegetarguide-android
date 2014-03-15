@@ -50,10 +50,10 @@ public class RequestMetaInformation extends Activity {
 
         }
 
-        public static MetaInformationFragment newInstance(ModifyProductRequest productDetails) {
+        public static MetaInformationFragment newInstance(ModifyProductRequest modifyRequest) {
             MetaInformationFragment frag = new MetaInformationFragment();
             Bundle args = new Bundle();
-            args.putParcelable(ModifyProductRequest.class.getSimpleName(), productDetails);
+            args.putParcelable(ModifyProductRequest.class.getSimpleName(), modifyRequest);
             frag.setArguments(args);
             return frag;
         }

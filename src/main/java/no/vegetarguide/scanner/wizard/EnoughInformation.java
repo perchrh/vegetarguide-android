@@ -50,10 +50,8 @@ public class EnoughInformation extends Activity {
 
 
     public static class EnoughInformationFragment extends Fragment {
-        private static final String MODIFY_PRODUCT_REQUEST = "modify_product_request";
         private View progressBar;
         private ModifyProductRequest modifyRequest;
-
 
         public EnoughInformationFragment() {
         }
@@ -61,7 +59,7 @@ public class EnoughInformation extends Activity {
         public static EnoughInformationFragment newInstance(ModifyProductRequest modifyRequest) {
             EnoughInformationFragment frag = new EnoughInformationFragment();
             Bundle args = new Bundle();
-            args.putParcelable(MODIFY_PRODUCT_REQUEST, modifyRequest);
+            args.putParcelable(ModifyProductRequest.class.getSimpleName(), modifyRequest);
             frag.setArguments(args);
             return frag;
         }
@@ -83,7 +81,7 @@ public class EnoughInformation extends Activity {
 
             initProgressBar(rootView);
 
-            initStatusMessage(rootView);
+            initStatusMessage(rootView, modifyRequest.getProduct());
 
             initSubmitButton(rootView);
 
@@ -114,9 +112,7 @@ public class EnoughInformation extends Activity {
             });
         }
 
-        private void initStatusMessage(View rootView) {
-            Product product = modifyRequest.getProduct();
-
+        private void initStatusMessage(View rootView, Product product) {
             final String format = getString(R.string.product_status_format);
             TextView status = (TextView) rootView.findViewById(R.id.status);
 
