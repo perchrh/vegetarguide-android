@@ -107,7 +107,7 @@ public class CheckIfVegetarian extends Activity {
                     mergeProductValues(product);
 
                     Intent launchNext;
-                    if (product.getIngredients().isMaybeVegan()) {
+                    if (product.isMaybeVegan()) {
                         launchNext = new Intent(getActivity(), CheckIfVegan.class);
                     } else {
                         launchNext = new Intent(getActivity(), EnoughInformation.class);

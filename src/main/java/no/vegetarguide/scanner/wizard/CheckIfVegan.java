@@ -90,8 +90,8 @@ public class CheckIfVegan extends Activity {
 
         private void createCheckBoxes(View rootView) {
             confirmed_vegan_comment = (EditText) rootView.findViewById(R.id.confirmed_vegan_comment);
-            confirmed_vegan_comment.setText(product.getIngredients().getConfirmed_vegan_comment());
-            confirmed_vegan_comment.setVisibility(StringUtils.isEmpty(product.getIngredients().getConfirmed_vegan_comment())
+            confirmed_vegan_comment.setText(product.getConfirmed_vegan_comment());
+            confirmed_vegan_comment.setVisibility(StringUtils.isEmpty(product.getConfirmed_vegan_comment())
                     ? View.GONE : View.VISIBLE); // initial value
 
             possible_animal_derived_additives = (CheckBox) rootView.findViewById(R.id.possible_animal_derived_additives);
@@ -99,8 +99,8 @@ public class CheckIfVegan extends Activity {
                 possible_animal_derived_additives.setChecked(product.getIngredients().getContains_possible_animal_additives());
             }
             manufacturer_confirms_vegan = (CheckBox) rootView.findViewById(R.id.manufacturer_confirms_vegan);
-            if (product.getIngredients().getManufacturer_confirms_vegan() != null) {
-                manufacturer_confirms_vegan.setChecked(product.getIngredients().getManufacturer_confirms_vegan());
+            if (product.getManufacturer_confirms_vegan() != null) {
+                manufacturer_confirms_vegan.setChecked(product.getManufacturer_confirms_vegan());
             }
 
             CompoundButton.OnCheckedChangeListener showCommentFieldIfAnyChecked = new CompoundButton.OnCheckedChangeListener() {
@@ -149,12 +149,12 @@ public class CheckIfVegan extends Activity {
 
         private void mergeProductValues(Product product) {
             if (confirmed_vegan_comment.getVisibility() == View.VISIBLE) {
-                product.getIngredients().setConfirmed_vegan_comment(StringUtils.trimToNull(confirmed_vegan_comment.getText().toString()));
+                product.setConfirmed_vegan_comment(StringUtils.trimToNull(confirmed_vegan_comment.getText().toString()));
             } else {
-                product.getIngredients().setConfirmed_vegan_comment(null);
+                product.setConfirmed_vegan_comment(null);
             }
             product.getIngredients().setContains_possible_animal_additives(possible_animal_derived_additives.isChecked());
-            product.getIngredients().setManufacturer_confirms_vegan(manufacturer_confirms_vegan.isChecked());
+            product.setManufacturer_confirms_vegan(manufacturer_confirms_vegan.isChecked());
         }
     }
 }

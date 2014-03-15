@@ -171,8 +171,8 @@ public class ProductDetailsActivity extends Activity {
     }
 
     private boolean isVegetarianMaybeVegan() {
-        return lookupResponse.getProduct().getIngredients().isVegetarian() &&
-                lookupResponse.getProduct().getIngredients().isMaybeVegan();
+        return lookupResponse.getProduct().isVegetarian() &&
+                lookupResponse.getProduct().isMaybeVegan();
     }
 
     private List<String> createAnimalIngredientList() {

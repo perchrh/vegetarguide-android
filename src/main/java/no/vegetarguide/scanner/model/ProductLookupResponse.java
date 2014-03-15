@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-import java.net.URL;
-
 public class ProductLookupResponse implements Parcelable {
 
     @SuppressWarnings("unused")

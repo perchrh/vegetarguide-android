@@ -8,6 +8,7 @@ public class ModifyProductResponse {
     private Integer code = -1;
     @Expose
     private String message;
+
     @SuppressWarnings("unused")
     public ModifyProductResponse() {
         //used by Gson

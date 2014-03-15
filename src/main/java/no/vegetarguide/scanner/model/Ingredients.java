@@ -31,17 +31,9 @@ public class Ingredients implements Parcelable {
     @Expose
     private Boolean contains_animal_milk;
 
-    @Expose
-    private Boolean manufacturer_confirms_vegan;
-    @Expose
-    private Boolean manufacturer_confirms_vegetarian;
-
-    @Expose
-    private String confirmed_vegetarian_comment;
-    @Expose
-    private String confirmed_vegan_comment;
-
+    @SuppressWarnings("unused")
     public Ingredients() {
+        // Used by GSON
     }
 
     public Ingredients(Parcel in) {
@@ -52,46 +44,6 @@ public class Ingredients implements Parcelable {
         this.contains_insect_excretions = (Boolean) in.readSerializable();
         this.contains_eggs = (Boolean) in.readSerializable();
         this.contains_animal_milk = (Boolean) in.readSerializable();
-        this.manufacturer_confirms_vegan = (Boolean) in.readSerializable();
-        this.manufacturer_confirms_vegetarian = (Boolean) in.readSerializable();
-        this.confirmed_vegetarian_comment = in.readString();
-        this.confirmed_vegan_comment = in.readString();
-    }
-
-
-    public boolean isVegan() {
-        final boolean isCandidate = isMaybeVegan();
-        final boolean isConfirmed = Boolean.TRUE.equals(manufacturer_confirms_vegan);
-
-        return ((isCandidate && isConfirmed)
-                || (isCandidate && Boolean.FALSE.equals(contains_possible_animal_additives)
-                && Boolean.FALSE.equals(contains_unspecified_possibly_animal_additives)));
-    }
-
-
-    public boolean isMaybeVegan() {
-        return isMaybeVegetarian()
-                && Boolean.FALSE.equals(this.contains_insect_excretions)
-                && Boolean.FALSE.equals(this.contains_eggs)
-                && Boolean.FALSE.equals(this.contains_animal_milk);
-    }
-
-    public boolean isAnimalDerivedForCertain() {
-        return Boolean.TRUE.equals(this.contains_bodyparts)
-                || Boolean.TRUE.equals(this.contains_animal_additives);
-    }
-
-    public boolean isMaybeVegetarian() {
-        return !isAnimalDerivedForCertain();
-    }
-
-    public boolean isVegetarian() {
-        return isMaybeVegetarian() && unspecifiedAdditivesAreVegetarian();
-    }
-
-    private boolean unspecifiedAdditivesAreVegetarian() {
-        return Boolean.FALSE.equals(contains_unspecified_possibly_animal_additives)
-                || Boolean.TRUE.equals(manufacturer_confirms_vegetarian);
     }
 
     public Boolean getContains_bodyparts() {
@@ -150,38 +102,6 @@ public class Ingredients implements Parcelable {
         this.contains_animal_milk = contains_animal_milk;
     }
 
-    public Boolean getManufacturer_confirms_vegan() {
-        return manufacturer_confirms_vegan;
-    }
-
-    public void setManufacturer_confirms_vegan(Boolean manufacturer_confirms_vegan) {
-        this.manufacturer_confirms_vegan = manufacturer_confirms_vegan;
-    }
-
-    public Boolean getManufacturer_confirms_vegetarian() {
-        return manufacturer_confirms_vegetarian;
-    }
-
-    public void setManufacturer_confirms_vegetarian(Boolean manufacturer_confirms_vegetarian) {
-        this.manufacturer_confirms_vegetarian = manufacturer_confirms_vegetarian;
-    }
-
-    public String getConfirmed_vegetarian_comment() {
-        return confirmed_vegetarian_comment;
-    }
-
-    public void setConfirmed_vegetarian_comment(String confirmed_vegetarian_comment) {
-        this.confirmed_vegetarian_comment = confirmed_vegetarian_comment;
-    }
-
-    public String getConfirmed_vegan_comment() {
-        return confirmed_vegan_comment;
-    }
-
-    public void setConfirmed_vegan_comment(String confirmed_vegan_comment) {
-        this.confirmed_vegan_comment = confirmed_vegan_comment;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -196,9 +116,5 @@ public class Ingredients implements Parcelable {
         dest.writeSerializable(this.contains_insect_excretions);
         dest.writeSerializable(this.contains_eggs);
         dest.writeSerializable(this.contains_animal_milk);
-        dest.writeSerializable(this.manufacturer_confirms_vegan);
-        dest.writeSerializable(this.manufacturer_confirms_vegetarian);
-        dest.writeString(this.confirmed_vegetarian_comment);
-        dest.writeString(this.confirmed_vegan_comment);
     }
 }

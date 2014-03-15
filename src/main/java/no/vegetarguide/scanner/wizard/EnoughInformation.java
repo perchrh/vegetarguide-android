@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
@@ -115,17 +114,17 @@ public class EnoughInformation extends Activity {
         private void initStatusMessage(View rootView) {
             final String format = getString(R.string.product_status_format);
             TextView status = (TextView) rootView.findViewById(R.id.status);
-            if (product.getIngredients().isAnimalDerivedForCertain()) {
+            if (product.isAnimalDerivedForCertain()) {
                 status.setText(String.format(format, getString(R.string.status_not_vegetarian)));
-            } else if (product.getIngredients().isMaybeVegan()) {
-                if (product.getIngredients().isVegan()) {
+            } else if (product.isMaybeVegan()) {
+                if (product.isVegan()) {
                     status.setText(String.format(format, getString(R.string.status_vegan)));
-                } else if (product.getIngredients().isVegetarian()) {
+                } else if (product.isVegetarian()) {
                     status.setText(String.format(format, getString(R.string.status_vegetarian_and_maybe_vegan)));
-                } else if (product.getIngredients().isMaybeVegetarian()) {
+                } else if (product.isMaybeVegetarian()) {
                     status.setText(String.format(format, getString(R.string.status_maybe_vegetarian_or_maybe_vegan)));
                 }
-            } else if (product.getIngredients().isVegetarian()) {
+            } else if (product.isVegetarian()) {
                 status.setText(String.format(format, getString(R.string.status_vegetarian)));
             } else {
                 status.setText(String.format(format, getString(R.string.status_maybe_vegetarian)));
