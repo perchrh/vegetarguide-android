@@ -4,9 +4,13 @@
     <string name="app_name">Vegetarguide</string>
     <string name="scanning_instructions">Skann en vare eller skriv inn strekkoden selv.</string>
     <string name="title_activity_product_details">Varedetaljer</string>
+
     <string name="statustype_vegan">Vegansk</string>
+    <string name="statustype_maybe_vegan">Vegetarisk, kanskje vegansk</string>
     <string name="statustype_vegetarian">Vegetarisk</string>
+    <string name="statustype_maybe_vegetarian">Kanskje vegetarisk</string>
     <string name="statustype_animal_derived">Animalske ingredienser</string>
+
     <string name="statustype_animal_tested">Testet på dyr</string>
     <string name="resulttype_unknown_product">Ukjent produkt</string>
     <string name="resulttype_unknown_status">Ukjent status, mangler informasjon om produktet</string>

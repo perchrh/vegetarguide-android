@@ -106,7 +106,7 @@ public class Product implements Parcelable {
     }
 
     private boolean unspecifiedAdditivesAreVegetarian() {
-        return getIngredients() != null && Boolean.FALSE.equals(getIngredients().getContains_unspecified_possibly_animal_additives())
+        return Boolean.FALSE.equals(getIngredients().getContains_unspecified_possibly_animal_additives())
                 || Boolean.TRUE.equals(manufacturer_confirms_vegetarian);
     }
 
