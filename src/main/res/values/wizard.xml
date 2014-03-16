@@ -20,6 +20,7 @@
     <string name="product_other_animal_derived_hint">Hva gjør at produktet ikke er vegansk?</string>
     <string name="product_brand_label">Merke</string>
     <string name="product_brand_hint">Merkenavn eller produsent</string>
+    <string name="user_commentary_hint">Valgfri kommentar</string>
 
 
     <!-- step 1 -->

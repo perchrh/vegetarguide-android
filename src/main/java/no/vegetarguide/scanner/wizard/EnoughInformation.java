@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
@@ -160,6 +161,8 @@ public class EnoughInformation extends Activity {
                         result.putExtra(MODIFY_PRODUCT_SUCCESS, true);
                         getActivity().setResult(Activity.RESULT_OK, result);
                         hideProgressBar();
+
+                        Toast.makeText(getActivity(), R.string.success_product_submitted, Toast.LENGTH_LONG).show();
 
                         getActivity().finish();
                         result.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

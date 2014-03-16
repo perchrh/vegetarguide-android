@@ -140,10 +140,12 @@ public class ProductDetailsActivity extends Activity {
             knownAnimalIngredients.setVisibility(View.GONE);
         } else {
             knownAnimalIngredients.setVisibility(View.VISIBLE);
+            animalIngredients.add(0, getString(R.string.animal_ingredient_content_list_prefix));
             String joined = StringUtils.join(animalIngredients, "\n");
             knownAnimalIngredients.setText(joined);
         }
 
+        // TODO also add missing vegetarian information
         TextView missingVeganInformation = (TextView) findViewById(R.id.missing_vegan_information);
         if (isVegetarianMaybeVegan()) {
             List<String> unknownIngredients = new ArrayList<>(3);

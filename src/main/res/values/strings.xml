@@ -45,9 +45,9 @@
     <string name="error_unknown_lookup_error">En ukjent feil oppstod for denne strekkkoden.</string>
     <string name="no_network_connection">Du må være koblet til Internett for å søke etter varer</string>
     <string name="enquire_vegan_status">Vennligst legg til info om disse ingrediensene:\u0020</string>
+    <string name="animal_ingredient_content_list_prefix">Inneholder:</string>
 
-
-
+    <!-- used by product details activity -->
     <string name="product_contains_bodyparts">Biter av dyrekropper</string>
     <string name="product_contains_honey">Honning</string>
     <string name="product_contains_eggs">Egg</string>
@@ -55,20 +55,8 @@
     <string name="product_contains_animal_additives">Animalske tilsetningsstoffer</string>
     <string name="product_is_animal_tested">Testet på dyr</string>
     <string name="product_contains_other_animal_derived">Annet animalsk</string>
+    <!-- end used by product details activity -->
 
-    <string name="title_activity_verify_additives">Bekreft tilsetningsstoffer</string>
-    <string name="additives_explained">Noen tilsetningsstoffer kan komme fra både animalske og vegetabilske kilder. Produsenten må da kontaktes for å finne ut hva kilden er, om dette ikke er oppgitt.</string>
-    <string name="additives_verification_header">Produsenten bekrefter at disse tilsetningsstoffene er 100% vegetabilske, eller produktet har ingen av disse tilsetningsstoffene:</string>
-    <string name="contains_unspecified_aromas">Uspesifisert aroma</string>
-    <string name="contains_unspecified_oils">Uspesifiserte oljer</string>
-    <string name="contains_maybe_animal_derived_e_numbers">Tvetydige E-stoffer</string>
-    <string name="contains_maybe_animal_derived_additives">Andre tvetydige tilsetningsstoffer</string>
-    <string name="IAmCertain">Jeg er sikker</string>
-    <string name="error_additives_not_verified">Tilsetningsstoffene kan være animalske!</string>
-    <string name="error_additives_are_verified">Tilsetningsstoffene er vegetabilske!</string>
-    <string name="additives_verification_user_detail_hint">Bekreftelse på at alle tvetydige eller uspesifiserte ingredienser er vegetabilske</string>
-    <string name="user_commentary_hint">Valgfri kommentar</string>
-    <string name="user_commentary_hint_with_animal_additives">Hvorfor er tilsetningsstoffene ikke 100% vegetabilske?</string>
     <string name="server_error_title">Tjenerfeil</string>
     <string name="server_error">Feil i andre enden! Produktdatabasen vår virker ikke akkurat nå. Prøv igjen senere! Ta kontakt om problemet ikke går bort!!</string>
     <string name="please_wait">Vennligst vent…</string>

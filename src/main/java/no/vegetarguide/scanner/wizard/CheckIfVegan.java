@@ -157,7 +157,9 @@ public class CheckIfVegan extends Activity {
                 product.setConfirmed_vegan_comment(null);
             }
             product.getIngredients().setContains_possible_animal_additives(possible_animal_derived_additives.isChecked());
-            product.setManufacturer_confirms_vegan(manufacturer_confirms_vegan.isChecked());
+            if (manufacturer_confirms_vegan.getVisibility() == View.VISIBLE) {
+                product.setManufacturer_confirms_vegan(manufacturer_confirms_vegan.isChecked());
+            }
         }
     }
 }
