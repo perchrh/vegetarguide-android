@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="modify_action">modifyProduct.php</string>
-    <string name="lookup_action">findProduct.php</string>
-    <string name="server_base_url">http://10.0.0.33:8000</string>
+    <string name="modify_action">modifyProduct</string>
+    <string name="lookup_action">findProduct</string>
+    <string name="server_base_url">https://vegetarguide.herokuapp.com</string>
 
 </resources>
