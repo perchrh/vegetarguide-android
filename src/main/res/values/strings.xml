@@ -69,6 +69,7 @@
 
     <string name="action_about">Om appen</string>
     <string name="about_activity_title">Om appen</string>
+    <string name="input_barcode_label">Skriv inn strekkode:</string>
 
 
 </resources>

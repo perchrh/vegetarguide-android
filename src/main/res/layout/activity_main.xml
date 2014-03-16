@@ -70,7 +70,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="34dp"
                 android:text="@string/scan_product_code"
                 android:textSize="36sp" />
 
@@ -93,7 +93,7 @@
                 android:layout_alignEnd="@+id/scan_button"
                 android:layout_below="@+id/scan_button"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:layout_toRightOf="@+id/or_label"
                 android:text="@string/input_product_code"
                 android:textSize="20sp" />

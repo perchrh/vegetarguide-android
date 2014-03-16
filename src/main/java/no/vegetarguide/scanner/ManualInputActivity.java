@@ -24,7 +24,7 @@ public class ManualInputActivity extends BaseActivity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new ManualInputFragment())
                     .commit();
         }
     }
@@ -32,9 +32,9 @@ public class ManualInputActivity extends BaseActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class ManualInputFragment extends Fragment {
 
-        public PlaceholderFragment() {
+        public ManualInputFragment() {
         }
 
         @Override

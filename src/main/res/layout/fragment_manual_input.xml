@@ -6,39 +6,37 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ManualInputActivity$PlaceholderFragment">
-
+    tools:context=".ManualInputActivity$ManualInputFragment">
 
     <TextView
-        android:id="@+id/manual_gtin_input_instructions"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="@string/manual_gtin_input_instructions"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-    <TextView
-        android:id="@+id/manual_input_gtin_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/manual_gtin_input_instructions"
-        android:layout_marginTop="16dp"
-        android:labelFor="@+id/manual_input_gtin_edittext"
-        android:text="@string/manual_input_gtin_label"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/barcode_icon_green"
+        android:drawablePadding="8dp"
+        android:text="@string/input_barcode_label"
+        android:textColor="#526E17"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/manual_input_gtin_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/manual_input_gtin_label"
+        android:layout_below="@id/textView"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/green_border"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="number|textNoSuggestions"
         android:maxLength="14"
         android:numeric="integer"
-        android:singleLine="true" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/manual_gtin_search"
@@ -47,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/manual_input_gtin_edittext"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/search_icon"
         android:drawablePadding="10dp"
         android:text="@string/manual_gtin_search"
