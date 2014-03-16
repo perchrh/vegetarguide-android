@@ -20,6 +20,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
 import no.vegetarguide.scanner.AlertDialogFragment;
+import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.MainActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
@@ -30,7 +31,7 @@ import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
 
-public class EnoughInformation extends Activity {
+public class EnoughInformation extends BaseActivity {
 
 
     @Override
@@ -153,6 +154,7 @@ public class EnoughInformation extends Activity {
         }
 
         private Response.Listener<ModifyProductResponse> createModifyResponseListener() {
+            // TODO check if network available
             return new Response.Listener<ModifyProductResponse>() {
                 @Override
                 public void onResponse(ModifyProductResponse response) {
@@ -204,7 +206,7 @@ public class EnoughInformation extends Activity {
                     if (dialog != null)
                         dialog.show(getFragmentManager(), "modifyIOErrorDialog");
 
-                    Log.e("superscan", "Error during product modify request", cause);
+                    Log.e("vegetarguide", "Error during product modify request", cause);
                 }
             };
         }

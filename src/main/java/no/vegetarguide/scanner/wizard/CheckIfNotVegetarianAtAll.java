@@ -14,11 +14,12 @@ import android.widget.EditText;
 
 import org.apache.commons.lang3.StringUtils;
 
+import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
 
-public class CheckIfNotVegetarianAtAll extends Activity {
+public class CheckIfNotVegetarianAtAll extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

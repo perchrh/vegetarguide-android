@@ -28,7 +28,7 @@ import no.vegetarguide.scanner.wizard.RequestMetaInformation;
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_REQUEST_CODE;
 import static no.vegetarguide.scanner.Application.START_SCANNING;
 
-public class ProductDetailsActivity extends Activity {
+public class ProductDetailsActivity extends BaseActivity {
 
     private ProductLookupResponse lookupResponse;
 

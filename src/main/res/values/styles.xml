@@ -2,8 +2,25 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your th
-        eme here. -->
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/App.ActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="App.ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <item name="android:background">@drawable/green_with_gradient</item>
+    </style>
+
+    <style name="WizardButton" parent="AppTheme">
+        <item name="android:background">#526E17</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:layout_marginTop">14dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#FCF6E4</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

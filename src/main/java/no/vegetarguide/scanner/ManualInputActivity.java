@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class ManualInputActivity extends Activity {
+public class ManualInputActivity extends BaseActivity {
 
     public static final int GTIN_AVAILABLE_RETURN_CODE = 1005;
     public static final String GTIN_EXTRA = "gtin";

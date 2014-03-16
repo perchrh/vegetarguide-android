@@ -33,7 +33,7 @@ import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_REQUEST_CODE;
 import static no.vegetarguide.scanner.Application.START_SCANNING;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
     private View progressBar;
 
@@ -78,26 +78,6 @@ public class MainActivity extends Activity {
             }
         });
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_about) {
-            startActivity(new Intent(this, AboutActivity.class));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void startScan() {
@@ -207,20 +187,10 @@ public class MainActivity extends Activity {
                 if (dialog != null)
                     dialog.show(getFragmentManager(), "lookupIOErrorDialog");
 
-                Log.e("superscan", "Error during product lookup request", error);
+                Log.e("vegetarguide", "Error during product lookup request", error);
             }
         };
     }
 
-    public boolean isNetworkAvailable() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-        // if no network is available networkInfo will be null
-        // otherwise check if we are connected
-        if (networkInfo != null && networkInfo.isConnected()) {
-            return true;
-        }
-        return false;
-    }
 
 }

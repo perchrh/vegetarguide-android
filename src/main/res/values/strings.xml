@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Vegetarguide</string>
-    <string name="scanning_instructions">Skann en vare eller skriv inn strekkoden selv.</string>
+    <string name="scanning_instructions">Skann varens strekkode så viser vi om produktet er vegansk eller vegetarisk!</string>
     <string name="title_activity_product_details">Varedetaljer</string>
 
     <string name="statustype_vegan">Vegansk</string>
@@ -18,7 +18,7 @@
     <string name="label_unknown_product">Ukjent produkt</string>
     <string name="label_new_search">Nytt søk</string>
     <string name="scanning_headline">Er varen dyrevennlig?</string>
-    <string name="scan_product_code">Skann vare</string>
+    <string name="scan_product_code">Skann</string>
     <string name="input_product_code">Skriv inn kode</string>
     <string name="scan_error">Kunne ikke lese koden! Hold kameraet helt i ro og pass på å ha godt lys!</string>
     <string name="scan_error_title">Scannerfeil</string>

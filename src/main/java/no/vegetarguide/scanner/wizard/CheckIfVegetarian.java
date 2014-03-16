@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
 
-public class CheckIfVegetarian extends Activity {
+public class CheckIfVegetarian extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,13 +11,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
 
 import static org.apache.commons.lang3.StringUtils.trimToNull;
 
-public class RequestMetaInformation extends Activity {
+public class RequestMetaInformation extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
