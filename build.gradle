@@ -38,11 +38,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
-    buildTypes {
-        release {
-            runProguard true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
+    lintOptions {
+        abortOnError false
     }
 
     packagingOptions {
@@ -62,6 +59,30 @@ android {
             storePassword "vegan12"
             keyAlias "key0"
             keyPassword "vegan23"
+        }
+
+        release {
+            storeFile file("$projectDir/release.keystore")
+            storePassword project.vegetarguide_keystore_password
+            keyAlias "key0"
+            keyPassword project.vegetarguide_key_password
+        }
+
+    }
+
+
+    buildTypes {
+        release {
+            zipAlign true
+            debuggable false
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
         }
     }
 

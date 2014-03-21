@@ -31,3 +31,7 @@ proguard/
 # gradle
 build/
 .gradle/
+
+# keys
+gradle.properties
+release.keystore
