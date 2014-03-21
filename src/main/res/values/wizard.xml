@@ -51,8 +51,8 @@
     <string name="check_if_vegan_title">Tvilstilfeller</string>
 
     <string name="contains_additives_of_possible_animal_origins_headline">Inneholdet produktet tilsetningsstoffer som kan komme fra dyr? Kryss av for det varen inneholder:</string>
-    <string name="possible_animal_derived_additives">Tilsetningsstoffer kanskje fra dyr</string>
-    <string name="possible_animal_derived_additives_details">Har produktet ingredienser fra den gule listen? </string>
+    <string name="possible_animal_derived_additives">Ingredienser på gul liste</string>
+    <string name="possible_animal_derived_additives_details">Sjekk om noen av ingrediensene er på lista over tvilstilfeller</string>
     <string name="manufacturer_confirms_product_is_vegan">Produsenten har bekreftet at produktet er vegansk</string>
     <string name="insert_documentation_from_manufacturer">Lim inn dokumentasjon fra produsent her, eller gi et kort sammendrag</string>
     <string name="show_yellow_ingredients_list">Vis gul liste</string>

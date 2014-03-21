@@ -21,41 +21,49 @@
             android:text="@string/contains_additives_of_possible_animal_origins_headline"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <CheckBox
-            android:id="@+id/possible_animal_derived_additives"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/possible_animal_derived_additives_row"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/uncertain_ingredients_headline"
-            android:layout_marginTop="10dp"
-            android:text="@string/possible_animal_derived_additives"
-            android:textStyle="bold" />
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/possible_animal_derived_additives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/possible_animal_derived_additives"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/yellow_list_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_weight="0"
+                android:background="@drawable/rounded_corners_green_bg"
+                android:onClick="viewYellowList"
+                android:src="@android:drawable/ic_menu_help" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/possible_animal_derived_additives_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/possible_animal_derived_additives"
+            android:layout_below="@+id/possible_animal_derived_additives_row"
             android:layout_marginTop="1dp"
             android:paddingLeft="@dimen/padding_checkbox"
             android:text="@string/possible_animal_derived_additives_details" />
-
-        <Button
-            android:id="@+id/yellow_list_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/possible_animal_derived_additives_details"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/rounded_corners_green_bg"
-            android:onClick="viewYellowList"
-            android:padding="10dp"
-            android:text="@string/show_yellow_ingredients_list" />
 
         <CheckBox
             android:id="@+id/manufacturer_confirms_vegan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/yellow_list_button"
+            android:layout_below="@+id/possible_animal_derived_additives_details"
             android:layout_marginTop="10dp"
             android:text="@string/manufacturer_confirms_product_is_vegan"
             android:visibility="gone" />
