@@ -57,7 +57,7 @@
             android:parentActivityName=".wizard.RequestMetaInformation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".wizard.MetaInformation" />
+                android:value=".wizard.RequestMetaInformation" />
         </activity>
         <activity
             android:name=".wizard.CheckIfVegetarian"
@@ -65,7 +65,7 @@
             android:parentActivityName=".wizard.CheckIfNotVegetarianAtAll">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".wizard.ObviouslyNotVegetarian" />
+                android:value=".wizard.CheckIfNotVegetarianAtAll" />
         </activity>
         <activity
             android:name=".wizard.CheckIfVegan"
@@ -73,11 +73,16 @@
             android:parentActivityName=".wizard.CheckIfVegetarian">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".wizard.MaybeVegan" />
+                android:value=".wizard.CheckIfVegetarian" />
         </activity>
         <activity
             android:name=".wizard.EnoughInformation"
-            android:label="@string/enough_information_title" />
+            android:label="@string/enough_information_title"
+            android:parentActivityName=".wizard.CheckIfVegan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".wizard.CheckIfVegan" />
+        </activity>
 
         <activity
             android:name=".about.AboutActivity"
