@@ -61,7 +61,9 @@
     <string name="server_error">Feil i andre enden! Produktdatabasen vår virker ikke akkurat nå. Prøv igjen senere! Ta kontakt om problemet ikke går bort!!</string>
     <string name="please_wait">Vennligst vent…</string>
 
+    <string name="or_label">eller</string>
     <string name="title_activity_manual_input">Skriv inn strekkode</string>
+    <string name="input_barcode_label">Skriv inn strekkode:</string>
     <string name="manual_gtin_input_instructions">Strekkoden består av bare tall og er mellom 8 og 14 siffer</string>
     <string name="manual_gtin_search">Søk</string>
     <string name="manual_input_gtin_label">Strekkode</string>
@@ -69,7 +71,6 @@
 
     <string name="action_about">Om appen</string>
     <string name="about_activity_title">Om appen</string>
-    <string name="input_barcode_label">Skriv inn strekkode:</string>
 
 
 </resources>

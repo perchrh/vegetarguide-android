@@ -10,36 +10,38 @@
     tools:context=".wizard.RequestMetaInformation">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/gtin_row"
-            android:layout_width="fill_parent"
+        <TextView
+            android:id="@+id/gtin_label"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:gravity="center_vertical">
+            android:layout_marginRight="10dp"
+            android:singleLine="true"
+            android:text="@string/product_gtin_label"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_gtin_label"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/gtin_value"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/gtin_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/name_row"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:drawableLeft="@drawable/barcode_icon_gray"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/name_row"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/gtin_row"
+            android:layout_below="@+id/gtin_label"
             android:gravity="center_vertical">
 
             <TextView
