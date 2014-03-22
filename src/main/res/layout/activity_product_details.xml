@@ -92,33 +92,25 @@
             android:maxHeight="240dp"
             android:scaleType="centerInside" />
 
-        <LinearLayout
-            android:id="@+id/button_row"
+        <Button
+            android:id="@+id/scan_button"
+            style="@style/WizardButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/product_image"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_below="@id/product_image"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="50dp"
+            android:text="@string/label_new_search" />
 
-            <Button
-                android:id="@+id/scan_button"
-                style="@style/WizardButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
-                android:text="@string/label_new_search"
-                android:textSize="20sp" />
+        <Button
+            android:id="@+id/modify_button"
+            style="@style/WizardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scan_button"
+            android:layout_centerInParent="true"
+            android:text="@string/label_modify_product" />
 
-            <Button
-                android:id="@+id/modify_button"
-                style="@style/WizardButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_modify_product"
-                android:textSize="20sp" />
-
-        </LinearLayout>
 
     </RelativeLayout>
 

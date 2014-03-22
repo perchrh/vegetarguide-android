@@ -20,6 +20,7 @@ import java.util.List;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.Ingredients;
+import no.vegetarguide.scanner.model.Product;
 import no.vegetarguide.scanner.model.ProductLookupResponse;
 import no.vegetarguide.scanner.model.ResultType;
 import no.vegetarguide.scanner.model.StatusType;
@@ -127,10 +128,11 @@ public class ProductDetailsActivity extends BaseActivity {
 
     private void initDescription() {
         TextView title = (TextView) findViewById(R.id.title);
-        title.setText(lookupResponse.getProduct().getTitle());
+        Product product = lookupResponse.getProduct();
+        title.setText(product.getTitle());
 
         TextView subtitle = (TextView) findViewById(R.id.subtitle);
-        subtitle.setText(lookupResponse.getProduct().getSubtitle());
+        subtitle.setText(product.getSubtitle());
 
         TextView knownAnimalIngredients = (TextView) findViewById(R.id.contains_animal_ingredients);
 
@@ -151,7 +153,7 @@ public class ProductDetailsActivity extends BaseActivity {
             List<String> unknownIngredients = new ArrayList<>(3);
             StringBuilder message = new StringBuilder(getString(R.string.enquire_vegan_status));
 
-            Ingredients ingredients = lookupResponse.getProduct().getIngredients();
+            Ingredients ingredients = product.getIngredients();
             if (ingredients.getContains_eggs() == null) {
                 unknownIngredients.add(getString(R.string.product_contains_eggs));
             }
