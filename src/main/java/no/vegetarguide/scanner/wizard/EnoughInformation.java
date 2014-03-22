@@ -149,24 +149,25 @@ public class EnoughInformation extends BaseActivity {
             ModifyProductRequestHandler requestHandler = new ModifyProductRequestHandler(modifyRequest);
 
             requestHandler.execute(VolleySingleton.getInstance(getActivity()).getRequestQueue(),
-                    createModifyResponseListener(),
+                    createModifyResponseListener(getActivity()),
                     createModifyErrorListener());
         }
 
-        private Response.Listener<ModifyProductResponse> createModifyResponseListener() {
+        private Response.Listener<ModifyProductResponse> createModifyResponseListener(final Activity activity) {
+
             // TODO check if network available
             return new Response.Listener<ModifyProductResponse>() {
                 @Override
                 public void onResponse(ModifyProductResponse response) {
                     if (response.isSuccess()) {
-                        Intent result = new Intent(getActivity(), MainActivity.class);
+                        Intent result = new Intent(activity, MainActivity.class);
                         result.putExtra(MODIFY_PRODUCT_SUCCESS, true);
-                        getActivity().setResult(Activity.RESULT_OK, result);
+                        activity.setResult(Activity.RESULT_OK, result);
                         hideProgressBar();
 
-                        Toast.makeText(getActivity(), R.string.success_product_submitted, Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, R.string.success_product_submitted, Toast.LENGTH_LONG).show();
 
-                        getActivity().finish();
+                        activity.finish();
                         result.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(result);
                     } else {
