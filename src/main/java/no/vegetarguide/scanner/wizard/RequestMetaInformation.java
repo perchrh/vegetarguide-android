@@ -94,11 +94,22 @@ public class RequestMetaInformation extends BaseActivity {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             categorySelector.setAdapter(adapter);
 
+            String previouslySelectedCategory = product.getCategory();
+            if (previouslySelectedCategory != null) {
+                for (int i = 0; i < categories.size(); i++) {
+                    Category candidate = categories.get(i);
+                    if (candidate.getCode().equals(previouslySelectedCategory)) {
+                        categorySelector.setSelection(i);
+                        break;
+                    }
+                }
+            }
+
             categorySelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Category selection = (Category) parent.getItemAtPosition(position);
-                    product.setCategory(selection.getName());
+                    product.setCategory(selection.getCode());
                 }
 
                 @Override

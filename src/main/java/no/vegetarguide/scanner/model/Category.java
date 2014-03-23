@@ -19,14 +19,27 @@ public class Category implements Parcelable {
     @Expose
     private String name;
 
+    @Expose
+    private String code;
+
     public Category() {
     }
 
     public Category(Parcel in) {
         this.name = in.readString();
+        this.code = in.readString();
     }
 
     public String getName() {
+        return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String toString() {
         return name;
     }
 
@@ -38,10 +51,6 @@ public class Category implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
-    }
-
-    @Override
-    public String toString() {
-        return name;
+        dest.writeString(this.code);
     }
 }
