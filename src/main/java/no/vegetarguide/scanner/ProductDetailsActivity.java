@@ -73,6 +73,7 @@ public class ProductDetailsActivity extends BaseActivity {
 
                 Intent modifyProduct = new Intent(ProductDetailsActivity.this, RequestMetaInformation.class);
                 modifyProduct.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
+                modifyProduct.putParcelableArrayListExtra(RequestMetaInformation.CATEGORIES_KEY, lookupResponse.getCategories());
                 startActivityForResult(modifyProduct, MODIFY_PRODUCT_REQUEST_CODE);
             }
         });

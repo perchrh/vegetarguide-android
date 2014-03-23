@@ -11,14 +11,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
+import no.vegetarguide.scanner.model.Category;
 import no.vegetarguide.scanner.model.Product;
 
 import static org.apache.commons.lang3.StringUtils.trimToNull;
 
 public class RequestMetaInformation extends BaseActivity {
+
+    public static final String CATEGORIES_KEY = "categories";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +33,11 @@ public class RequestMetaInformation extends BaseActivity {
         Bundle b = getIntent().getExtras();
         Parcelable obj = b.getParcelable(ModifyProductRequest.class.getSimpleName());
         ModifyProductRequest modifyRequest = (ModifyProductRequest) obj;
+        ArrayList<Category> categories = b.getParcelableArrayList(CATEGORIES_KEY);
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, MetaInformationFragment.newInstance(modifyRequest))
+                    .add(R.id.container, MetaInformationFragment.newInstance(modifyRequest, categories))
                     .commit();
         }
 
@@ -45,16 +51,17 @@ public class RequestMetaInformation extends BaseActivity {
         private EditText subtitle_edit;
         private EditText comment;
         private ModifyProductRequest modifyRequest;
-        // TODO add category from list
+        private ArrayList<Category> categories;
 
         public MetaInformationFragment() {
 
         }
 
-        public static MetaInformationFragment newInstance(ModifyProductRequest modifyRequest) {
+        public static MetaInformationFragment newInstance(ModifyProductRequest modifyRequest, ArrayList<Category> categories) {
             MetaInformationFragment frag = new MetaInformationFragment();
             Bundle args = new Bundle();
             args.putParcelable(ModifyProductRequest.class.getSimpleName(), modifyRequest);
+            args.putParcelableArrayList(CATEGORIES_KEY, categories);
             frag.setArguments(args);
             return frag;
         }
@@ -67,6 +74,7 @@ public class RequestMetaInformation extends BaseActivity {
                 throw new IllegalStateException("Missing required state arguments bundle");
             }
             modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
+            categories = arguments.getParcelableArrayList(CATEGORIES_KEY);
 
             createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);

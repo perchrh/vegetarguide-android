@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.ArrayList;
+
 public class ProductLookupResponse implements Parcelable {
 
     @SuppressWarnings("unused")
@@ -26,6 +28,8 @@ public class ProductLookupResponse implements Parcelable {
     private LookupErrorType error;
     @Expose
     private Product product;
+    @Expose
+    private ArrayList<Category> categories; // assigned
 
     @Expose
     private String objectId;
@@ -41,6 +45,8 @@ public class ProductLookupResponse implements Parcelable {
         error = (LookupErrorType) in.readSerializable();
         product = in.readParcelable(Product.class.getClassLoader());
         objectId = in.readString();
+        categories = new ArrayList<Category>();
+        in.readList(categories, Category.class.getClassLoader());
     }
 
     public boolean hasError() {
@@ -67,6 +73,10 @@ public class ProductLookupResponse implements Parcelable {
         return objectId;
     }
 
+    public ArrayList<Category> getCategories() {
+        return categories;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -79,6 +89,7 @@ public class ProductLookupResponse implements Parcelable {
         dest.writeSerializable(error);
         dest.writeParcelable(product, flags);
         dest.writeString(objectId);
+        dest.writeList(categories);
     }
 
 }
