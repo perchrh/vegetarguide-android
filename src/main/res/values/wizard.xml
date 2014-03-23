@@ -21,6 +21,8 @@
     <string name="product_brand_label">Merke</string>
     <string name="product_brand_hint">Merkenavn eller produsent</string>
     <string name="user_commentary_hint">Valgfri kommentar</string>
+    <string name="category_selector_label">Kategori</string>
+    <string name="category_selector_prompt">Velg kategori</string>
 
 
     <!-- step 1 -->

@@ -111,11 +111,35 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/category_selector_row"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/brand_row"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_selector_label"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/category_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:prompt="@string/category_selector_prompt"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
         <EditText
             android:id="@+id/commentary_edit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/brand_row"
+            android:layout_below="@+id/category_selector_row"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:gravity="left|top"

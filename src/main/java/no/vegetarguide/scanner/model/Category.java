@@ -39,4 +39,9 @@ public class Category implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

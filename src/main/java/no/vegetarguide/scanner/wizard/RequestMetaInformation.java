@@ -8,7 +8,9 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -79,8 +81,18 @@ public class RequestMetaInformation extends BaseActivity {
             createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);
             createTextEdits(rootView, modifyRequest.getProduct());
+            createCategorySelector(rootView, categories, modifyRequest.getProduct());
 
             return rootView;
+        }
+
+        private void createCategorySelector(View rootView, ArrayList<Category> categories, Product product) {
+            Spinner categorySelector = (Spinner) rootView.findViewById(R.id.category_selector);
+            Category[] objects = categories.toArray(new Category[categories.size()]);
+            ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(getActivity(), android.R.layout.simple_spinner_item, objects);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            categorySelector.setAdapter(adapter);
+
         }
 
         private void createTextEdits(View rootView, final Product product) {
