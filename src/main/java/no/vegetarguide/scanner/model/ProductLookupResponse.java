@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ProductLookupResponse implements Parcelable {
 
@@ -47,6 +48,7 @@ public class ProductLookupResponse implements Parcelable {
         objectId = in.readString();
         categories = new ArrayList<Category>();
         in.readList(categories, Category.class.getClassLoader());
+        Collections.sort(categories);
     }
 
     public boolean hasError() {

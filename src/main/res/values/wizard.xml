@@ -23,6 +23,7 @@
     <string name="user_commentary_hint">Valgfri kommentar</string>
     <string name="category_selector_label">Kategori</string>
     <string name="category_selector_prompt">Velg kategori</string>
+    <string name="category_not_selected">Ingen kategori</string>
 
 
     <!-- step 1 -->

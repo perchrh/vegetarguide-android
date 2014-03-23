@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Category implements Parcelable {
+public class Category implements Parcelable, Comparable<Category> {
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public Category createFromParcel(Parcel in) {
@@ -16,6 +16,7 @@ public class Category implements Parcelable {
             return new Category[size];
         }
     };
+
     @Expose
     private String name;
 
@@ -23,6 +24,11 @@ public class Category implements Parcelable {
     private String code;
 
     public Category() {
+    }
+
+    public Category(String name, String code) {
+        this.name = name;
+        this.code = code;
     }
 
     public Category(Parcel in) {
@@ -52,5 +58,10 @@ public class Category implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
         dest.writeString(this.code);
+    }
+
+    @Override
+    public int compareTo(Category another) {
+        return this.name.compareTo(another.name);
     }
 }

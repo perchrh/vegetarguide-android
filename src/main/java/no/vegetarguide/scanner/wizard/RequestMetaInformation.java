@@ -49,6 +49,7 @@ public class RequestMetaInformation extends BaseActivity {
 
     public static class MetaInformationFragment extends Fragment {
 
+        private static Category NO_CATEGORY;
         private EditText brand_edit;
         private TextView gtin_value;
         private EditText title_edit;
@@ -57,8 +58,8 @@ public class RequestMetaInformation extends BaseActivity {
         private ModifyProductRequest modifyRequest;
         private ArrayList<Category> categories;
 
-        public MetaInformationFragment() {
 
+        public MetaInformationFragment() {
         }
 
         public static MetaInformationFragment newInstance(ModifyProductRequest modifyRequest, ArrayList<Category> categories) {
@@ -67,6 +68,7 @@ public class RequestMetaInformation extends BaseActivity {
             args.putParcelable(ModifyProductRequest.class.getSimpleName(), modifyRequest);
             args.putParcelableArrayList(CATEGORIES_KEY, categories);
             frag.setArguments(args);
+
             return frag;
         }
 
@@ -79,6 +81,7 @@ public class RequestMetaInformation extends BaseActivity {
             }
             modifyRequest = arguments.getParcelable(ModifyProductRequest.class.getSimpleName());
             categories = arguments.getParcelableArrayList(CATEGORIES_KEY);
+            NO_CATEGORY = new Category(getString(R.string.category_not_selected), null);
 
             createNextButton(rootView, modifyRequest.getProduct());
             createCancelButton(rootView);
@@ -95,8 +98,12 @@ public class RequestMetaInformation extends BaseActivity {
             categorySelector.setAdapter(adapter);
 
             String previouslySelectedCategory = product.getCategory();
+
+            if (!categories.contains(NO_CATEGORY)) {
+                categories.add(0, NO_CATEGORY);
+            }
             if (previouslySelectedCategory != null) {
-                for (int i = 0; i < categories.size(); i++) {
+                for (int i = 1; i < categories.size(); i++) {
                     Category candidate = categories.get(i);
                     if (candidate.getCode().equals(previouslySelectedCategory)) {
                         categorySelector.setSelection(i);
