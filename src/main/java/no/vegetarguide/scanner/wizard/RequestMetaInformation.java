@@ -186,7 +186,7 @@ public class RequestMetaInformation extends BaseActivity {
             product.setTitle(trimmedTitle == null ? product.getTitle() : trimmedTitle); // keep previous value if missing
 
             String trimmedSubtitle = trimToNull(subtitle_edit.getText().toString());
-            product.setSubtitle(trimmedSubtitle == null ? product.getSubtitle() : trimmedSubtitle); // keep previous value if missing
+            product.setSubtitle(trimmedSubtitle); // allow deleting field, i.e. new subtitle can be null
 
             String trimmedBrand = trimToNull(brand_edit.getText().toString());
             product.setBrand(trimmedBrand == null ? product.getBrand() : trimmedBrand); // keep previous value if missing
