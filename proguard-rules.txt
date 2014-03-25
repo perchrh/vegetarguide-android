@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# Public source code, don't obfuscate, and we'll get meaningful stack traces for release builds
+-dontobfuscate
