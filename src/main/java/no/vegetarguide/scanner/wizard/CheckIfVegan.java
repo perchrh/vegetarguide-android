@@ -41,7 +41,7 @@ public class CheckIfVegan extends BaseActivity {
     }
 
     public void viewYellowList(View v) {
-        Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("http://app.vegansamfunnet.no/yellow_list_no.html"));
+        Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.yellow_list_url)));
         startActivity(browse);
     }
 

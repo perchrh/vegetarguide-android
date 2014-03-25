@@ -3,5 +3,6 @@
     <string name="modify_action">modifyProduct</string>
     <string name="lookup_action">findProduct</string>
     <string name="server_base_url">https://vegetarguide.herokuapp.com</string>
+    <string name="yellow_list_url">http://app.vegansamfunnet.no/yellow_list_no.html</string>
 
 </resources>
