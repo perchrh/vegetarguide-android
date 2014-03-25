@@ -14,10 +14,6 @@
     <string name="product_name_hint">Produktets navn</string>
     <string name="product_variant_label">Variant</string>
     <string name="product_variant_hint">Antall, vekt/volum, undertittel etc.</string>
-    <string name="product_status_label">Innhold</string>
-    <string name="product_modification_submit_label">Send til redaksjonen</string>
-    <string name="product_other_animal_derived_label">Annet animalsk</string>
-    <string name="product_other_animal_derived_hint">Hva gjør at produktet ikke er vegansk?</string>
     <string name="product_brand_label">Merke</string>
     <string name="product_brand_hint">Merkenavn eller produsent</string>
     <string name="user_commentary_hint">Valgfri kommentar</string>
@@ -50,7 +46,6 @@
     <string name="contains_insect_excretions">Produsert av insekter</string>
     <string name="contains_insect_excretions_details">Honning, bivoks (E901), dronning-gelé og shellakk (E904).</string>
     <string name="manufacturer_confirms_product_is_vegetarian">Produsenten har bekreftet at produktet er vegetarisk</string>
-    <string name="vegetarian_comment_hint">Hvilke ingredienser kommer fra dyr?</string>
 
     <!-- step 3 -->
     <string name="check_if_vegan_title">Tvilstilfeller</string>

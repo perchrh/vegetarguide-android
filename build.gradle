@@ -30,7 +30,7 @@ android {
         targetSdkVersion 19
 
         versionName "1.0-BETA-1"
-        versionCode 5
+        versionCode 6
     }
 
     compileOptions {

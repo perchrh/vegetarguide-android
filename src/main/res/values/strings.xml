@@ -11,7 +11,6 @@
     <string name="statustype_maybe_vegetarian">Kanskje vegetarisk</string>
     <string name="statustype_animal_derived">Animalske ingredienser</string>
 
-    <string name="statustype_animal_tested">Testet på dyr</string>
     <string name="resulttype_unknown_product">Ukjent produkt</string>
     <string name="resulttype_unknown_status">Ukjent status, mangler informasjon om produktet</string>
     <string name="resulttype_known">Fant produktet!</string>
@@ -22,19 +21,15 @@
     <string name="input_product_code">Skriv inn kode</string>
     <string name="scan_error">Kunne ikke lese koden! Hold kameraet helt i ro og pass på å ha godt lys!</string>
     <string name="scan_error_title">Scannerfeil</string>
-    <string name="title_user_input_barcode">Strekkode (tall)</string>
     <string name="label_unknown_title">Ukjent tittel</string>
     <string name="label_unknown_subtitle">Ukjent beskrivelse</string>
     <string name="label_modify_product">Endre</string>
     <string name="label_add_product">Legg inn produktet</string>
     <string name="label_add_status">Legg til info</string>
-    <string name="title_activity_modify_product">Oppdater produkt</string>
     <string name="success_product_submitted">Takk for bidraget ditt! Redaksjonen vår vil gå over det du har sendt inn og
         legge det inn i systemet!</string>
-    <string name="error_product_not_submitted_title">Ikke oppdatert</string>
     <string name="error_product_not_submitted_format">Produktet ble ikke oppdatert. En feil oppstod (%s).</string>
     <string name="error_generic_maybe_network">En teknisk feil oppstod, prøv igjen senere.</string>
-    <string name="error_generic_not_network">En teknisk feil oppstod, prøv igjen senere.</string>
     <string name="lookup_error_title">Feil i koden</string>
     <string name="network_error_title">Nettverksfeil</string>
     <string name="network_route_error">Kunne ikke nå frem til produktdatabasen. Pass på at du er koblet til Internett og har godt signal, ellers vent et minutt og prøv igjen!</string>
@@ -53,8 +48,6 @@
     <string name="product_contains_eggs">Egg</string>
     <string name="product_contains_animal_milk">Dyremelk</string>
     <string name="product_contains_animal_additives">Animalske tilsetningsstoffer</string>
-    <string name="product_is_animal_tested">Testet på dyr</string>
-    <string name="product_contains_other_animal_derived">Annet animalsk</string>
     <!-- end used by product details activity -->
 
     <string name="server_error_title">Tjenerfeil</string>
@@ -64,9 +57,7 @@
     <string name="or_label">eller</string>
     <string name="title_activity_manual_input">Skriv inn strekkode</string>
     <string name="input_barcode_label">Skriv inn strekkode:</string>
-    <string name="manual_gtin_input_instructions">Strekkoden består av bare tall og er mellom 8 og 14 siffer</string>
     <string name="manual_gtin_search">Søk</string>
-    <string name="manual_input_gtin_label">Strekkode</string>
 
 
     <string name="action_about">Om appen</string>

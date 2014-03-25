@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.integration.VolleySingleton;
@@ -166,7 +167,7 @@ public class ProductDetailsActivity extends BaseActivity {
             }
 
             if (!unknownIngredients.isEmpty()) {
-                message.append(StringUtils.join(unknownIngredients, ", ").toLowerCase());
+                message.append(StringUtils.join(unknownIngredients, ", ").toLowerCase(Locale.US));
                 missingVeganInformation.setText(message);
             }
 
