@@ -1,6 +1,7 @@
 package no.vegetarguide.scanner.wizard;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.vegetarguide.scanner.AlertDialogFragment;
 import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.SingleClickListener;
@@ -162,8 +164,11 @@ public class RequestMetaInformation extends BaseActivity {
                     Intent launchNext = new Intent(getActivity(), CheckIfNotVegetarianAtAll.class);
 
                     mergeProductValues(product);
-                    if (missingValues()) {
-                        //TODO show popup saying what is wrong
+                    if (missingValues(product)) {
+                        DialogFragment dialog = AlertDialogFragment.newInstance(
+                                R.string.meta_information_input_error_title, R.string.meta_information_input_error);
+                        if (dialog != null)
+                            dialog.show(getFragmentManager(), "inputError");
                     } else {
                         launchNext.putExtra(ModifyProductRequest.class.getSimpleName(), modifyRequest);
                         startActivity(launchNext);
@@ -172,15 +177,11 @@ public class RequestMetaInformation extends BaseActivity {
             });
         }
 
-        private boolean missingValues() {
-            // validate input, check for required fields
-            return false;
+        private boolean missingValues(Product product) {
+            return product.getTitle() == null; // only title is mandatory
         }
 
         private void mergeProductValues(Product product) {
-            String trimmedComment = trimToNull(comment.getText().toString());
-            product.setGeneral_comment(trimmedComment); // overwrite previous value always
-
             String trimmedTitle = trimToNull(title_edit.getText().toString());
             product.setTitle(trimmedTitle == null ? product.getTitle() : trimmedTitle); // keep previous value if missing
 
@@ -189,6 +190,9 @@ public class RequestMetaInformation extends BaseActivity {
 
             String trimmedBrand = trimToNull(brand_edit.getText().toString());
             product.setBrand(trimmedBrand == null ? product.getBrand() : trimmedBrand); // keep previous value if missing
+
+            String trimmedComment = trimToNull(comment.getText().toString());
+            product.setGeneral_comment(trimmedComment); // overwrite previous value always
         }
     }
 }

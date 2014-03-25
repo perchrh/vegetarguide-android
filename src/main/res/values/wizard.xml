@@ -25,6 +25,8 @@
     <string name="category_selector_prompt">Velg kategori</string>
     <string name="category_not_selected">Ingen kategori</string>
 
+    <string name="meta_information_input_error_title">Noe mangler</string>
+    <string name="meta_information_input_error">Tittel må fylles ut</string>
 
     <!-- step 1 -->
     <string name="check_if_not_vegetarian_at_all_title">Fra dyrekropper</string>
