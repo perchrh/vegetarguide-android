@@ -29,8 +29,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 19
 
-        versionName "1.0"
-        versionCode 4
+        versionName "1.0-BETA-1"
+        versionCode 5
     }
 
     compileOptions {
@@ -73,8 +73,6 @@ android {
 
     buildTypes {
         release {
-            zipAlign true
-            debuggable false
             runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
