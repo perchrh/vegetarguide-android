@@ -1,7 +1,9 @@
 package no.vegetarguide.scanner.wizard;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -23,6 +25,7 @@ import no.vegetarguide.scanner.AlertDialogFragment;
 import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.MainActivity;
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.SingleClickListener;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.integration.ModifyProductRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
@@ -92,9 +95,9 @@ public class EnoughInformation extends BaseActivity {
 
         private View initCancelButton(View rootView) {
             View cancelButton = rootView.findViewById(R.id.cancel_button);
-            cancelButton.setOnClickListener(new View.OnClickListener() {
+            cancelButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onSingleClick(View v) {
 
                     Intent gotoStart = new Intent(getActivity(), MainActivity.class);
                     gotoStart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -106,11 +109,20 @@ public class EnoughInformation extends BaseActivity {
 
         private void initSubmitButton(View rootView) {
             View submitButton = rootView.findViewById(R.id.submit_button);
-            submitButton.setOnClickListener(new View.OnClickListener() {
+            final Context ctx = getActivity();
+            submitButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
-                    performRequest(); // TODO guard against double-click
+                public void onSingleClick(View v) {
+                    if (isNetworkAvailable(ctx)) {
+                        performRequest();
+                    } else {
+                        DialogFragment dialog = AlertDialogFragment.newInstance(
+                                R.string.network_error_title, R.string.no_network_connection);
+                        if (dialog != null)
+                            dialog.show(getFragmentManager(), "networkError");
+                    }
                 }
+
             });
         }
 
@@ -154,8 +166,6 @@ public class EnoughInformation extends BaseActivity {
         }
 
         private Response.Listener<ModifyProductResponse> createModifyResponseListener(final Activity activity) {
-
-            // TODO check if network available
             return new Response.Listener<ModifyProductResponse>() {
                 @Override
                 public void onResponse(ModifyProductResponse response) {

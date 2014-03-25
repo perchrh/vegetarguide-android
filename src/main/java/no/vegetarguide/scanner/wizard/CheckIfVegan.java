@@ -17,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.SingleClickListener;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Product;
 
@@ -82,9 +83,9 @@ public class CheckIfVegan extends BaseActivity {
 
         private void createCancelButton(View rootView) {
             View cancelButton = rootView.findViewById(R.id.uncertain_ingredients_cancel_button);
-            cancelButton.setOnClickListener(new View.OnClickListener() {
+            cancelButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onSingleClick(View v) {
                     getActivity().setResult(Activity.RESULT_CANCELED);
                     getActivity().finish();
                 }
@@ -138,9 +139,9 @@ public class CheckIfVegan extends BaseActivity {
 
         private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
-            nextButton.setOnClickListener(new View.OnClickListener() {
+            nextButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onSingleClick(View v) {
                     mergeProductValues(product);
 
                     Intent launchNext = new Intent(getActivity(), EnoughInformation.class);

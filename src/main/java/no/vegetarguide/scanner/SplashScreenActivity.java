@@ -22,8 +22,8 @@ public class SplashScreenActivity extends Activity {
 
     private void registerClickHandler() {
         ViewGroup screen = (ViewGroup) findViewById(R.id.screen);
-        screen.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        screen.setOnClickListener(new SingleClickListener() {
+            public void onSingleClick(View v) {
                 startMainActivity();
             }
         });

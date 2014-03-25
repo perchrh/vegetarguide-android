@@ -64,9 +64,9 @@ public class ManualInputActivity extends BaseActivity {
 
             });
             View searchButton = inflatedView.findViewById(R.id.manual_gtin_search);
-            searchButton.setOnClickListener(new View.OnClickListener() {
+            searchButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onSingleClick(View v) {
                     returnResult(inputField.getText().toString());
                 }
 

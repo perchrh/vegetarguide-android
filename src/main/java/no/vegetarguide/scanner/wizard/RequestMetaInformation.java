@@ -19,6 +19,7 @@ import java.util.List;
 
 import no.vegetarguide.scanner.BaseActivity;
 import no.vegetarguide.scanner.R;
+import no.vegetarguide.scanner.SingleClickListener;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.model.Category;
 import no.vegetarguide.scanner.model.Product;
@@ -144,9 +145,9 @@ public class RequestMetaInformation extends BaseActivity {
 
         private void createCancelButton(View rootView) {
             View cancelButton = rootView.findViewById(R.id.cancel_wizard_button);
-            cancelButton.setOnClickListener(new View.OnClickListener() {
+            cancelButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onSingleClick(View v) {
                     getActivity().setResult(Activity.RESULT_CANCELED);
                     getActivity().finish();
                 }
@@ -155,9 +156,9 @@ public class RequestMetaInformation extends BaseActivity {
 
         private void createNextButton(View rootView, final Product product) {
             View nextButton = rootView.findViewById(R.id.next_wizard_button);
-            nextButton.setOnClickListener(new View.OnClickListener() {
+            nextButton.setOnClickListener(new SingleClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onSingleClick(View v) {
                     Intent launchNext = new Intent(getActivity(), CheckIfNotVegetarianAtAll.class);
 
                     mergeProductValues(product);

@@ -66,9 +66,9 @@ public class ProductDetailsActivity extends BaseActivity {
 
     private void initModifyButton() {
         Button modifyButton = (Button) findViewById(R.id.modify_button);
-        modifyButton.setOnClickListener(new View.OnClickListener() {
+        modifyButton.setOnClickListener(new SingleClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onSingleClick(View view) {
                 ModifyProductRequest modifyRequest = new ModifyProductRequest(lookupResponse);
 
                 Intent modifyProduct = new Intent(ProductDetailsActivity.this, RequestMetaInformation.class);
@@ -101,9 +101,9 @@ public class ProductDetailsActivity extends BaseActivity {
 
     private void initBackButton() {
         View backButton = findViewById(R.id.scan_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new SingleClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onSingleClick(View view) {
                 Intent result = new Intent();
                 result.putExtra(START_SCANNING, true);
                 ProductDetailsActivity.this.setResult(Activity.RESULT_OK, result);

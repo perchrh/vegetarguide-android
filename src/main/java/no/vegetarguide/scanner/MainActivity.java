@@ -2,14 +2,9 @@ package no.vegetarguide.scanner;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,7 +18,6 @@ import com.android.volley.VolleyError;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import no.vegetarguide.scanner.about.AboutActivity;
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
@@ -46,10 +40,10 @@ public class MainActivity extends BaseActivity {
 
     private void initViews() {
         View scan = findViewById(R.id.scan_button);
-        scan.setOnClickListener(new View.OnClickListener() {
+        scan.setOnClickListener(new SingleClickListener() {
             @Override
-            public void onClick(View view) {
-                if (isNetworkAvailable()) {
+            public void onSingleClick(View view) {
+                if (isNetworkAvailable(getBaseContext())) {
                     startScan();
                 } else {
                     DialogFragment dialog = AlertDialogFragment.newInstance(
@@ -63,10 +57,10 @@ public class MainActivity extends BaseActivity {
         progressBar = findViewById(R.id.progressbar);
 
         View inputNumber = findViewById(R.id.input_code);
-        inputNumber.setOnClickListener(new View.OnClickListener() {
+        inputNumber.setOnClickListener(new SingleClickListener() {
             @Override
-            public void onClick(View v) {
-                if (isNetworkAvailable()) {
+            public void onSingleClick(View v) {
+                if (isNetworkAvailable(getBaseContext())) {
                     Intent launchActivity = new Intent(MainActivity.this, ManualInputActivity.class);
                     startActivityForResult(launchActivity, ManualInputActivity.REQUEST_MANUAL_INPUT);
                 } else {
@@ -104,9 +98,7 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
             case PRODUCT_DETAILS_REQUEST_CODE:
-                if (intent == null) {
-                    break; // TODO fail here?
-                } else if (intent.getBooleanExtra(START_SCANNING, false)) {
+                if (intent.getBooleanExtra(START_SCANNING, false)) {
                     startScan();
                 } else if (intent.getBooleanExtra(MODIFY_PRODUCT_SUCCESS, false)) {
                     Toast.makeText(this, R.string.success_product_submitted, Toast.LENGTH_LONG).show();
@@ -126,7 +118,6 @@ public class MainActivity extends BaseActivity {
         showProgressBar();
 
         ProductLookupRequestHandler requestHandler = new ProductLookupRequestHandler(productCode, formatName);
-        //TODO do this in an intentservice?
         return requestHandler.execute(VolleySingleton.getInstance(this).getRequestQueue(),
                 createLookupResponseListener(),
                 createLookupErrorListener());
