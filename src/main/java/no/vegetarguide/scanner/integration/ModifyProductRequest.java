@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 
 import no.vegetarguide.scanner.model.Product;
-import no.vegetarguide.scanner.model.ProductLookupResponse;
 
 public class ModifyProductRequest implements Parcelable {
 

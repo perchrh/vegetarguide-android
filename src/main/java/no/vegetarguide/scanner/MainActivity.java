@@ -21,7 +21,7 @@ import com.google.zxing.integration.android.IntentResult;
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
-import no.vegetarguide.scanner.model.ProductLookupResponse;
+import no.vegetarguide.scanner.integration.ProductLookupResponse;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_REQUEST_CODE;
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity {
             case IntentIntegrator.REQUEST_CODE:
                 IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
                 if (scanResult != null) {
-                    performRequest(scanResult.getContents(), scanResult.getFormatName());
+                    performRequest(scanResult.getContents());
                 } else {
                     DialogFragment dialog = AlertDialogFragment.newInstance(
                             R.string.scan_error_title, R.string.scan_error);
@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case ManualInputActivity.REQUEST_MANUAL_INPUT:
                 String gtin = intent.getStringExtra(ManualInputActivity.GTIN_EXTRA);
-                performRequest(gtin, "manual_input");
+                performRequest(gtin);
                 break;
             default:
                 throw new RuntimeException("Got unknown request code in result " + resultCode);
@@ -114,10 +114,10 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private Request performRequest(String productCode, String formatName) {
+    private Request performRequest(String productCode) {
         showProgressBar();
 
-        ProductLookupRequestHandler requestHandler = new ProductLookupRequestHandler(productCode, formatName);
+        ProductLookupRequestHandler requestHandler = new ProductLookupRequestHandler(productCode);
         return requestHandler.execute(VolleySingleton.getInstance(this).getRequestQueue(),
                 createLookupResponseListener(),
                 createLookupErrorListener());

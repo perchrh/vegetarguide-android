@@ -8,7 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 
 import no.vegetarguide.scanner.ScannerApplication;
-import no.vegetarguide.scanner.model.ModifyProductResponse;
 
 public class ModifyProductRequestHandler {
 

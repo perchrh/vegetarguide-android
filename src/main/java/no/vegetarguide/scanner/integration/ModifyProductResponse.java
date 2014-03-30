@@ -1,4 +1,4 @@
-package no.vegetarguide.scanner.model;
+package no.vegetarguide.scanner.integration;
 
 import com.google.gson.annotations.Expose;
 

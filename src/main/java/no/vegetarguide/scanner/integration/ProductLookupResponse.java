@@ -1,4 +1,4 @@
-package no.vegetarguide.scanner.model;
+package no.vegetarguide.scanner.integration;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,6 +7,12 @@ import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import no.vegetarguide.scanner.model.Category;
+import no.vegetarguide.scanner.model.LookupErrorType;
+import no.vegetarguide.scanner.model.Product;
+import no.vegetarguide.scanner.model.ResultType;
+import no.vegetarguide.scanner.model.StatusType;
 
 public class ProductLookupResponse implements Parcelable {
 

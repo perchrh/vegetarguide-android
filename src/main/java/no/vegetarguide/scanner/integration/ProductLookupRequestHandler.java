@@ -8,23 +8,19 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 
 import no.vegetarguide.scanner.ScannerApplication;
-import no.vegetarguide.scanner.model.ProductLookupResponse;
 
 public class ProductLookupRequestHandler {
 
     private final String gtin;
-    private final String formatName;
 
-    public ProductLookupRequestHandler(String gtin, String formatName) {
+    public ProductLookupRequestHandler(String gtin) {
         this.gtin = gtin;
-        this.formatName = formatName;
     }
 
     private String getEndpoint() {
         String lookupProductEndPoint = ScannerApplication.getConfiguration().getLookupProductEndPoint();
         Uri.Builder uriBuilder = Uri.parse(lookupProductEndPoint).buildUpon();
         uriBuilder.appendQueryParameter("gtin", gtin);
-        uriBuilder.appendQueryParameter("format", formatName);
 
         Uri url = uriBuilder.build();
         //noinspection ConstantConditions
