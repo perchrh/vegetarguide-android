@@ -19,10 +19,10 @@ import java.util.List;
 import java.util.Locale;
 
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
+import no.vegetarguide.scanner.integration.ProductLookupResponse;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.Ingredients;
 import no.vegetarguide.scanner.model.Product;
-import no.vegetarguide.scanner.integration.ProductLookupResponse;
 import no.vegetarguide.scanner.model.ResultType;
 import no.vegetarguide.scanner.model.StatusType;
 import no.vegetarguide.scanner.wizard.RequestMetaInformation;

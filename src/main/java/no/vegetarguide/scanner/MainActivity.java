@@ -19,9 +19,9 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import no.vegetarguide.scanner.integration.ProductLookupRequestHandler;
+import no.vegetarguide.scanner.integration.ProductLookupResponse;
 import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.LookupErrorType;
-import no.vegetarguide.scanner.integration.ProductLookupResponse;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
 import static no.vegetarguide.scanner.Application.PRODUCT_DETAILS_REQUEST_CODE;

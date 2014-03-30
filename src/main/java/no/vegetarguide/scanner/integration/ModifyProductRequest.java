@@ -21,9 +21,6 @@ public class ModifyProductRequest implements Parcelable {
     @Expose
     private Product product;
 
-    @Expose
-    private String objectId;
-
     @SuppressWarnings("unused")
     public ModifyProductRequest() {
         //used by Gson
@@ -31,21 +28,16 @@ public class ModifyProductRequest implements Parcelable {
 
     public ModifyProductRequest(ProductLookupResponse productLookupResponse) {
         this.product = productLookupResponse.getProduct();
-        this.objectId = productLookupResponse.getObjectId();
     }
 
     public ModifyProductRequest(Parcel in) {
         this.product = in.readParcelable(Product.class.getClassLoader());
-        this.objectId = in.readString();
     }
 
     public Product getProduct() {
         return product;
     }
 
-    public String getObjectId() {
-        return objectId;
-    }
 
     @Override
     public int describeContents() {
@@ -55,6 +47,5 @@ public class ModifyProductRequest implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(this.product, flags);
-        dest.writeString(this.objectId);
     }
 }

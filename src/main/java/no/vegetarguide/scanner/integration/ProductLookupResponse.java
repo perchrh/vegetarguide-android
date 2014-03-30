@@ -38,9 +38,6 @@ public class ProductLookupResponse implements Parcelable {
     @Expose
     private ArrayList<Category> categories; // assigned
 
-    @Expose
-    private String objectId;
-
     @SuppressWarnings("unused")
     public ProductLookupResponse() {
         //used by Gson
@@ -51,7 +48,6 @@ public class ProductLookupResponse implements Parcelable {
         status = (StatusType) in.readSerializable();
         error = (LookupErrorType) in.readSerializable();
         product = in.readParcelable(Product.class.getClassLoader());
-        objectId = in.readString();
         categories = new ArrayList<Category>();
         in.readList(categories, Category.class.getClassLoader());
         Collections.sort(categories);
@@ -77,9 +73,6 @@ public class ProductLookupResponse implements Parcelable {
         return product;
     }
 
-    public String getObjectId() {
-        return objectId;
-    }
 
     public ArrayList<Category> getCategories() {
         return categories;
@@ -96,7 +89,6 @@ public class ProductLookupResponse implements Parcelable {
         dest.writeSerializable(status);
         dest.writeSerializable(error);
         dest.writeParcelable(product, flags);
-        dest.writeString(objectId);
         dest.writeList(categories);
     }
 

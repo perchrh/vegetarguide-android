@@ -28,8 +28,8 @@ import no.vegetarguide.scanner.R;
 import no.vegetarguide.scanner.SingleClickListener;
 import no.vegetarguide.scanner.integration.ModifyProductRequest;
 import no.vegetarguide.scanner.integration.ModifyProductRequestHandler;
-import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.integration.ModifyProductResponse;
+import no.vegetarguide.scanner.integration.VolleySingleton;
 import no.vegetarguide.scanner.model.Product;
 
 import static no.vegetarguide.scanner.Application.MODIFY_PRODUCT_SUCCESS;
