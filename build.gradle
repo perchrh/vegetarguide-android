@@ -29,8 +29,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 19
 
-        versionName "1.0-BETA-1"
-        versionCode 6
+        versionName "1.0-BETA-2"
+        versionCode 7
     }
 
     compileOptions {
