@@ -16,7 +16,7 @@ repositories {
 dependencies {
     compile 'com.google.code.gson:gson:2.2.+'
     compile 'org.apache.commons:commons-lang3:3.2.+'
-    compile "com.android.support:support-v13:19.0.+"
+    compile "com.android.support:support-v13:19.1.+"
 
     compile files('libs/volley.jar')
 }
