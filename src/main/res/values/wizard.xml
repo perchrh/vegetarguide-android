@@ -31,7 +31,7 @@
     <string name="contains_bodyparts">Kjøtt</string>
     <string name="contains_body_parts_details">Inkl. fisk, fugl, skalldyr, skjell, insekter og andre dyr.</string>
     <string name="contains_animal_additives">Ingredienser basert på dyrekropper</string>
-    <string name="contains_animal_additives_details">Kjøttkraft, kjøttbuljong, rogn, østerssaus, gelatin, løpe eller rennin fra kalv, karmin (E120), aspik, pepsin eller kalsium mesoinositol hexafosfat.</string>
+    <string name="contains_animal_additives_details">Kjøttkraft, kjøttbuljong, rogn, østerssaus, gelatin, løpe eller rennin fra kalv, karmin (E120), aspik, pepsin, trypsin, pan-kreatin, eller kalsium mesoinositol hexafosfat.</string>
     <string name="contains_unspecified_possibly_animal_additives">Uspesifiserte oljer eller aromaer</string>
     <string name="contains_unspecified_possibly_animal_additives_details">Hvis oljen eller aromaen kan komme fra dyrekropper.</string>
 
