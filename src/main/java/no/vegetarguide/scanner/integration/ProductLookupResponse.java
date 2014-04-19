@@ -48,7 +48,7 @@ public class ProductLookupResponse implements Parcelable {
         status = (StatusType) in.readSerializable();
         error = (LookupErrorType) in.readSerializable();
         product = in.readParcelable(Product.class.getClassLoader());
-        categories = new ArrayList<Category>();
+        categories = new ArrayList<>();
         in.readList(categories, Category.class.getClassLoader());
         Collections.sort(categories);
     }

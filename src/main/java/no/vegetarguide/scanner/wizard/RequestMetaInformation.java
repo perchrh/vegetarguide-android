@@ -96,7 +96,7 @@ public class RequestMetaInformation extends BaseActivity {
 
         private void createCategorySelector(View rootView, final List<Category> categories, final Product product) {
             Spinner categorySelector = (Spinner) rootView.findViewById(R.id.category_selector);
-            ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(getActivity(), android.R.layout.simple_spinner_item, categories);
+            ArrayAdapter<Category> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, categories);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             categorySelector.setAdapter(adapter);
 
