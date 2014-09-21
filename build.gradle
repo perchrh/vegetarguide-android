@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.13.0'
     }
 }
 apply plugin: 'com.android.application'
@@ -17,14 +17,14 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.+'
     compile 'org.apache.commons:commons-lang3:3.2.+'
     compile "com.android.support:support-v13:19.1.+"
-    compile 'com.android.support:support-annotations:+'
+    compile 'com.android.support:support-annotations:19.1.+'
 
     compile files('libs/volley.jar')
 }
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    buildToolsVersion "20.0"
 
     defaultConfig {
         minSdkVersion 14
