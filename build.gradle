@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.0'
+        classpath 'com.android.tools.build:gradle:1.0.0'
     }
 }
 apply plugin: 'com.android.application'
@@ -14,24 +14,24 @@ repositories {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.2.+'
-    compile 'org.apache.commons:commons-lang3:3.2.+'
-    compile "com.android.support:support-v13:19.1.+"
-    compile 'com.android.support:support-annotations:19.1.+'
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'org.apache.commons:commons-lang3:3.2.1'
+    compile "com.android.support:support-v13:21.0.3"
+    compile 'com.android.support:support-annotations:21.0.3'
 
     compile files('libs/volley.jar')
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "20.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
 
-        versionName "1.0-BETA-3"
-        versionCode 8
+        versionName "1.0-BETA-4"
+        versionCode 9
     }
 
     compileOptions {
@@ -62,21 +62,23 @@ android {
             keyPassword "vegan23"
         }
 
+/*
         release {
             storeFile file("$projectDir/release.keystore")
             storePassword project.vegetarguide_keystore_password
             keyAlias "key0"
             keyPassword project.vegetarguide_key_password
         }
+*/
 
     }
 
 
     buildTypes {
         release {
-            runProguard true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            signingConfig signingConfigs.release
+           // signingConfig signingConfigs.release
         }
 
         debug {
