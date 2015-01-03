@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".MainActivity">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@android:color/white"
+             tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                     android:layout_weight="10"
                     android:adjustViewBounds="true"
                     android:paddingRight="6dp"
-                    android:src="@drawable/launcher_background" />
+                    android:src="@drawable/launcher_background"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                         android:text="@string/scanning_headline"
                         android:textColor="#526E17"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/scanning_instructions"
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/scanning_instructions"
-                        android:textSize="22sp" />
+                        android:textSize="22sp"/>
 
                 </LinearLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="34dp"
                 android:text="@string/scan_product_code"
-                android:textSize="36sp" />
+                android:textSize="36sp"/>
 
             <TextView
                 android:id="@+id/or_label"
@@ -84,20 +84,20 @@
                 android:layout_marginLeft="20dp"
                 android:text="@string/or_label"
                 android:textColor="#526E17"
-                android:textSize="32sp" />
+                android:textSize="32sp"/>
 
             <Button
                 android:id="@+id/input_code"
                 style="@style/WizardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/scan_button"
+                android:layout_alignRight="@+id/scan_button"
                 android:layout_below="@+id/scan_button"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="28dp"
                 android:layout_toRightOf="@+id/or_label"
                 android:text="@string/input_product_code"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"/>
 
     </RelativeLayout>
 

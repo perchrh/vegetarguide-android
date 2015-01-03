@@ -1,8 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".ProductDetailsActivity">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            tools:context=".ProductDetailsActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:marqueeRepeatLimit="3"
             android:maxLines="2"
             android:text="@string/label_unknown_title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <TextView
             android:id="@+id/subtitle"
@@ -37,7 +37,7 @@
             android:marqueeRepeatLimit="3"
             android:maxLines="2"
             android:text="@string/label_unknown_subtitle"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
         <LinearLayout
             android:id="@+id/statusline"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/label_unknown_product"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
         </LinearLayout>
 
         <TextView
@@ -65,7 +65,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/missing_vegan_information"
@@ -75,7 +75,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/product_image"
@@ -90,7 +90,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/thin_dark_border"
             android:maxHeight="240dp"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"/>
 
         <Button
             android:id="@+id/scan_button"
@@ -100,7 +100,7 @@
             android:layout_below="@id/product_image"
             android:layout_centerInParent="true"
             android:layout_marginRight="50dp"
-            android:text="@string/label_new_search" />
+            android:text="@string/label_new_search"/>
 
         <Button
             android:id="@+id/modify_button"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/scan_button"
             android:layout_centerInParent="true"
-            android:text="@string/label_modify_product" />
+            android:text="@string/label_modify_product"/>
 
 
     </RelativeLayout>

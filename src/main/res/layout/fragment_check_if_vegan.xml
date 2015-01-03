@@ -1,13 +1,13 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".wizard.CheckIfVegan.CheckIfVeganFragment">
+<ScrollView android:id="@+id/scrollView"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context=".wizard.CheckIfVegan.CheckIfVeganFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/contains_additives_of_possible_animal_origins_headline"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <LinearLayout
             android:id="@+id/possible_animal_derived_additives_row"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/possible_animal_derived_additives"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <ImageButton
                 android:id="@+id/yellow_list_button"
@@ -46,7 +46,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/rounded_corners_green_bg"
                 android:onClick="viewYellowList"
-                android:src="@android:drawable/ic_menu_help" />
+                android:src="@android:drawable/ic_menu_help"/>
         </LinearLayout>
 
 
@@ -57,7 +57,7 @@
             android:layout_below="@+id/possible_animal_derived_additives_row"
             android:layout_marginTop="1dp"
             android:paddingLeft="@dimen/padding_checkbox"
-            android:text="@string/possible_animal_derived_additives_details" />
+            android:text="@string/possible_animal_derived_additives_details"/>
 
         <CheckBox
             android:id="@+id/manufacturer_confirms_vegan"
@@ -66,7 +66,7 @@
             android:layout_below="@+id/possible_animal_derived_additives_details"
             android:layout_marginTop="10dp"
             android:text="@string/manufacturer_confirms_product_is_vegan"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/confirmed_vegan_comment"
@@ -79,7 +79,7 @@
             android:hint="@string/insert_documentation_from_manufacturer"
             android:inputType="textCapSentences|textMultiLine"
             android:minLines="2"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
 
         <Button
@@ -90,7 +90,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/confirmed_vegan_comment"
-            android:text="@string/action_next" />
+            android:text="@string/action_next"/>
 
         <Button
             android:id="@+id/uncertain_ingredients_cancel_button"
@@ -100,7 +100,7 @@
             android:layout_below="@+id/confirmed_vegan_comment"
             android:layout_marginRight="50dp"
             android:layout_toLeftOf="@+id/next_wizard_button"
-            android:text="@string/action_previous" />
+            android:text="@string/action_previous"/>
 
     </RelativeLayout>
 
